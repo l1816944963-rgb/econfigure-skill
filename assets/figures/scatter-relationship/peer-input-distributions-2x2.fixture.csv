@@ -1,0 +1,162 @@
+panel,kind,series,x,y,width
+price-hist,bar,Private feeder,30.0,0.0,24.0
+price-hist,bar,Private feeder,55.0,0.0,24.0
+price-hist,bar,Private feeder,80.0,0.005,24.0
+price-hist,bar,Private feeder,105.0,0.035,24.0
+price-hist,bar,Private feeder,130.0,0.015,24.0
+price-hist,bar,Private feeder,155.0,0.003,24.0
+price-hist,bar,Private feeder,180.0,0.025,24.0
+price-hist,bar,Private feeder,205.0,0.135,24.0
+price-hist,bar,Private feeder,230.0,0.28,24.0
+price-hist,bar,Private feeder,255.0,0.265,24.0
+price-hist,bar,Private feeder,280.0,0.07,24.0
+price-hist,bar,Private feeder,305.0,0.03,24.0
+price-hist,bar,Private feeder,330.0,0.01,24.0
+price-hist,bar,Private feeder,355.0,0.012,24.0
+price-hist,bar,Private feeder,380.0,0.04,24.0
+price-hist,bar,Private feeder,405.0,0.0,24.0
+price-hist,bar,Private feeder,430.0,0.012,24.0
+price-hist,bar,Private feeder,455.0,0.008,24.0
+price-hist,bar,Private feeder,480.0,0.006,24.0
+price-hist,bar,Private feeder,505.0,0.0,24.0
+price-hist,bar,Private feeder,530.0,0.005,24.0
+price-hist,bar,Private feeder,555.0,0.0,24.0
+price-hist,bar,Private feeder,580.0,0.014,24.0
+price-hist,bar,Other,30.0,0.0,24.0
+price-hist,bar,Other,55.0,0.015,24.0
+price-hist,bar,Other,80.0,0.01,24.0
+price-hist,bar,Other,105.0,0.04,24.0
+price-hist,bar,Other,130.0,0.12,24.0
+price-hist,bar,Other,155.0,0.04,24.0
+price-hist,bar,Other,180.0,0.065,24.0
+price-hist,bar,Other,205.0,0.075,24.0
+price-hist,bar,Other,230.0,0.01,24.0
+price-hist,bar,Other,255.0,0.25,24.0
+price-hist,bar,Other,280.0,0.12,24.0
+price-hist,bar,Other,305.0,0.015,24.0
+price-hist,bar,Other,330.0,0.01,24.0
+price-hist,bar,Other,355.0,0.01,24.0
+price-hist,bar,Other,380.0,0.02,24.0
+price-hist,bar,Other,405.0,0.005,24.0
+price-hist,bar,Other,430.0,0.012,24.0
+price-hist,bar,Other,455.0,0.006,24.0
+price-hist,bar,Other,480.0,0.005,24.0
+price-hist,bar,Other,505.0,0.01,24.0
+price-hist,bar,Other,530.0,0.004,24.0
+price-hist,bar,Other,555.0,0.018,24.0
+price-hist,bar,Other,580.0,0.012,24.0
+size-hist,bar,Peer group size,2.0,0.0,0.8
+size-hist,bar,Peer group size,3.0,0.001,0.8
+size-hist,bar,Peer group size,4.0,0.003,0.8
+size-hist,bar,Peer group size,5.0,0.045,0.8
+size-hist,bar,Peer group size,6.0,0.07,0.8
+size-hist,bar,Peer group size,7.0,0.09,0.8
+size-hist,bar,Peer group size,8.0,0.12,0.8
+size-hist,bar,Peer group size,9.0,0.155,0.8
+size-hist,bar,Peer group size,10.0,0.152,0.8
+size-hist,bar,Peer group size,11.0,0.095,0.8
+size-hist,bar,Peer group size,12.0,0.105,0.8
+size-hist,bar,Peer group size,13.0,0.028,0.8
+size-hist,bar,Peer group size,14.0,0.047,0.8
+size-hist,bar,Peer group size,15.0,0.028,0.8
+size-hist,bar,Peer group size,16.0,0.045,0.8
+size-hist,bar,Peer group size,17.0,0.032,0.8
+size-hist,bar,Peer group size,18.0,0.05,0.8
+size-hist,bar,Peer group size,19.0,0.025,0.8
+size-hist,bar,Peer group size,20.0,0.047,0.8
+size-hist,bar,Peer group size,21.0,0.025,0.8
+size-hist,bar,Peer group size,22.0,0.001,0.8
+size-hist,bar,Peer group size,23.0,0.0,0.8
+size-hist,bar,Peer group size,24.0,0.008,0.8
+size-hist,bar,Peer group size,25.0,0.0,0.8
+size-hist,bar,Peer group size,26.0,0.007,0.8
+size-hist,bar,Peer group size,27.0,0.0,0.8
+size-hist,bar,Peer group size,28.0,0.005,0.8
+size-hist,bar,Peer group size,29.0,0.0,0.8
+size-hist,bar,Peer group size,30.0,0.0,0.8
+size-hist,bar,Peer group size,31.0,0.0,0.8
+size-hist,bar,Peer group size,32.0,0.0,0.8
+size-hist,bar,Peer group size,33.0,0.0,0.8
+size-hist,bar,Peer group size,34.0,0.0,0.8
+size-hist,bar,Peer group size,35.0,0.0,0.8
+size-hist,bar,Peer group size,36.0,0.01,0.8
+rank,mean,Mean,0.05,0.03,
+rank,mean,Mean,0.1,0.08,
+rank,mean,Mean,0.15,0.15,
+rank,mean,Mean,0.2,0.25,
+rank,mean,Mean,0.25,0.18,
+rank,mean,Mean,0.3,0.33,
+rank,mean,Mean,0.35,0.38,
+rank,mean,Mean,0.39999999999999997,0.39,
+rank,mean,Mean,0.44999999999999996,0.5,
+rank,mean,Mean,0.49999999999999994,0.57,
+rank,mean,Mean,0.5499999999999999,0.51,
+rank,mean,Mean,0.6,0.62,
+rank,mean,Mean,0.65,0.64,
+rank,mean,Mean,0.7,0.61,
+rank,mean,Mean,0.75,0.67,
+rank,mean,Mean,0.7999999999999999,0.66,
+rank,mean,Mean,0.85,0.69,
+rank,mean,Mean,0.9,0.66,
+rank,mean,Mean,0.95,0.6,
+rank,mean,Mean,1.0,0.66,
+rank,range,p90/p10,0.05,0.0,
+rank,range,p90/p10,0.1,0.08,
+rank,range,p90/p10,0.15,0.02,
+rank,range,p90/p10,0.2,0.29,
+rank,range,p90/p10,0.25,0.11,
+rank,range,p90/p10,0.3,0.36,
+rank,range,p90/p10,0.35,0.08,
+rank,range,p90/p10,0.39999999999999997,0.17,
+rank,range,p90/p10,0.44999999999999996,0.25,
+rank,range,p90/p10,0.49999999999999994,0.83,
+rank,range,p90/p10,0.5499999999999999,0.27,
+rank,range,p90/p10,0.6,0.92,
+rank,range,p90/p10,0.65,0.29,
+rank,range,p90/p10,0.7,0.95,
+rank,range,p90/p10,0.75,0.48,
+rank,range,p90/p10,0.7999999999999999,0.88,
+rank,range,p90/p10,0.85,0.35,
+rank,range,p90/p10,0.9,0.98,
+rank,range,p90/p10,0.95,0.55,
+rank,range,p90/p10,1.0,0.97,
+share,mean,Mean,0.05,0.12,
+share,mean,Mean,0.1,0.18,
+share,mean,Mean,0.15,0.32,
+share,mean,Mean,0.2,0.31,
+share,mean,Mean,0.25,0.25,
+share,mean,Mean,0.3,0.24,
+share,mean,Mean,0.35,0.29,
+share,mean,Mean,0.39999999999999997,0.34,
+share,mean,Mean,0.44999999999999996,0.32,
+share,mean,Mean,0.49999999999999994,0.33,
+share,mean,Mean,0.5499999999999999,0.34,
+share,mean,Mean,0.6,0.39,
+share,mean,Mean,0.65,0.4,
+share,mean,Mean,0.7,0.37,
+share,mean,Mean,0.75,0.29,
+share,mean,Mean,0.7999999999999999,0.38,
+share,mean,Mean,0.85,0.37,
+share,mean,Mean,0.9,0.33,
+share,mean,Mean,0.95,0.29,
+share,mean,Mean,1.0,0.34,
+share,range,p90/p10,0.05,0.0,
+share,range,p90/p10,0.1,0.45,
+share,range,p90/p10,0.15,0.5,
+share,range,p90/p10,0.2,0.62,
+share,range,p90/p10,0.25,0.0,
+share,range,p90/p10,0.3,0.75,
+share,range,p90/p10,0.35,0.5,
+share,range,p90/p10,0.39999999999999997,0.66,
+share,range,p90/p10,0.44999999999999996,0.0,
+share,range,p90/p10,0.49999999999999994,0.66,
+share,range,p90/p10,0.5499999999999999,0.0,
+share,range,p90/p10,0.6,0.67,
+share,range,p90/p10,0.65,0.21,
+share,range,p90/p10,0.7,0.68,
+share,range,p90/p10,0.75,0.0,
+share,range,p90/p10,0.7999999999999999,0.74,
+share,range,p90/p10,0.85,0.67,
+share,range,p90/p10,0.9,0.8,
+share,range,p90/p10,0.95,0.6,
+share,range,p90/p10,1.0,0.75,

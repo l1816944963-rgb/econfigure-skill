@@ -1,0 +1,104 @@
+id: grouped-vbar-2series-year
+family: grouped-bar
+subtype: grouped-vertical-bar
+status: approved
+files:
+  preview: grouped-vbar-2series-year.png
+  script: grouped-vbar-2series-year.py
+  fixture: grouped-vbar-2series-year.fixture.csv
+output:
+  format: png
+  dpi: 600
+  additional-master-formats: forbidden
+scene:
+- Compare treatment and control groups across ordered periods
+- Show the evolution of two series over time
+data_contract:
+  shape: long
+  required:
+  - period
+  - series
+  - value
+  series-count: 2
+  series-label-max-characters: 9
+  zero_baseline: required
+  analytical_calculation: forbidden
+  required_data_roles:
+  - field: period
+    source: grouped-vbar-2series-year.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: series
+    source: grouped-vbar-2series-year.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: value
+    source: grouped-vbar-2series-year.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one supplied value per category-series pair
+    mark_to_data_mapping: adjacent bars encode series values within a shared category
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - vertical-bar
+  - grouped
+  - equal-width
+  - side-by-side
+  encoding:
+  - two-series
+  - orange-vs-navy
+  - categorical-color
+  annotation:
+  - legend-bottom
+  - no-data-label
+  axes:
+  - zero-baseline
+  - ordered-time-x
+  - fixed-y-range
+  layout:
+  - single-panel
+  - horizontal-grid
+  - white-plot-on-tinted-frame
+implementation:
+  entrypoint: render
+  parameters:
+    bar-width: ChartStyle.bar_width
+    series-offset: ChartStyle.series_offset
+    left-margin: ChartStyle.x_left_margin
+    right-margin: ChartStyle.x_right_margin
+    colors: ChartStyle.series_colors
+    plot-bounds: ChartStyle.axes_bounds
+    legend-position: render.legend.bbox_to_anchor
+compatibility:
+  grayscale: conditional
+  academic-publication: conditional
+  warnings:
+  - colored-background
+  - color-only-series-encoding
+qa:
+  deterministic: true

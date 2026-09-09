@@ -1,0 +1,94 @@
+id: delay-state-event-shaded-windows
+family: event-study
+subtype: event-intervals-with-time-windows
+status: approved
+files:
+  preview: delay-state-event-shaded-windows.png
+  script: delay-state-event-shaded-windows.py
+  fixtures:
+  - delay-state-event-shaded-windows.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4800
+  - 6552
+scene:
+- Compare time-specific effects with highlighted calendar windows.
+data_contract:
+  analytical-calculation: forbidden
+  summary: External plotting fixture; no analytical calculation.
+  required_data_roles:
+  - field: panel
+    source: delay-state-event-shaded-windows.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: x
+    source: delay-state-event-shaded-windows.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: estimate
+    source: delay-state-event-shaded-windows.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: low
+    source: delay-state-event-shaded-windows.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: high
+    source: delay-state-event-shaded-windows.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: one supplied event-time estimate and interval per series and panel
+    mark_to_data_mapping: event time encodes distance from the event; estimates and interval bounds are supplied, not calculated
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - dotted-connected-estimates
+  - vertical-interval
+  - background-time-windows
+  - rotated-date-labels
+  encoding:
+  - gray-window-fills
+  - black-estimates
+implementation:
+  entrypoint: render
+  shared-module: chartlib.inference_renderers
+  tick-policy:
+    x: centered
+    y: centered
+compatibility:
+  warnings:
+  - Bind each formatter to its own panel; loop-variable capture can silently give every panel the last panel decimal format.
+  grayscale: preview-generated; review color-dependent distinctions before grayscale use
+qa:
+  deterministic: true

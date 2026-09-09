@@ -1,0 +1,121 @@
+id: annual-boxplot-trend
+family: box-plot
+subtype: annual-five-number-summary-sequence
+status: approved
+files:
+  preview: annual-boxplot-trend.png
+  script: annual-boxplot-trend.py
+  fixtures:
+  - annual-boxplot-trend.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4650
+  - 3480
+  additional-master-formats: forbidden
+scene:
+- Track distribution location and spread over years
+- Identify annual tail observations
+data_contract:
+  analytical-calculation: forbidden
+  summary: Continuous annual five-number summaries from 1982 through 1995 with optional supplied outliers.
+  required_data_roles:
+  - field: year
+    source: annual-boxplot-trend.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: low
+    source: annual-boxplot-trend.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: q1
+    source: annual-boxplot-trend.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: median
+    source: annual-boxplot-trend.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: q3
+    source: annual-boxplot-trend.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: high
+    source: annual-boxplot-trend.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: outlier_low
+    source: annual-boxplot-trend.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: outlier_high
+    source: annual-boxplot-trend.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: raw observations or supplied five-number summaries as declared
+    mark_to_data_mapping: box, median, whiskers, and outliers encode distinct distribution summaries
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - boxplot
+  - whiskers
+  - outliers
+  - annual-sequence
+  encoding:
+  - white-box
+  - gray-outline
+  annotation:
+  - alternating-year-labels
+  axes:
+  - year-x
+  - continuous-y
+  layout:
+  - single-panel
+  - landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - continuous years 1982 through 1995
+  - ordered five-number summaries
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Alternating year labels must retain their association without touching the axis title.
+qa:
+  deterministic: true

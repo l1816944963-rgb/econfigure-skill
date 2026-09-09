@@ -1,0 +1,37 @@
+year,sample,sample_order,component,component_order,value
+1994,Aggregate banking sector,1,ST,1,29
+1994,Aggregate banking sector,1,LT,2,19
+1994,Firms in KIS data,2,ST,1,12
+1994,Firms in KIS data,2,LT,2,18
+1995,Aggregate banking sector,1,ST,1,44
+1995,Aggregate banking sector,1,LT,2,28
+1995,Firms in KIS data,2,ST,1,14
+1995,Firms in KIS data,2,LT,2,20
+1996,Aggregate banking sector,1,ST,1,61
+1996,Aggregate banking sector,1,LT,2,38
+1996,Firms in KIS data,2,ST,1,18
+1996,Firms in KIS data,2,LT,2,24
+1997,Aggregate banking sector,1,ST,1,49
+1997,Aggregate banking sector,1,LT,2,42
+1997,Firms in KIS data,2,ST,1,16
+1997,Firms in KIS data,2,LT,2,20
+1998,Aggregate banking sector,1,ST,1,31
+1998,Aggregate banking sector,1,LT,2,41
+1998,Firms in KIS data,2,ST,1,15
+1998,Firms in KIS data,2,LT,2,20
+1999,Aggregate banking sector,1,ST,1,34
+1999,Aggregate banking sector,1,LT,2,34
+1999,Firms in KIS data,2,ST,1,14
+1999,Firms in KIS data,2,LT,2,18
+2000,Aggregate banking sector,1,ST,1,37
+2000,Aggregate banking sector,1,LT,2,24
+2000,Firms in KIS data,2,ST,1,18
+2000,Firms in KIS data,2,LT,2,14
+2001,Aggregate banking sector,1,ST,1,30
+2001,Aggregate banking sector,1,LT,2,21
+2001,Firms in KIS data,2,ST,1,16
+2001,Firms in KIS data,2,LT,2,10
+2002,Aggregate banking sector,1,ST,1,38
+2002,Aggregate banking sector,1,LT,2,20
+2002,Firms in KIS data,2,ST,1,17
+2002,Firms in KIS data,2,LT,2,8

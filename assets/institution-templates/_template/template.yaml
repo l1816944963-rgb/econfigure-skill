@@ -1,0 +1,52 @@
+schema_version: 1
+id: replace-with-institution-slug
+institution:
+  name_en: Replace with official English name
+  name_local: Replace with official local-language name
+scope:
+  document_type: master's thesis
+  disciplines: []
+  effective_date: null
+  verified_on: null
+selection:
+  explicit_only: true
+  aliases: []
+source:
+  official_url: null
+  bundled_template: null
+figure:
+  body_font:
+    local: null
+    latin: null
+    size_pt: null
+  caption:
+    position: below
+    local_font: null
+    latin_font: null
+    size_pt: null
+    alignment: center
+  notes:
+    local_font: null
+    latin_font: null
+    size_pt: null
+table:
+  style: three-line
+  body_font:
+    local: null
+    latin: null
+    size_pt: null
+  title:
+    position: above
+    local_font: null
+    latin_font: null
+    size_pt: null
+    alignment: center
+  rule_weights_pt:
+    top: null
+    header: null
+    bottom: null
+output:
+  format: png
+  dpi: 600
+notes:
+  - Replace null values only when an authoritative requirement is available.

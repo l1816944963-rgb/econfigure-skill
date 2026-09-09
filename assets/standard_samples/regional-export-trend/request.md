@@ -1,0 +1,1 @@
+Design a thesis figure showing how export growth changed across three regions from 2018 to 2024. Preserve annual observations and make the series distinguishable in grayscale. Present the design before rendering.

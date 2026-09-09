@@ -1,0 +1,5 @@
+panel,panel_order,title,y_min,y_max,y_tick_interval
+log_value,1,Log Value,-4.30,0.20,1.00
+log_quantity,2,Log Quantity,-4.30,0.35,1.00
+log_unit_value,3,Log Unit Value,-5.20,6.40,2.00
+log_duty_inclusive_unit_value,4,Log Duty-Inclusive Unit Value,-0.62,1.58,0.50

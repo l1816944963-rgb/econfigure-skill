@@ -1,0 +1,107 @@
+id: dual-axis-three-ratio-trends
+family: line-trend
+subtype: sparse-three-series-dual-axis
+status: approved
+files:
+  preview: dual-axis-three-ratio-trends.png
+  script: dual-axis-three-ratio-trends.py
+  fixtures:
+  - dual-axis-three-ratio-trends.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4374
+  - 3018
+  additional-master-formats: forbidden
+scene:
+- Compare two related ratios with a third ratio on another scale
+- Show sparse long-run movements across benchmark years
+data_contract:
+  analytical-calculation: forbidden
+  summary: Long data with three ordered series and explicit left or right axis assignment.
+  required_data_roles:
+  - field: year
+    source: dual-axis-three-ratio-trends.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: series
+    source: dual-axis-three-ratio-trends.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: series_order
+    source: dual-axis-three-ratio-trends.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: axis
+    source: dual-axis-three-ratio-trends.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: value
+    source: dual-axis-three-ratio-trends.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied summary per ordered position and series
+    mark_to_data_mapping: position on the horizontal axis encodes order; line position encodes the supplied value
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Require explicit units and a written reason for using independent axes; never imply comparability from aligned slopes.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - single-panel
+  - dual-axis
+  - sparse-time-points
+  encoding:
+  - green-circle
+  - navy-square
+  - red-diamond
+  annotation:
+  - two-row-legend-below
+  axes:
+  - benchmark-year-x
+  - independent-y-scales
+  - horizontal-grid
+  layout:
+  - wide-landscape
+  - external-legend
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly three ordered series
+  - explicit axis assignment
+  - unique year-series rows
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - The three-color design needs redundant markers for grayscale printing.
+qa:
+  deterministic: true

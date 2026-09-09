@@ -1,0 +1,36 @@
+year,component,component_order,share
+2011,Others,1,5
+2012,Others,1,5
+2013,Others,1,7
+2014,Others,1,10
+2015,Others,1,11
+2011,Mutual funds,2,16
+2012,Mutual funds,2,21
+2013,Mutual funds,2,22
+2014,Mutual funds,2,27
+2015,Mutual funds,2,34
+2011,Equity,3,7
+2012,Equity,3,6
+2013,Equity,3,6
+2014,Equity,3,6
+2015,Equity,3,6
+2011,Certificates of deposit,4,1
+2012,Certificates of deposit,4,7
+2013,Certificates of deposit,4,5
+2014,Certificates of deposit,4,5
+2015,Certificates of deposit,4,5
+2011,Other bonds,5,7
+2012,Other bonds,5,6
+2013,Other bonds,5,6
+2014,Other bonds,5,5
+2015,Other bonds,5,4
+2011,Government bonds,6,11
+2012,Government bonds,6,9
+2013,Government bonds,6,8
+2014,Government bonds,6,6
+2015,Government bonds,6,5
+2011,Own bank bonds,7,53
+2012,Own bank bonds,7,46
+2013,Own bank bonds,7,46
+2014,Own bank bonds,7,41
+2015,Own bank bonds,7,35

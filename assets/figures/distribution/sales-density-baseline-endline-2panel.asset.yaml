@@ -1,0 +1,105 @@
+id: sales-density-baseline-endline-2panel
+family: distribution
+subtype: control-treatment-baseline-endline
+status: approved
+files:
+  preview: sales-density-baseline-endline-2panel.png
+  script: sales-density-baseline-endline-2panel.py
+  fixtures:
+  - sales-density-baseline-endline-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4476
+  - 1830
+  additional-master-formats: forbidden
+scene:
+- Compare distribution shifts within treatment arms
+- Separate time change from treatment-control differences
+data_contract:
+  analytical-calculation: forbidden
+  summary: Control and treatment panels with complete non-negative baseline and endline density paths on shared x coordinates.
+  required_data_roles:
+  - field: panel
+    source: sales-density-baseline-endline-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: series
+    source: sales-density-baseline-endline-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: line
+    source: sales-density-baseline-endline-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: x
+    source: sales-density-baseline-endline-2panel.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: density
+    source: sales-density-baseline-endline-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: raw observations or supplied density/frequency values as declared by the fixture
+    mark_to_data_mapping: position and density, frequency, or probability encode distribution shape
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - density-line
+  - two-series-per-panel
+  encoding:
+  - blue-solid
+  - red-dashed
+  - redundant-line-style
+  annotation:
+  - panel-specific-bottom-legends
+  axes:
+  - log-sales-x
+  - density-y
+  - shared-domain
+  layout:
+  - one-by-two
+  - low-wide
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two panels
+  - baseline and endline in each panel
+  - non-negative densities
+  - shared domain
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Legends need enough width for treatment labels without becoming visually cramped.
+qa:
+  deterministic: true

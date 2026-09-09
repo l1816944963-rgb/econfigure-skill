@@ -1,0 +1,113 @@
+id: placement-rate-maltreatment-fits-2panel
+family: scatter-relationship
+subtype: two-group-three-fit-comparison-2panel
+status: approved
+files:
+  preview: placement-rate-maltreatment-fits-2panel.png
+  script: placement-rate-maltreatment-fits-2panel.py
+  fixtures:
+  - placement-rate-maltreatment-fits-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4200
+  - 6360
+  additional-master-formats: forbidden
+scene:
+- Compare functional-form sensitivity for two groups
+- Contrast results across all calls and screened-in calls
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two panels and two groups with supplied point estimates plus three complete fit paths per group-panel.
+  required_data_roles:
+  - field: panel
+    source: placement-rate-maltreatment-fits-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: group
+    source: placement-rate-maltreatment-fits-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: kind
+    source: placement-rate-maltreatment-fits-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: x
+    source: placement-rate-maltreatment-fits-2panel.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: y
+    source: placement-rate-maltreatment-fits-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied binned point per row
+    mark_to_data_mapping: horizontal and vertical position jointly encode a relationship; any fitted path must be explicitly
+      authorized or supplied
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not fabricate observations or extend a fitted line beyond its supported domain.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - scatter
+  - linear-fit
+  - quadratic-fit
+  - local-linear-fit
+  - two-panels
+  encoding:
+  - blue-circle
+  - orange-cross
+  - solid-line
+  - dashed-line
+  - dotted-line
+  annotation:
+  - large-external-legends
+  - captions-below-panels
+  axes:
+  - panel-specific-x-range
+  - shared-y-range
+  - dotted-grid
+  layout:
+  - vertical-two-panel
+  - reserved-right-legend-column
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two panels
+  - exactly two groups
+  - three supplied fit types
+  - finite coordinates
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Eight legend entries require adequate right-side width at thesis insertion size.
+qa:
+  deterministic: true

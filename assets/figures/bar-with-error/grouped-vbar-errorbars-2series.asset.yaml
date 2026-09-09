@@ -1,0 +1,114 @@
+id: grouped-vbar-errorbars-2series
+family: bar-with-error
+subtype: two-series-grouped-bars-with-symmetric-errors
+status: approved
+files:
+  preview: grouped-vbar-errorbars-2series.png
+  script: grouped-vbar-errorbars-2series.py
+  fixtures:
+  - grouped-vbar-errorbars-2series.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 2892
+  - 2754
+  additional-master-formats: forbidden
+scene:
+- Compare estimated costs between two states
+- Show uncertainty around grouped estimates across an ordered parameter
+data_contract:
+  analytical-calculation: forbidden
+  summary: Four ordered categories with two complete non-negative estimates and one supplied non-negative symmetric error
+    per series-category key.
+  required_data_roles:
+  - field: utility_difference
+    source: grouped-vbar-errorbars-2series.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: category_order
+    source: grouped-vbar-errorbars-2series.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: series
+    source: grouped-vbar-errorbars-2series.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: series_order
+    source: grouped-vbar-errorbars-2series.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: estimate
+    source: grouped-vbar-errorbars-2series.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: error
+    source: grouped-vbar-errorbars-2series.fixture.csv
+    role: uncertainty-width
+    value_type: number
+    required: true
+    description: Supplies an already calculated error-bar magnitude.
+  semantic_contract:
+    unit_of_observation: one supplied value and, when shown, supplied uncertainty per category-series key
+    mark_to_data_mapping: bar height encodes magnitude; whiskers encode supplied uncertainty
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - vertical-bar
+  - grouped
+  - two-series
+  - error-bars
+  encoding:
+  - black-filled
+  - white-outline
+  - grayscale-safe
+  annotation:
+  - top-left-legend
+  - capped-error-bars
+  axes:
+  - zero-baseline
+  - ordered-parameter-x
+  - horizontal-grid
+  layout:
+  - single-panel
+  - near-square
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two complete series
+  - unique category series keys
+  - non-negative estimates and errors
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - The supplied error measure and confidence level must be disclosed in real use.
+qa:
+  deterministic: true

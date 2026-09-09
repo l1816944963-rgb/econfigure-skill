@@ -1,0 +1,136 @@
+id: model-distribution-boxplots-6panel
+family: box-plot
+subtype: six-model-two-group-distribution-summaries
+status: approved
+files:
+  preview: model-distribution-boxplots-6panel.png
+  script: model-distribution-boxplots-6panel.py
+  fixtures:
+  - model-distribution-boxplots-6panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3185
+  - 3774
+  additional-master-formats: forbidden
+scene:
+- Compare distribution location spread and skewness across model assumptions
+- Compare CP and MB distribution summaries within each model
+- Inspect whether medians and central ranges lie above or below a unit benchmark
+data_contract:
+  analytical-calculation: forbidden
+  summary: Six ordered models with CP and MB groups and supplied lower whisker, first quartile, median, third quartile, and
+    upper whisker values.
+  required_data_roles:
+  - field: model
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: group
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: low
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: whisker-lower
+    value_type: number
+    required: true
+    description: Supplied whisker-lower for this model/group; preserve its definition.
+  - field: q1
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: first-quartile
+    value_type: number
+    required: true
+    description: Supplied first-quartile for this model/group; preserve its definition.
+  - field: median
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: median
+    value_type: number
+    required: true
+    description: Supplied median for this model/group; preserve its definition.
+  - field: q3
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: third-quartile
+    value_type: number
+    required: true
+    description: Supplied third-quartile for this model/group; preserve its definition.
+  - field: high
+    source: model-distribution-boxplots-6panel.fixture.csv
+    role: whisker-upper
+    value_type: number
+    required: true
+    description: Supplied whisker-upper for this model/group; preserve its definition.
+  semantic_contract:
+    unit_of_observation: One supplied five-number summary for each model and CP/MB group
+    specialized: true
+    mark_to_data_mapping:
+    - Blue rectangle spans q1 to q3; width is the interquartile range, not a confidence interval.
+    - Short internal vertical stroke is the supplied median.
+    - Whiskers terminate at supplied low and high; no Tukey fence or extrema convention is assumed.
+    - Rectangle height and row spacing are layout parameters with no statistical magnitude meaning.
+    - Vertical reference at x=1 represents the benchmark; confirm its meaning and units before reuse.
+    rules:
+    - Require low <= q1 <= median <= q3 <= high for every model/group.
+    - Confirm what CP and MB represent and how whisker endpoints were defined.
+    - Do not infer quartiles or whiskers from confidence-interval data.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - horizontal-boxplot
+  - whiskers
+  - interquartile-box
+  - median-tick
+  - six-panels
+  - two-groups
+  encoding:
+  - cyan-iqr-box
+  - dark-blue-whisker
+  - dark-median-line
+  - red-unit-reference
+  annotation:
+  - model-titles
+  - right-side-group-labels
+  axes:
+  - shared-ratio-x
+  - reference-at-one
+  layout:
+  - six-rows
+  - portrait
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly six ordered models
+  - exactly CP and MB per model
+  - lower whisker less than or equal to Q1
+  - Q1 less than or equal to median
+  - median less than or equal to Q3
+  - Q3 less than or equal to upper whisker
+  - shared x domain
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - The box width encodes IQR but box height is a layout parameter
+  - Whisker semantics must be supplied because the source caption is unavailable
+  - The unit reference must not be labeled as a null effect without domain evidence.
+qa:
+  deterministic: true

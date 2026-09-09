@@ -1,0 +1,7 @@
+treatment,treatment_order,group,group_order,estimate,error,display_label,within_p
+Control Before Election,1,Private,1,54.0,9.0,54%,P=0.002
+Control Before Election,1,Public,2,34.0,8.5,34%,P=0.002
+Information Before Election,2,Private,1,47.0,9.5,47%,P=0.839
+Information Before Election,2,Public,2,45.5,9.5,46%,P=0.839
+Control After Election,3,Private,1,49.0,10.5,49%,P=0.882
+Control After Election,3,Public,2,47.5,10.5,48%,P=0.882

@@ -1,0 +1,104 @@
+id: stacked-area-round-outcomes
+family: area-chart
+subtype: normalized-three-outcome-round-profile
+status: approved
+files:
+  preview: stacked-area-round-outcomes.png
+  script: stacked-area-round-outcomes.py
+  fixtures:
+  - stacked-area-round-outcomes.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3372
+  - 2400
+  additional-master-formats: forbidden
+scene:
+- Track convergence in outcome composition across repeated rounds
+- Emphasize a dominant interaction share and shrinking exclusion shares
+data_contract:
+  analytical-calculation: forbidden
+  summary: Continuous rounds 1 through 30 with three non-negative complete shares summing to one in every round.
+  required_data_roles:
+  - field: round
+    source: stacked-area-round-outcomes.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: component
+    source: stacked-area-round-outcomes.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: component_order
+    source: stacked-area-round-outcomes.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: share
+    source: stacked-area-round-outcomes.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one supplied component value per ordered position
+    mark_to_data_mapping: stacked vertical thickness encodes component magnitude or share
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Validate the declared denominator and require each displayed whole to sum to 100% within tolerance.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - stacked-area
+  - normalized
+  - three-components
+  - thirty-rounds
+  encoding:
+  - light-gray
+  - dark-gray
+  - white
+  - grayscale-safe
+  annotation:
+  - inset-bottom-right-legend
+  axes:
+  - frequency-y
+  - continuous-round-x
+  - full-frame
+  layout:
+  - single-panel
+  - compact-landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - continuous rounds 1 through 30
+  - exactly three components
+  - unique round component keys
+  - non-negative shares
+  - pointwise shares sum to one
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Very thin top layers require inspection at insertion size.
+qa:
+  deterministic: true

@@ -1,0 +1,105 @@
+id: export-value-added-waterfall-2panel
+family: waterfall
+subtype: export-value-added-waterfall-2panel
+status: approved
+files:
+  preview: export-value-added-waterfall-2panel.png
+  script: export-value-added-waterfall-2panel.py
+  fixtures:
+  - export-value-added-waterfall-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 7560
+  - 3000
+scene:
+- Show two export-value-added decompositions using supplied step endpoints.
+elements:
+  geometry:
+  - two-panel-waterfall
+  - total-bars
+  - crosshatched-reductions
+  - diagonal-hatched-increases
+  - connectors
+data_contract:
+  analytical-calculation: forbidden
+  summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_data_roles:
+  - field: panel
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: order
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: label
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: start
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: interval-endpoint
+    value_type: number
+    required: true
+    description: Defines the start or end of a displayed span.
+  - field: end
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: interval-endpoint
+    value_type: number
+    required: true
+    description: Defines the start or end of a displayed span.
+  - field: kind
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: display
+    source: export-value-added-waterfall-2panel.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  semantic_contract:
+    unit_of_observation: one ordered signed contribution per component plus any supplied total
+    mark_to_data_mapping: bar direction encodes sign and cumulative position encodes contribution to the running total
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Preserve component order, sign, and supplied totals; disclose any discontinuous scale.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+compatibility:
+  academic-publication: adaptation-required
+  warnings:
+  - Reserve separate label bands for English translations. Preserve the original hundred-million-USD unit without rescaling
+    values.
+qa:
+  deterministic: true
+implementation:
+  entrypoint: render
+  hard-checks:
+  - required columns are present
+  - numeric inputs are finite
+  - declared structural keys are unique

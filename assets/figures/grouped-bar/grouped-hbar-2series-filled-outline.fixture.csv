@@ -1,0 +1,13 @@
+category,series,value,category_order
+<$10K,Shock pre-high school graduation,0.350,1
+<$10K,Shock post-high school graduation,0.346,1
+$10K–$30K,Shock pre-high school graduation,0.360,2
+$10K–$30K,Shock post-high school graduation,0.357,2
+$30K–$100K,Shock pre-high school graduation,0.356,3
+$30K–$100K,Shock post-high school graduation,0.359,3
+$100K–$300K,Shock pre-high school graduation,0.416,4
+$100K–$300K,Shock post-high school graduation,0.396,4
+$300K–$1M,Shock pre-high school graduation,0.459,5
+$300K–$1M,Shock post-high school graduation,0.404,5
+>$1M,Shock pre-high school graduation,0.514,6
+>$1M,Shock post-high school graduation,0.397,6

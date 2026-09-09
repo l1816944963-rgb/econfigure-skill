@@ -1,0 +1,35 @@
+schema_version: 1
+purpose: Required public runtime fields for every Econfigure Skill figure asset.
+required_fields:
+  - id
+  - family
+  - subtype
+  - status
+  - files
+  - output
+  - scene
+  - data_contract
+  - elements
+  - implementation
+  - compatibility
+data_contract_required_fields:
+  - required_data_roles
+  - semantic_contract
+  - retrieval_contract
+required_data_role_fields:
+  - field
+  - source
+  - role
+  - value_type
+  - required
+  - description
+semantic_contract_required_fields:
+  - unit_of_observation
+  - mark_to_data_mapping
+  - specialized
+  - rules
+retrieval_contract_required_fields:
+  - match_first
+  - match_second
+  - reject_if
+public_metadata_only: true

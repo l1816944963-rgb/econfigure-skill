@@ -1,0 +1,27 @@
+name: Bug report
+description: Report an incorrect render, validation failure, or installation problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the expected and observed behavior without attaching confidential thesis data.
+    validations:
+      required: true
+  - type: input
+    id: asset
+    attributes:
+      label: Asset id or workflow
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Python version, and agent platform.

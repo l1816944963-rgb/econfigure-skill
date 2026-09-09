@@ -1,0 +1,25 @@
+panel,order,label,start,end,kind,display
+1,0,Total exports,0,7680,total,7 680
+1,1,"Vertical
+specialization",7680,2480,negative,−5 200
+1,2,"Domestic
+upstream
+processing",2480,1140,negative,−1 340
+1,3,"Domestic
+downstream
+processing",1140,1530,positive,390
+1,4,"Forward
+export value
+added",0,1530,total,1 530
+2,0,Total exports,0,846,total,846
+2,1,"Vertical
+specialization",846,793,negative,−53
+2,2,"Domestic
+upstream
+processing",793,619,negative,−174
+2,3,"Domestic
+downstream
+processing",619,720,positive,101
+2,4,"Forward
+export value
+added",0,720,total,720

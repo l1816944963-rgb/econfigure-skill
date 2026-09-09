@@ -1,0 +1,119 @@
+id: grouped-vbar-benchmark-2x2
+family: grouped-bar
+subtype: four-panel-benchmark-versus-alternative
+status: approved
+files:
+  preview: grouped-vbar-benchmark-2x2.png
+  script: grouped-vbar-benchmark-2x2.py
+  fixtures:
+  - grouped-vbar-benchmark-2x2.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4074
+  - 3648
+  additional-master-formats: forbidden
+scene:
+- Compare robustness alternatives against one benchmark
+- Show how two period estimates change across four specifications
+data_contract:
+  analytical-calculation: forbidden
+  summary: Four ordered panels with two ordered periods and exactly two complete non-negative series per panel-period.
+  required_data_roles:
+  - field: panel
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: panel_order
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: period
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: period_order
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: series
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: series_order
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: value
+    source: grouped-vbar-benchmark-2x2.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one supplied value per category-series pair
+    mark_to_data_mapping: adjacent bars encode series values within a shared category
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - vertical-bar
+  - grouped
+  - two-series
+  - four-panel
+  encoding:
+  - red-benchmark
+  - blue-alternative
+  annotation:
+  - panel-specific-legends
+  axes:
+  - zero-baseline
+  - percent-y
+  - shared-y-range
+  - horizontal-grid
+  layout:
+  - two-by-two
+  - measured-center-gutter
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly four ordered panels
+  - unique panel period series keys
+  - two series per panel-period
+  - non-negative values
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Panel legends require short alternative labels.
+qa:
+  deterministic: true

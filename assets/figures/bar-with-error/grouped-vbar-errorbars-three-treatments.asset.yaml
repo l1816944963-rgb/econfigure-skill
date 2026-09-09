@@ -1,0 +1,131 @@
+id: grouped-vbar-errorbars-three-treatments
+family: bar-with-error
+subtype: three-treatment-two-sector-bars-with-symmetric-errors
+status: approved
+files:
+  preview: grouped-vbar-errorbars-three-treatments.png
+  script: grouped-vbar-errorbars-three-treatments.py
+  fixtures:
+  - grouped-vbar-errorbars-three-treatments.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4308
+  - 3035
+  additional-master-formats: forbidden
+scene:
+- Compare two institutional groups across three election-information treatments
+- Show uncertainty and supplied between-group significance tests
+data_contract:
+  analytical-calculation: forbidden
+  summary: Three ordered treatments with exactly two complete groups, one supplied non-negative symmetric error per estimate,
+    and supplied significance labels.
+  required_data_roles:
+  - field: treatment
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: treatment_order
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: group
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: group_order
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: estimate
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: error
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: uncertainty-width
+    value_type: number
+    required: true
+    description: Supplies an already calculated error-bar magnitude.
+  - field: display_label
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: within_p
+    source: grouped-vbar-errorbars-three-treatments.fixture.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  semantic_contract:
+    unit_of_observation: one supplied value and, when shown, supplied uncertainty per category-series key
+    mark_to_data_mapping: bar height encodes magnitude; whiskers encode supplied uncertainty
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - vertical-bar
+  - grouped
+  - two-series
+  - three-treatments
+  - error-bars
+  encoding:
+  - white-private
+  - muted-rose-public
+  - black-errorbars
+  annotation:
+  - in-bar-percent-labels
+  - within-treatment-p-values
+  - cross-treatment-brackets
+  axes:
+  - zero-baseline
+  - donation-rate-y
+  - categorical-x
+  layout:
+  - single-panel
+  - wide-landscape
+  - reserved-top-annotation-band
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly three ordered treatments
+  - exactly two complete groups
+  - unique treatment group keys
+  - non-negative estimates and errors
+  - supplied annotation fields
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Significance brackets and error caps require independent top-margin validation.
+qa:
+  deterministic: true

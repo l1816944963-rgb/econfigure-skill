@@ -1,0 +1,216 @@
+id: dual-series-trend-prediction-2panel
+family: line-trend
+subtype: vertically-stacked-observed-predicted-trends
+status: approved
+files:
+  preview: dual-series-trend-prediction-2panel.png
+  script: dual-series-trend-prediction-2panel.py
+  fixture: dual-series-trend-prediction-2panel.fixture.csv
+  panel-specs: dual-series-trend-prediction-2panel.panels.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3450
+  - 3930
+  additional-master-formats: forbidden
+scene:
+- Compare two related annual series after transformation or normalization
+- Compare an observed annual series with a supplied prediction over the same period
+- Mark externally supplied break years in one panel
+data_contract:
+  shape: long
+  required:
+  - panel
+  - year
+  - series
+  - series_order
+  - value
+  panel-spec-required:
+  - panel
+  - panel_order
+  - title
+  - y_label
+  - y_min
+  - y_max
+  - y_tick_start
+  - y_tick_end
+  - y_tick_interval
+  - reference_x
+  - reference_y
+  panel-count: 2
+  series-per-panel: 2
+  minimum-period-count: 3
+  shared-continuous-annual-periods: required
+  series-order:
+  - 1
+  - 2
+  analytical-calculation: forbidden
+  required_data_roles:
+  - field: panel
+    source: dual-series-trend-prediction-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: year
+    source: dual-series-trend-prediction-2panel.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: series
+    source: dual-series-trend-prediction-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: series_order
+    source: dual-series-trend-prediction-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: value
+    source: dual-series-trend-prediction-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: panel
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: panel_order
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: title
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: y_label
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: y_min
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: y_max
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: y_tick_start
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: y_tick_end
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: y_tick_interval
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: reference_x
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: reference_y
+    source: dual-series-trend-prediction-2panel.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  semantic_contract:
+    unit_of_observation: one observation or supplied summary per ordered position and series
+    mark_to_data_mapping: position on the horizontal axis encodes order; line position encodes the supplied value
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - two-panel
+  - vertical-stack
+  - shared-year-range
+  encoding:
+  - solid-open-circle
+  - dashed-open-diamond
+  - grayscale-safe
+  annotation:
+  - bold-panel-title
+  - separate-panel-legend
+  - vertical-reference-line
+  - horizontal-zero-line
+  axes:
+  - continuous-year-x
+  - panel-specific-y
+  - full-rectangular-spines
+  - no-grid
+  layout:
+  - aligned-panels
+  - legends-below-panels
+  - compact-publication-ratio
+implementation:
+  entrypoint: render
+  parameters:
+    panel-bounds: ChartStyle.axes_bounds
+    line-styles: ChartStyle.line_styles
+    marker-styles: ChartStyle.markers
+    line-width: ChartStyle.line_width
+    marker-size: ChartStyle.marker_size
+    legend-positions: ChartStyle.legend_y
+    panel-scales: dual-series-trend-prediction-2panel.panels.csv
+  hard-checks:
+  - exactly two panels
+  - exactly two series per panel
+  - identical continuous annual periods across panels
+  - unique panel-year-series observations
+  - unique series orders 1 and 2 within each panel
+  - panel limits contain all supplied values
+  - supplied reference values lie within the configured axes
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - long legend labels require actual-size inspection
+  - independent panel scales must be disclosed in surrounding figure notes when interpretation requires it
+qa:
+  deterministic: true

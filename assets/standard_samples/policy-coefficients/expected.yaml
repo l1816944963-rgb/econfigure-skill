@@ -1,0 +1,14 @@
+id: policy-coefficients
+communication_goal: Compare supplied point estimates and uncertainty intervals against zero.
+acceptable_families: [coefficient-plot]
+required_data_roles:
+  term: category-key
+  estimate: point-estimate
+  low: interval-lower
+  high: interval-upper
+required_checks:
+  - estimate and both interval bounds share identical term keys
+  - every low value is less than or equal to its estimate and every high value
+  - the zero reference line is visible
+  - intervals are supplied rather than calculated by the renderer
+deliverables: [design-plan, png-600dpi, qa-report, transformation-note]

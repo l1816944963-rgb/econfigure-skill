@@ -1,0 +1,13 @@
+id: regional-export-trend
+communication_goal: Compare continuous annual change across three regional series.
+acceptable_families: [line-trend]
+required_data_roles:
+  year: ordered-domain
+  region: category-key
+  export_growth: measure
+required_checks:
+  - annual years are continuous within every region
+  - no series is silently smoothed
+  - color is reinforced with line or marker style
+  - labels and legend do not overlap the plot
+deliverables: [design-plan, png-600dpi, qa-report, transformation-note]

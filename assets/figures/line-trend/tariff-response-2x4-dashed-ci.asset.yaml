@@ -1,0 +1,136 @@
+id: tariff-response-2x4-dashed-ci
+family: line-trend
+subtype: two-block-four-panel-response-with-dashed-bounds
+status: approved
+files:
+  preview: tariff-response-2x4-dashed-ci.png
+  script: tariff-response-2x4-dashed-ci.py
+  fixtures:
+  - tariff-response-2x4-dashed-ci.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3660
+  - 4860
+  additional-master-formats: forbidden
+scene:
+- Compare dynamic responses across two tariff regimes
+- Inspect outcome-specific changes at an event date
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two blocks, four panels per block, continuous event months, and aligned estimate lower upper paths.
+  required_data_roles:
+  - field: block
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: panel_order
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: title
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: month
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: estimate
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: lower
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: upper
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: ymin
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: ymax
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: step
+    source: tariff-response-2x4-dashed-ci.fixture.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  semantic_contract:
+    unit_of_observation: one observation or supplied summary per ordered position and series
+    mark_to_data_mapping: position on the horizontal axis encodes order; line position encodes the supplied value
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - point-estimate
+  - dashed-bounds
+  - eight-panels
+  encoding:
+  - black-estimate
+  - navy-interval
+  - event-reference
+  annotation:
+  - block-heading
+  - panel-title
+  axes:
+  - event-month-x
+  - percent-y
+  layout:
+  - two-by-two-blocks
+implementation:
+  entrypoint: render
+  hard-checks:
+  - two-blocks
+  - four-panels-per-block
+  - continuous-months
+  - aligned-interval-bounds
+compatibility:
+  grayscale: preview-generated; semantic color mapping still requires review
+  academic-publication: conditional
+  warnings:
+  - Raster reference supports visual rather than numerical recovery of response paths.
+qa:
+  deterministic: true

@@ -1,0 +1,22 @@
+year,series,series_order,axis,value
+1982,Payroll over Value Added,1,left,41.0
+1987,Payroll over Value Added,1,left,36.4
+1992,Payroll over Value Added,1,left,33.3
+1997,Payroll over Value Added,1,left,30.6
+2002,Payroll over Value Added,1,left,29.5
+2007,Payroll over Value Added,1,left,25.0
+2012,Payroll over Value Added,1,left,24.9
+1982,Payroll over Sales,2,right,16.7
+1987,Payroll over Sales,2,right,16.95
+1992,Payroll over Sales,2,right,15.75
+1997,Payroll over Sales,2,right,14.65
+2002,Payroll over Sales,2,right,14.4
+2007,Payroll over Sales,2,right,11.35
+2012,Payroll over Sales,2,right,10.15
+1982,Total Compensation over Value Added,3,left,51.0
+1987,Total Compensation over Value Added,3,left,45.0
+1992,Total Compensation over Value Added,3,left,43.2
+1997,Total Compensation over Value Added,3,left,38.5
+2002,Total Compensation over Value Added,3,left,37.3
+2007,Total Compensation over Value Added,3,left,32.8
+2012,Total Compensation over Value Added,3,left,32.6

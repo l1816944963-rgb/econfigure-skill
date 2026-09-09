@@ -1,0 +1,109 @@
+id: drug-characteristics-coefficients-2panel
+family: coefficient-plot
+subtype: aligned-drug-characteristics-and-coefficient-columns
+status: approved
+files:
+  preview: drug-characteristics-coefficients-2panel.png
+  script: drug-characteristics-coefficients-2panel.py
+  fixtures:
+  - drug-characteristics-coefficients-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4560
+  - 3252
+  additional-master-formats: forbidden
+scene:
+- Compare two coefficient sets on shared category rows
+- Identify category-specific effects and uncertainty
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two panels with identical category order and supplied estimate lower upper values.
+  required_data_roles:
+  - field: panel
+    source: drug-characteristics-coefficients-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: order
+    source: drug-characteristics-coefficients-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: label
+    source: drug-characteristics-coefficients-2panel.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: estimate
+    source: drug-characteristics-coefficients-2panel.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: low
+    source: drug-characteristics-coefficients-2panel.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: high
+    source: drug-characteristics-coefficients-2panel.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: one supplied point estimate and interval per coefficient key
+    mark_to_data_mapping: point position encodes the estimate and whiskers encode supplied lower and upper limits
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - horizontal-bars-from-zero
+  - confidence-interval
+  - aligned-two-panels
+  encoding:
+  - blue-bar
+  - black-interval
+  annotation:
+  - column-header-strip
+  axes:
+  - coefficient-x
+  - shared-category-y
+  layout:
+  - one-by-two
+implementation:
+  entrypoint: render
+  hard-checks:
+  - matching-category-order
+  - ordered-intervals
+  - shared-x-domain
+compatibility:
+  grayscale: preview-generated; semantic color mapping still requires review
+  academic-publication: conditional
+  warnings:
+  - Do not silently align panels whose real-data category sets differ.
+qa:
+  deterministic: true

@@ -1,0 +1,118 @@
+id: importance-boxplot-outliers
+family: box-plot
+subtype: eleven-predictor-importance-with-outliers
+status: approved
+files:
+  preview: importance-boxplot-outliers.png
+  script: importance-boxplot-outliers.py
+  fixtures:
+  - importance-boxplot-outliers.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 6564
+  - 3120
+  additional-master-formats: forbidden
+scene:
+- Compare variable-importance distributions across predictors
+- Identify predictors with large positive outliers
+data_contract:
+  analytical-calculation: forbidden
+  summary: Eleven ordered predictor summaries with valid five-number statistics and optional supplied outliers.
+  required_data_roles:
+  - field: label
+    source: importance-boxplot-outliers.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: kind
+    source: importance-boxplot-outliers.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: low
+    source: importance-boxplot-outliers.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: q1
+    source: importance-boxplot-outliers.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: median
+    source: importance-boxplot-outliers.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: q3
+    source: importance-boxplot-outliers.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: high
+    source: importance-boxplot-outliers.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: raw observations or supplied five-number summaries as declared
+    mark_to_data_mapping: box, median, whiskers, and outliers encode distinct distribution summaries
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - boxplot
+  - whiskers
+  - outliers
+  - eleven-categories
+  encoding:
+  - blue-box-outline
+  - red-median
+  - red-plus-outlier
+  annotation:
+  - category-labels
+  axes:
+  - importance-percent-y
+  - categorical-x
+  - full-frame
+  layout:
+  - single-panel
+  - wide-landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly eleven ordered predictors
+  - ordered five-number summaries
+  - outliers stored separately
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Large outliers require enough upper-axis headroom and must not be clipped.
+qa:
+  deterministic: true

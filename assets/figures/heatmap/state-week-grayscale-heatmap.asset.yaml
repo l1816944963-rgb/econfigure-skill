@@ -1,0 +1,106 @@
+id: state-week-grayscale-heatmap
+family: heatmap
+subtype: state-by-week-grayscale-matrix
+status: approved
+files:
+  preview: state-week-grayscale-heatmap.png
+  script: state-week-grayscale-heatmap.py
+  fixtures:
+  - state-week-grayscale-heatmap.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 6000
+  - 5400
+scene:
+- Display a state-by-week matrix using a caller-declared color mapping.
+data_contract:
+  analytical-calculation: forbidden
+  summary: External plotting fixture; no analytical calculation.
+  required_data_roles:
+  - field: row
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: state
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: column
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: date
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: red
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: green
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: blue
+    source: state-week-grayscale-heatmap.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  semantic_contract:
+    unit_of_observation: one supplied value per matrix cell
+    mark_to_data_mapping: cell color encodes magnitude at the row-column intersection
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not reorder rows or columns unless the ordering rule is supplied or explicitly approved.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - rectangular-heatmap
+  - weekly-columns
+  - state-rows
+  - grayscale-key
+  encoding:
+  - supplied-cell-colors
+implementation:
+  entrypoint: render
+  shared-module: chartlib.inference_renderers
+  tick-policy:
+    x: none
+    y: none
+compatibility:
+  warnings:
+  - Source colors are display fixtures, not recovered economic values; require a numerical scale or categorical definition
+    for empirical reuse.
+  grayscale: preview-generated; review color-dependent distinctions before grayscale use
+qa:
+  deterministic: true

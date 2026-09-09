@@ -1,0 +1,104 @@
+id: treatment-issue-density-4series
+family: distribution
+subtype: treatment-control-party-comparison
+status: approved
+files:
+  preview: treatment-issue-density-4series.png
+  script: treatment-issue-density-4series.py
+  fixtures:
+  - treatment-issue-density-4series.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 2898
+  - 2190
+  additional-master-formats: forbidden
+scene:
+- Compare issue-position distributions by party and treatment
+- Show within-party shifts using redundant encoding
+data_contract:
+  analytical-calculation: forbidden
+  summary: Four complete non-negative supplied density curves with consistent x coordinates.
+  required_data_roles:
+  - field: series
+    source: treatment-issue-density-4series.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: color
+    source: treatment-issue-density-4series.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: line
+    source: treatment-issue-density-4series.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: x
+    source: treatment-issue-density-4series.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: density
+    source: treatment-issue-density-4series.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: raw observations or supplied density/frequency values as declared by the fixture
+    mark_to_data_mapping: position and density, frequency, or probability encode distribution shape
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - density-line
+  - four-series
+  encoding:
+  - party-color
+  - treatment-line-style
+  - double-encoding
+  annotation:
+  - two-row-bottom-legend
+  - bandwidth-note
+  axes:
+  - standardized-opinion-x
+  - density-y
+  layout:
+  - single-panel
+  - compact
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly four series
+  - non-negative densities
+  - at least one hundred points per series
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - The bandwidth note requires a reserved footer below the legend.
+qa:
+  deterministic: true

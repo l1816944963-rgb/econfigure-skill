@@ -1,0 +1,142 @@
+id: index-change-component-dashboard
+family: waterfall
+subtype: index-change-component-dashboard
+status: approved
+files:
+  preview: index-change-component-dashboard.png
+  script: index-change-component-dashboard.py
+  fixtures:
+  - index-change-component-dashboard.components.csv
+  - index-change-component-dashboard.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 8400
+  - 3684
+scene:
+- Show supplied index levels, changes and component contributions in one coordinated display.
+elements:
+  geometry:
+  - inverted-level-axis
+  - broken-axis-waterfall
+  - positive-negative-stacks
+  - inside-bar-percentages
+  - split-component-legends
+data_contract:
+  analytical-calculation: forbidden
+  summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_data_roles:
+  - field: order
+    source: index-change-component-dashboard.components.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: year
+    source: index-change-component-dashboard.components.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: series
+    source: index-change-component-dashboard.components.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: bottom
+    source: index-change-component-dashboard.components.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: top
+    source: index-change-component-dashboard.components.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: display
+    source: index-change-component-dashboard.components.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: year
+    source: index-change-component-dashboard.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: order
+    source: index-change-component-dashboard.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: level
+    source: index-change-component-dashboard.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: start
+    source: index-change-component-dashboard.fixture.csv
+    role: interval-endpoint
+    value_type: number
+    required: true
+    description: Defines the start or end of a displayed span.
+  - field: end
+    source: index-change-component-dashboard.fixture.csv
+    role: interval-endpoint
+    value_type: number
+    required: true
+    description: Defines the start or end of a displayed span.
+  - field: display
+    source: index-change-component-dashboard.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: color
+    source: index-change-component-dashboard.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  semantic_contract:
+    unit_of_observation: one ordered signed contribution per component plus any supplied total
+    mark_to_data_mapping: bar direction encodes sign and cumulative position encodes contribution to the running total
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Preserve component order, sign, and supplied totals; disclose any discontinuous scale.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+compatibility:
+  academic-publication: conditional
+  warnings:
+  - 'This is a conditional asset: the visible waterfall axis break is not a default thesis bar style. Real use requires explicit
+    approval of the discontinuous scale.'
+qa:
+  deterministic: true
+implementation:
+  entrypoint: render
+  hard-checks:
+  - required columns are present
+  - numeric inputs are finite
+  - declared structural keys are unique

@@ -1,0 +1,185 @@
+id: event-response-2x2-dashed-bounds
+family: event-study
+subtype: four-panel-dynamic-response
+status: approved
+files:
+  preview: event-response-2x2-dashed-bounds.png
+  script: event-response-2x2-dashed-bounds.py
+  fixture: event-response-2x2-dashed-bounds.fixture.csv
+  panel-specs: event-response-2x2-dashed-bounds.panels.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3660
+  - 2256
+  additional-master-formats: forbidden
+scene:
+- Compare dynamic responses across four related outcome measures
+- Show point estimates and supplied interval bounds around an event date
+data_contract:
+  shape: long
+  required:
+  - panel
+  - period
+  - period_label
+  - estimate
+  - lower
+  - upper
+  panel-spec-required:
+  - panel
+  - panel_order
+  - title
+  - y_min
+  - y_max
+  - y_tick_interval
+  panel-count: 4
+  minimum-period-count: 3
+  shared-continuous-periods: required
+  event-period-zero: required
+  interval-order: lower <= estimate <= upper
+  analytical-calculation: forbidden
+  required_data_roles:
+  - field: panel
+    source: event-response-2x2-dashed-bounds.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: period
+    source: event-response-2x2-dashed-bounds.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: period_label
+    source: event-response-2x2-dashed-bounds.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: estimate
+    source: event-response-2x2-dashed-bounds.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: lower
+    source: event-response-2x2-dashed-bounds.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: upper
+    source: event-response-2x2-dashed-bounds.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: panel
+    source: event-response-2x2-dashed-bounds.panels.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: panel_order
+    source: event-response-2x2-dashed-bounds.panels.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: title
+    source: event-response-2x2-dashed-bounds.panels.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: y_min
+    source: event-response-2x2-dashed-bounds.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: y_max
+    source: event-response-2x2-dashed-bounds.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: y_tick_interval
+    source: event-response-2x2-dashed-bounds.panels.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  semantic_contract:
+    unit_of_observation: one supplied event-time estimate and interval per series and panel
+    mark_to_data_mapping: event time encodes distance from the event; estimates and interval bounds are supplied, not calculated
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - four-panel
+  - two-by-two
+  - shared-event-time
+  encoding:
+  - point-estimate
+  - circle-marker
+  - solid-black
+  - dashed-navy-bounds
+  annotation:
+  - panel-title
+  - no-legend
+  - event-line
+  - zero-line
+  axes:
+  - continuous-period-x
+  - panel-specific-y
+  - dotted-grid
+  - left-bottom-spines
+  layout:
+  - compact-small-multiples
+  - aligned-columns
+  - aligned-rows
+implementation:
+  entrypoint: render
+  parameters:
+    panel-bounds: ChartStyle.axes_bounds
+    estimate-style: ChartStyle.estimate_color
+    interval-style: ChartStyle.interval_color
+    interval-dash: ChartStyle.interval_dash
+    marker-size: ChartStyle.marker_size
+    grid-style: ChartStyle.grid_color
+    panel-scales: event-response-2x2-dashed-bounds.panels.csv
+  hard-checks:
+  - exactly four panels
+  - identical continuous integer periods across panels
+  - event period zero present
+  - supplied lower and upper bounds contain every estimate
+  - panel limits contain every supplied interval
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - dense four-panel text requires actual-size inspection
+  - source raster contained two concatenated figure blocks and page text
+qa:
+  deterministic: true

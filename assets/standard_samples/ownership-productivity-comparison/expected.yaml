@@ -1,0 +1,13 @@
+id: ownership-productivity-comparison
+communication_goal: Compare two ownership groups within four industries.
+acceptable_families: [grouped-bar]
+required_data_roles:
+  industry: category-key
+  ownership: category-key
+  productivity_index: measure
+required_checks:
+  - the quantitative axis starts at zero
+  - paired bars remain visually associated with their industry
+  - category ticks sit at group centers
+  - legend and axis labels have clear separation
+deliverables: [design-plan, png-600dpi, qa-report, transformation-note]

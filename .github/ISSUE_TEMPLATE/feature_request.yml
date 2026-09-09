@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a figure family, institution template, or workflow improvement
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Applied-economics thesis use case
+    validations:
+      required: true
+  - type: textarea
+    id: data_roles
+    attributes:
+      label: Required data roles
+      description: Describe the fields and their analytical meaning.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Expected figure behavior
+    validations:
+      required: true

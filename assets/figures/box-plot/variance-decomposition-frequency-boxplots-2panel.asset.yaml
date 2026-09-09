@@ -1,0 +1,119 @@
+id: variance-decomposition-frequency-boxplots-2panel
+family: box-plot
+subtype: mixed-versus-quarterly-frequency-variance-decomposition
+status: approved
+files:
+  preview: variance-decomposition-frequency-boxplots-2panel.png
+  script: variance-decomposition-frequency-boxplots-2panel.py
+  fixtures:
+  - variance-decomposition-frequency-boxplots-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 5040
+  - 1896
+  additional-master-formats: forbidden
+scene:
+- Compare frequency-specific variance decomposition sequences
+- Inspect declining distribution summaries over positions
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two panels, two series, and an ordered supplied five-number summary at every position.
+  required_data_roles:
+  - field: panel
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: frequency
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: x
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: low
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: q1
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: median
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: q3
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: distribution-summary
+    value_type: number
+    required: true
+    description: Supplies a precomputed distribution summary.
+  - field: high
+    source: variance-decomposition-frequency-boxplots-2panel.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: raw observations or supplied five-number summaries as declared
+    mark_to_data_mapping: box, median, whiskers, and outliers encode distinct distribution summaries
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - paired-boxplots
+  - two-panels
+  encoding:
+  - salmon-fill
+  - cyan-fill
+  annotation:
+  - frequency-legend
+  axes:
+  - position-x
+  - variance-y
+  layout:
+  - one-by-two
+implementation:
+  entrypoint: render
+  hard-checks:
+  - two-panels
+  - two-series
+  - ordered-five-number-summaries
+compatibility:
+  grayscale: preview-generated; semantic color mapping still requires review
+  academic-publication: conditional
+  warnings:
+  - Dense boxplot sequences require insertion-size review.
+qa:
+  deterministic: true

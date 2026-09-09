@@ -1,0 +1,17 @@
+panel,panel_order,period,period_order,series,series_order,value
+Olley-Pakes,1,1998–2001,1,Benchmark,1,4.0
+Olley-Pakes,1,1998–2001,1,Olley-Pakes,2,6.2
+Olley-Pakes,1,2001–2006,2,Benchmark,1,12.7
+Olley-Pakes,1,2001–2006,2,Olley-Pakes,2,15.1
+Gross output,2,1998–2001,1,Benchmark,1,4.0
+Gross output,2,1998–2001,1,Gross output,2,0.7
+Gross output,2,2001–2006,2,Benchmark,1,12.8
+Gross output,2,2001–2006,2,Gross output,2,3.8
+Balanced panel,3,1998–2001,1,Benchmark,1,4.0
+Balanced panel,3,1998–2001,1,Balanced panel,2,6.6
+Balanced panel,3,2001–2006,2,Benchmark,1,12.8
+Balanced panel,3,2001–2006,2,Balanced panel,2,12.9
+Unweighted,4,1998–2001,1,Benchmark,1,4.0
+Unweighted,4,1998–2001,1,Unweighted,2,0.9
+Unweighted,4,2001–2006,2,Benchmark,1,12.8
+Unweighted,4,2001–2006,2,Unweighted,2,9.8

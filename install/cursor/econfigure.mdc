@@ -1,0 +1,7 @@
+---
+description: Use Econfigure Skill when designing, reproducing, checking, or exporting figures and three-line tables for an applied-economics master's thesis.
+globs:
+alwaysApply: false
+---
+
+For a matching request, read `@.ai/econfigure-skill/SKILL.md` and follow its routing and QA rules. Resolve all linked paths relative to `.ai/econfigure-skill/`. Keep the user's source data read-only and obtain approval for the concrete figure design before rendering.

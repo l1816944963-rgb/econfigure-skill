@@ -1,0 +1,5 @@
+interface:
+  display_name: "Econfigure Skill"
+  short_description: "Design reproducible figures for applied-economics master's theses"
+  default_prompt: "Use $econfigure to inspect my data, propose a figure design for an applied-economics master's thesis, and render it after I approve the design."
+  brand_color: "#17324D"

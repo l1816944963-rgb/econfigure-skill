@@ -1,0 +1,85 @@
+id: annual-return-stripplot
+family: box-plot
+subtype: annual-horizontal-return-distribution
+status: approved
+files:
+  preview: annual-return-stripplot.png
+  script: annual-return-stripplot.py
+  fixtures:
+  - annual-return-stripplot.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 5046
+  - 3876
+  additional-master-formats: forbidden
+scene:
+- Track cross-sectional return dispersion by year
+- Reveal years with unusually wide positive and negative tails
+data_contract:
+  analytical-calculation: forbidden
+  summary: Continuous years 1980 through 2001 with at least four supplied return observations per year.
+  required_data_roles:
+  - field: year
+    source: annual-return-stripplot.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: return_value
+    source: annual-return-stripplot.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: raw observations or supplied five-number summaries as declared
+    mark_to_data_mapping: box, median, whiskers, and outliers encode distinct distribution summaries
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - stripplot
+  - annual-rows
+  - zero-reference
+  encoding:
+  - dark-gray-points
+  annotation:
+  - top-left-axis-title
+  axes:
+  - currency-x
+  - reversed-year-y
+  - vertical-grid
+  layout:
+  - single-panel
+  - portrait
+implementation:
+  entrypoint: render
+  hard-checks:
+  - continuous years 1980 through 2001
+  - at least four observations per year
+  - finite returns
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Dense late-year rows require small points and preserved whitespace between years.
+qa:
+  deterministic: true

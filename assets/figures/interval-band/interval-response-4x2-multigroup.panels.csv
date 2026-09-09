@@ -1,0 +1,9 @@
+panel,panel_order,title,unit,y_min,y_max,y_tick_start,y_tick_end,y_tick_interval
+output,1,Output,Percent,-16.0,1.5,-15.0,0.0,5.0
+cpi,2,CPI,Percent,-2.0,30.0,0.0,30.0,10.0
+capital_stock,3,Capital stock,Percent,-7.0,0.5,-6.0,0.0,2.0
+tfp,4,TFP,Percent,-11.0,5.0,-10.0,5.0,5.0
+interest,5,Long-term interest rate,Percentage points,-0.12,0.45,-0.1,0.4,0.1
+equity,6,Equity return index,Percent,-31.0,2.0,-30.0,0.0,10.0
+military_spending,7,Military spending,Percentage points,-1.2,3.4,-1.0,3.0,1.0
+military_personnel,8,Military personnel,Percentage points,-0.2,1.2,0.0,1.0,0.5

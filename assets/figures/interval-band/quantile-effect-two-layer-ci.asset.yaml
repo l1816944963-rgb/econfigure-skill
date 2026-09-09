@@ -1,0 +1,113 @@
+id: quantile-effect-two-layer-ci
+family: interval-band
+subtype: single-line-nested-confidence-bands
+status: approved
+files:
+  preview: quantile-effect-two-layer-ci.png
+  script: quantile-effect-two-layer-ci.py
+  fixtures:
+  - quantile-effect-two-layer-ci.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3228
+  - 2082
+  additional-master-formats: forbidden
+scene:
+- Show heterogeneous effects across quantiles
+- Distinguish inner and outer uncertainty ranges around one estimate line
+data_contract:
+  analytical-calculation: forbidden
+  summary: Ordered quantiles with one estimate and supplied nested inner and outer interval bounds.
+  uncertainty: Supplied inner 90 percent and outer 95 percent state-cluster-robust confidence intervals.
+  required_data_roles:
+  - field: quantile
+    source: quantile-effect-two-layer-ci.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: estimate
+    source: quantile-effect-two-layer-ci.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: inner_lower
+    source: quantile-effect-two-layer-ci.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: inner_upper
+    source: quantile-effect-two-layer-ci.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: outer_lower
+    source: quantile-effect-two-layer-ci.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: outer_upper
+    source: quantile-effect-two-layer-ci.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: one supplied estimate and interval per key
+    mark_to_data_mapping: the center line or mark encodes the estimate; boundaries encode separately supplied uncertainty
+      limits
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - nested-interval-band
+  - single-panel
+  encoding:
+  - dark-red-line
+  - medium-red-inner-band
+  - pale-red-outer-band
+  annotation:
+  - zero-line
+  - centered-title
+  axes:
+  - quantile-x
+  - effect-y
+  - no-grid
+  layout:
+  - compact-landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - unique increasing quantiles
+  - outer lower inner lower estimate inner upper outer upper order
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Nested bands require sufficient luminance separation in grayscale.
+qa:
+  deterministic: true

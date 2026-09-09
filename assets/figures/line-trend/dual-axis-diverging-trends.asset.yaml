@@ -1,0 +1,93 @@
+id: dual-axis-diverging-trends
+family: line-trend
+subtype: dual-axis-opposing-annual-trends
+status: approved
+files:
+  preview: dual-axis-diverging-trends.png
+  script: dual-axis-diverging-trends.py
+  fixtures:
+  - dual-axis-diverging-trends.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3516
+  - 2016
+  additional-master-formats: forbidden
+scene:
+- Compare two annual indicators with different units and opposing trends
+- Show structural divergence over time
+data_contract:
+  analytical-calculation: forbidden
+  summary: One row per continuous year with one value for each declared axis.
+  required_data_roles:
+  - field: year
+    source: dual-axis-diverging-trends.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: import_penetration
+    source: dual-axis-diverging-trends.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: manufacturing_emp_population
+    source: dual-axis-diverging-trends.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied summary per ordered position and series
+    mark_to_data_mapping: position on the horizontal axis encodes order; line position encodes the supplied value
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Require explicit units and a written reason for using independent axes; never imply comparability from aligned slopes.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - single-panel
+  - dual-axis
+  encoding:
+  - navy-solid
+  - red-dashed
+  - grayscale-redundant
+  annotation:
+  - legend-inside-top
+  axes:
+  - continuous-year-x
+  - independent-y-scales
+  - horizontal-grid
+  layout:
+  - wide-landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - continuous annual years
+  - unique year rows
+  - finite values
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Dual-axis use requires a written real-use justification and explicit units.
+qa:
+  deterministic: true

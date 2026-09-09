@@ -1,0 +1,17 @@
+panel,title,quartile,estimate,low,high,color,fit
+1,Efficacy on Relevance,1,0.132,0.074,0.189,blue,0.132
+1,Efficacy on Relevance,2,0.166,0.085,0.247,blue,0.153
+1,Efficacy on Relevance,3,0.148,0.015,0.279,blue,0.174
+1,Efficacy on Relevance,4,0.204,0.079,0.327,blue,0.195
+2,Efficacy on Prescribing Intention,1,0.23,0.157,0.305,green,0.229
+2,Efficacy on Prescribing Intention,2,0.235,0.124,0.344,green,0.236
+2,Efficacy on Prescribing Intention,3,0.247,0.122,0.372,green,0.243
+2,Efficacy on Prescribing Intention,4,0.251,0.128,0.371,green,0.25
+3,Representation on Relevance,1,-0.015,-0.085,0.054,blue,0.01
+3,Representation on Relevance,2,0.095,0.005,0.185,blue,0.077
+3,Representation on Relevance,3,0.177,0.069,0.285,blue,0.143
+3,Representation on Relevance,4,0.177,0.077,0.277,blue,0.21
+4,Representation on Prescribing Intention,1,0.012,-0.052,0.078,green,0.013
+4,Representation on Prescribing Intention,2,0.09,-0.006,0.187,green,0.07
+4,Representation on Prescribing Intention,3,0.114,0.036,0.19,green,0.127
+4,Representation on Prescribing Intention,4,0.184,0.073,0.294,green,0.184

@@ -1,0 +1,33 @@
+# econfigure / base.mplstyle
+# Shared typography, sizing, ticks, and axis geometry.
+
+figure.dpi          : 100
+savefig.dpi         : 600
+savefig.bbox        : standard
+savefig.pad_inches  : 0.04
+
+font.size           : 8
+
+axes.titlesize      : 8
+axes.labelsize      : 8
+xtick.labelsize     : 7
+ytick.labelsize     : 7
+legend.fontsize     : 7
+
+axes.linewidth      : 0.5
+xtick.major.width   : 0.5
+ytick.major.width   : 0.5
+xtick.direction     : out
+ytick.direction     : out
+xtick.major.pad     : 3
+ytick.major.pad     : 3
+
+# Use left and bottom spines only.
+axes.spines.top    : False
+axes.spines.right  : False
+
+figure.constrained_layout.use : True
+
+lines.linewidth     : 0.8
+lines.markersize    : 3.2
+errorbar.capsize    : 2

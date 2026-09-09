@@ -1,0 +1,123 @@
+id: exposure-sales-diverging-heatmap
+family: heatmap
+subtype: exposure-sales-diverging-heatmap
+status: approved
+files:
+  preview: exposure-sales-diverging-heatmap.png
+  script: exposure-sales-diverging-heatmap.py
+  fixtures:
+  - exposure-sales-diverging-heatmap.fixture.csv
+  - exposure-sales-diverging-heatmap.palette.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 6000
+  - 3990
+scene:
+- Compare exposure quantiles over monthly time with a diverging sales color scale.
+elements:
+  geometry:
+  - diverging-heatmap
+  - quantile-rows
+  - month-columns
+  - dashed-time-references
+  - vertical-color-key
+data_contract:
+  analytical-calculation: forbidden
+  summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_data_roles:
+  - field: row
+    source: exposure-sales-diverging-heatmap.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: column
+    source: exposure-sales-diverging-heatmap.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: date
+    source: exposure-sales-diverging-heatmap.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: red
+    source: exposure-sales-diverging-heatmap.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: green
+    source: exposure-sales-diverging-heatmap.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: blue
+    source: exposure-sales-diverging-heatmap.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: index
+    source: exposure-sales-diverging-heatmap.palette.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: red
+    source: exposure-sales-diverging-heatmap.palette.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: green
+    source: exposure-sales-diverging-heatmap.palette.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: blue
+    source: exposure-sales-diverging-heatmap.palette.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  semantic_contract:
+    unit_of_observation: one supplied value per matrix cell
+    mark_to_data_mapping: cell color encodes magnitude at the row-column intersection
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not reorder rows or columns unless the ordering rule is supplied or explicitly approved.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+compatibility:
+  academic-publication: adaptation-required
+  warnings:
+  - Sample cell interiors away from reference lines; annotations must not contaminate recovered display colors.
+qa:
+  deterministic: true
+implementation:
+  entrypoint: render
+  hard-checks:
+  - required columns are present
+  - numeric inputs are finite
+  - declared structural keys are unique

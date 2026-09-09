@@ -1,0 +1,15 @@
+period,series,value
+2006,control,0.015
+2006,treatment,0.015
+2007,control,0.086
+2007,treatment,0.086
+2008,control,0.182
+2008,treatment,0.179
+2009,control,0.283
+2009,treatment,0.603
+2010,control,0.387
+2010,treatment,0.616
+2011,control,0.478
+2011,treatment,0.646
+2012,control,0.633
+2012,treatment,0.713

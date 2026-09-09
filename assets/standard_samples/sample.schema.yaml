@@ -1,0 +1,14 @@
+schema_version: 1
+required_fields:
+  - id
+  - communication_goal
+  - acceptable_families
+  - required_data_roles
+  - required_checks
+  - deliverables
+deliverable_requirements:
+  figure_format: png
+  figure_dpi: 600
+  design_plan_required: true
+  qa_report_required: true
+  transformation_note_required: true

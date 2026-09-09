@@ -1,0 +1,104 @@
+id: diverging-hbar-zscore-2panel
+family: bar-comparison
+subtype: two-panel-diverging-horizontal-bars
+status: approved
+files:
+  preview: diverging-hbar-zscore-2panel.png
+  script: diverging-hbar-zscore-2panel.py
+  fixtures:
+  - diverging-hbar-zscore-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3840
+  - 1548
+  additional-master-formats: forbidden
+scene:
+- Compare standardized scores across countries
+- Contrast two samples with separate category sets
+data_contract:
+  analytical-calculation: forbidden
+  summary: Long data with two ordered panels and unique ordered categories within each panel.
+  required_data_roles:
+  - field: panel
+    source: diverging-hbar-zscore-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: panel_order
+    source: diverging-hbar-zscore-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: category
+    source: diverging-hbar-zscore-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: category_order
+    source: diverging-hbar-zscore-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: value
+    source: diverging-hbar-zscore-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one supplied value per category
+    mark_to_data_mapping: bar length or height encodes magnitude from a zero baseline
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - horizontal-bar
+  - diverging
+  - two-panel
+  encoding:
+  - single-navy-fill
+  annotation:
+  - left-aligned-panel-titles
+  - zero-lines
+  axes:
+  - signed-x
+  - category-y
+  - vertical-grid
+  layout:
+  - side-by-side-panels
+  - long-label-margin
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two ordered panels
+  - unique categories and orders within panel
+  - finite values
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Panel-specific x ranges must be disclosed when cross-panel magnitude comparison matters.
+qa:
+  deterministic: true

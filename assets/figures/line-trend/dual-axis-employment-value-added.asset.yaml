@@ -1,0 +1,94 @@
+id: dual-axis-employment-value-added
+family: line-trend
+subtype: long-horizon-dual-axis-level-trends
+status: approved
+files:
+  preview: dual-axis-employment-value-added.png
+  script: dual-axis-employment-value-added.py
+  fixtures:
+  - dual-axis-employment-value-added.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4308
+  - 2352
+  additional-master-formats: forbidden
+scene:
+- Compare employment and output levels over a long period
+- Show divergence and reversal across indicators with different units
+data_contract:
+  analytical-calculation: forbidden
+  summary: One row per continuous year with one value for each axis.
+  required_data_roles:
+  - field: year
+    source: dual-axis-employment-value-added.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: employment_million
+    source: dual-axis-employment-value-added.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: real_value_added_billion
+    source: dual-axis-employment-value-added.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied summary per ordered position and series
+    mark_to_data_mapping: position on the horizontal axis encodes order; line position encodes the supplied value
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Require explicit units and a written reason for using independent axes; never imply comparability from aligned slopes.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - single-panel
+  - dual-axis
+  - long-horizon
+  encoding:
+  - dark-solid
+  - light-solid
+  - grayscale-luminance
+  annotation:
+  - legend-inside-bottom
+  axes:
+  - continuous-year-x
+  - independent-y-scales
+  - horizontal-grid
+  layout:
+  - wide-landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - continuous annual years
+  - unique year rows
+  - finite values
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Similar solid lines require sufficient luminance separation and an actual grayscale check.
+qa:
+  deterministic: true

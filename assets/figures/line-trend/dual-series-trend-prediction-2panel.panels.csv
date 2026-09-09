@@ -1,0 +1,3 @@
+panel,panel_order,title,y_label,y_min,y_max,y_tick_start,y_tick_end,y_tick_interval,reference_x,reference_y
+detrended_measures,1,"A. Detrended College/High School Wage Differential and Relative Supply, 1963–2005",Log Points,-0.165,0.165,-0.15,0.15,0.05,,0
+wage_gap_model,2,B. Katz-Murphy Prediction Model for the College/High School Wage Gap,Log Wage Gap,0.335,0.785,0.35,0.75,0.10,1987;1992,

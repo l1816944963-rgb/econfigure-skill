@@ -1,0 +1,28 @@
+schema_version: 2
+purpose: Compact Level-1 retrieval index generated from approved runtime manifests without institution-specific assumptions.
+required_root_fields:
+  - schema_version
+  - source
+  - asset_count
+  - assets
+required_asset_fields:
+  - id
+  - family
+  - subtype
+  - scenes
+  - required_role_names
+  - specialized
+  - elements
+  - compatibility
+  - search_terms
+  - files
+element_dimensions:
+  - geometry
+  - encoding
+  - annotation
+  - axes
+  - layout
+metadata_policy: The runtime index contains only fields needed for retrieval, execution, and compatibility checks.
+generation_commands:
+  catalog: python scripts/build_catalog.py
+  public-atlas: python scripts/generate_atlas.py

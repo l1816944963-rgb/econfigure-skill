@@ -1,0 +1,104 @@
+id: iv-diagnostic-2panel
+family: scatter-relationship
+subtype: paired-v-profile-and-crossing-profile
+status: approved
+files:
+  preview: iv-diagnostic-2panel.png
+  script: iv-diagnostic-2panel.py
+  fixtures:
+  - iv-diagnostic-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4980
+  - 2658
+  additional-master-formats: forbidden
+scene:
+- Compare rejection-rate behavior around a zero deviation
+- Show opposing goodness-of-fit profiles for two procedures
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two panels with two complete supplied series on identical ordered x coordinates.
+  required_data_roles:
+  - field: panel
+    source: iv-diagnostic-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: series
+    source: iv-diagnostic-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: x
+    source: iv-diagnostic-2panel.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: y
+    source: iv-diagnostic-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied binned point per row
+    mark_to_data_mapping: horizontal and vertical position jointly encode a relationship; any fitted path must be explicitly
+      authorized or supplied
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not fabricate observations or extend a fitted line beyond its supported domain.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - connected-points
+  - v-profile
+  - crossing-lines
+  - two-panels
+  encoding:
+  - gray-diamonds
+  - black-circles
+  annotation:
+  - inset-top-legends
+  - panel-titles
+  axes:
+  - vertical-zero-line
+  - horizontal-zero-line
+  - inward-ticks
+  - full-frame
+  layout:
+  - one-by-two
+  - shared-width
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two panels
+  - exactly two complete series
+  - identical x keys within panel
+  - finite coordinates
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - The meaning of the diagnostic x expression must be preserved in real-use adaptation.
+qa:
+  deterministic: true

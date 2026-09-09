@@ -1,0 +1,124 @@
+id: normalized-stacked-vbar-2x4
+family: stacked-bar
+subtype: eight-panel-normalized-allocation-bars
+status: approved
+files:
+  preview: normalized-stacked-vbar-2x4.png
+  script: normalized-stacked-vbar-2x4.py
+  fixtures:
+  - normalized-stacked-vbar-2x4.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 7608
+  - 3996
+  additional-master-formats: forbidden
+scene:
+- Compare allocation regimes across standardized states
+- Show how normalized compositions change under four parameter settings and two model variants
+data_contract:
+  analytical-calculation: forbidden
+  summary: Eight ordered panels with shared positions and three non-negative components summing to one at every panel-position
+    key.
+  required_data_roles:
+  - field: panel_order
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: row_group
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: gamma
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: position
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: component
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: component_order
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: share
+    source: normalized-stacked-vbar-2x4.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one supplied component value per bar
+    mark_to_data_mapping: segment size encodes a component; normalized assets require components to sum to the declared whole
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Validate the declared denominator and require each displayed whole to sum to 100% within tolerance.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - vertical-bar
+  - normalized-stack
+  - eight-panel
+  - two-by-four
+  encoding:
+  - black
+  - gray
+  - white-outline
+  - grayscale-safe
+  annotation:
+  - gamma-panel-titles
+  - middle-row-descriptor
+  axes:
+  - standardized-position-x
+  - proportion-y
+  - shared-scale
+  - full-spines
+  layout:
+  - dense-small-multiples
+  - two-row-grid
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly eight panels
+  - unique panel position component keys
+  - non-negative shares
+  - stacks sum to one
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Component meaning must be supplied by the real-use design because the source has no reusable legend.
+qa:
+  deterministic: true

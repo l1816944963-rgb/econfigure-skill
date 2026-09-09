@@ -1,0 +1,9 @@
+.cache/
+.venv/
+__pycache__/
+*.py[cod]
+tests/out/
+*.pdf
+dist/
+eval-report.json
+assets/standard_samples/validation.json

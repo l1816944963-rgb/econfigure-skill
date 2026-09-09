@@ -1,0 +1,113 @@
+id: automation-exposure-occupations-2panel
+family: scatter-relationship
+subtype: occupation-exposure-two-period-panels
+status: approved
+files:
+  preview: automation-exposure-occupations-2panel.png
+  script: automation-exposure-occupations-2panel.py
+  fixtures:
+  - automation-exposure-occupations-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3696
+  - 4272
+  additional-master-formats: forbidden
+scene:
+- Compare occupation-level exposure relationships across periods
+- Identify named occupations with unusual exposure combinations
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two panels with at least one hundred background observations, unique labeled occupations, and exactly two supplied
+    fit endpoints per panel, all bounded from zero to 100.
+  required_data_roles:
+  - field: panel
+    source: automation-exposure-occupations-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: kind
+    source: automation-exposure-occupations-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: label
+    source: automation-exposure-occupations-2panel.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: automation_exposure
+    source: automation-exposure-occupations-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: routine_exposure
+    source: automation-exposure-occupations-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied binned point per row
+    mark_to_data_mapping: horizontal and vertical position jointly encode a relationship; any fitted path must be explicitly
+      authorized or supplied
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not fabricate observations or extend a fitted line beyond its supported domain.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - scatter
+  - two-panel
+  - direct-labels
+  - supplied-linear-fit
+  encoding:
+  - faint-background-points
+  - muted-red-highlight-points
+  - gray-dashed-fit
+  annotation:
+  - occupation-labels
+  - italic-panel-titles
+  axes:
+  - percentile-x
+  - percentile-y
+  - shared-domain
+  layout:
+  - two-rows
+  - portrait
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two panels
+  - at least one hundred background points per panel
+  - unique panel occupation keys
+  - two fit endpoints per panel
+  - finite bounded coordinates
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Dense direct labels require collision review at insertion size
+  - Exact point coordinates and fitted coefficients require original observations and the declared model specification.
+qa:
+  deterministic: true

@@ -1,0 +1,124 @@
+id: lease-length-distribution-discount
+family: bar-with-error
+subtype: split-range-histograms-and-negative-summary-bars
+status: approved
+files:
+  preview: lease-length-distribution-discount.png
+  script: lease-length-distribution-discount.py
+  fixtures:
+  - lease-length-distribution-discount.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4098
+  - 4278
+  additional-master-formats: forbidden
+scene:
+- Show a discontinuous long-tailed lease distribution
+- Relate lease-length groups to average discounts and uncertainty
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two supplied histogram bin series plus five ordered discount estimates with non-negative supplied errors.
+  required_data_roles:
+  - field: panel
+    source: lease-length-distribution-discount.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: order
+    source: lease-length-distribution-discount.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: x
+    source: lease-length-distribution-discount.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: width
+    source: lease-length-distribution-discount.fixture.csv
+    role: geometric-magnitude
+    value_type: number
+    required: true
+    description: Controls a data-encoded width.
+  - field: value
+    source: lease-length-distribution-discount.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: error
+    source: lease-length-distribution-discount.fixture.csv
+    role: uncertainty-width
+    value_type: number
+    required: true
+    description: Supplies an already calculated error-bar magnitude.
+  - field: label
+    source: lease-length-distribution-discount.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  semantic_contract:
+    unit_of_observation: one supplied value and, when shown, supplied uncertainty per category-series key
+    mark_to_data_mapping: bar height encodes magnitude; whiskers encode supplied uncertainty
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - histogram
+  - split-x-range
+  - negative-bars
+  - error-bars
+  - three-panels
+  encoding:
+  - uniform-gray
+  - dark-outlines
+  - thick-uncertainty-lines
+  annotation:
+  - panel-letters
+  - shared-top-title
+  - lower-panel-title
+  axes:
+  - count-y
+  - years-x
+  - zero-reference
+  - negative-discount-y
+  layout:
+  - two-top-one-bottom
+  - asymmetric-panel-width
+implementation:
+  entrypoint: render
+  hard-checks:
+  - unique panel order keys
+  - non-negative histogram counts
+  - exactly five discount groups
+  - supplied non-negative errors
+  - zero included in discount axis
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - The split histogram range must remain explicit so the empty interval is not mistaken for continuity.
+qa:
+  deterministic: true

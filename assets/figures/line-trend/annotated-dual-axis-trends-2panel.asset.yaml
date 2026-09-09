@@ -1,0 +1,116 @@
+id: annotated-dual-axis-trends-2panel
+family: line-trend
+subtype: two-panel-annotated-dual-axis-trends
+status: approved
+files:
+  preview: annotated-dual-axis-trends-2panel.png
+  script: annotated-dual-axis-trends-2panel.py
+  fixtures:
+  - annotated-dual-axis-trends-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 2832
+  - 4068
+  additional-master-formats: forbidden
+scene:
+- Compare distributional and wage-gap trends across two samples
+- Mark structural years and directly identify three series
+data_contract:
+  analytical-calculation: forbidden
+  summary: Long annual data with two panels, three ordered series per panel, and explicit axis assignment.
+  required_data_roles:
+  - field: panel
+    source: annotated-dual-axis-trends-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: year
+    source: annotated-dual-axis-trends-2panel.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: series
+    source: annotated-dual-axis-trends-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: series_order
+    source: annotated-dual-axis-trends-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: axis
+    source: annotated-dual-axis-trends-2panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: value
+    source: annotated-dual-axis-trends-2panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied summary per ordered position and series
+    mark_to_data_mapping: position on the horizontal axis encodes order; line position encodes the supplied value
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Require explicit units and a written reason for using independent axes; never imply comparability from aligned slopes.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - two-panel
+  - vertical-stack
+  - dual-axis
+  encoding:
+  - open-diamond
+  - open-triangle
+  - open-square
+  - grayscale-safe
+  annotation:
+  - vertical-year-lines
+  - arrow-labels
+  - bold-panel-titles
+  axes:
+  - continuous-year-x
+  - independent-y-scales
+  - full-spines
+  layout:
+  - aligned-vertical-panels
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly two panels
+  - exactly three series per panel
+  - continuous annual years within each panel
+  - unique panel-year-series rows
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Arrow annotations are fixture-specific and must be reviewed when series labels or turning points change.
+qa:
+  deterministic: true

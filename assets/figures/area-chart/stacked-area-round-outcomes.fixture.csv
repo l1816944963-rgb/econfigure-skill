@@ -1,0 +1,91 @@
+round,component,component_order,share
+1,Interaction,1,0.77
+2,Interaction,1,0.76
+3,Interaction,1,0.73
+4,Interaction,1,0.78
+5,Interaction,1,0.86
+6,Interaction,1,0.88
+7,Interaction,1,0.89
+8,Interaction,1,0.88
+9,Interaction,1,0.92
+10,Interaction,1,0.96
+11,Interaction,1,0.97
+12,Interaction,1,0.97
+13,Interaction,1,0.96
+14,Interaction,1,0.96
+15,Interaction,1,0.97
+16,Interaction,1,0.96
+17,Interaction,1,0.96
+18,Interaction,1,0.96
+19,Interaction,1,0.97
+20,Interaction,1,0.98
+21,Interaction,1,0.97
+22,Interaction,1,0.99
+23,Interaction,1,0.97
+24,Interaction,1,0.98
+25,Interaction,1,0.97
+26,Interaction,1,0.98
+27,Interaction,1,0.97
+28,Interaction,1,0.98
+29,Interaction,1,0.97
+30,Interaction,1,0.94
+1,Unilateral exclusion,2,0.21
+2,Unilateral exclusion,2,0.2
+3,Unilateral exclusion,2,0.22
+4,Unilateral exclusion,2,0.19
+5,Unilateral exclusion,2,0.12
+6,Unilateral exclusion,2,0.1
+7,Unilateral exclusion,2,0.09
+8,Unilateral exclusion,2,0.1
+9,Unilateral exclusion,2,0.06
+10,Unilateral exclusion,2,0.03
+11,Unilateral exclusion,2,0.02
+12,Unilateral exclusion,2,0.02
+13,Unilateral exclusion,2,0.03
+14,Unilateral exclusion,2,0.03
+15,Unilateral exclusion,2,0.02
+16,Unilateral exclusion,2,0.03
+17,Unilateral exclusion,2,0.03
+18,Unilateral exclusion,2,0.03
+19,Unilateral exclusion,2,0.02
+20,Unilateral exclusion,2,0.01
+21,Unilateral exclusion,2,0.02
+22,Unilateral exclusion,2,0.005
+23,Unilateral exclusion,2,0.02
+24,Unilateral exclusion,2,0.01
+25,Unilateral exclusion,2,0.02
+26,Unilateral exclusion,2,0.01
+27,Unilateral exclusion,2,0.02
+28,Unilateral exclusion,2,0.01
+29,Unilateral exclusion,2,0.02
+30,Unilateral exclusion,2,0.04
+1,Mutual exclusion,3,0.01999999999999999
+2,Mutual exclusion,3,0.03999999999999998
+3,Mutual exclusion,3,0.05000000000000002
+4,Mutual exclusion,3,0.02999999999999997
+5,Mutual exclusion,3,0.020000000000000018
+6,Mutual exclusion,3,0.01999999999999999
+7,Mutual exclusion,3,0.01999999999999999
+8,Mutual exclusion,3,0.01999999999999999
+9,Mutual exclusion,3,0.019999999999999962
+10,Mutual exclusion,3,0.010000000000000037
+11,Mutual exclusion,3,0.010000000000000026
+12,Mutual exclusion,3,0.010000000000000026
+13,Mutual exclusion,3,0.010000000000000037
+14,Mutual exclusion,3,0.010000000000000037
+15,Mutual exclusion,3,0.010000000000000026
+16,Mutual exclusion,3,0.010000000000000037
+17,Mutual exclusion,3,0.010000000000000037
+18,Mutual exclusion,3,0.010000000000000037
+19,Mutual exclusion,3,0.010000000000000026
+20,Mutual exclusion,3,0.010000000000000018
+21,Mutual exclusion,3,0.010000000000000026
+22,Mutual exclusion,3,0.005000000000000009
+23,Mutual exclusion,3,0.010000000000000026
+24,Mutual exclusion,3,0.010000000000000018
+25,Mutual exclusion,3,0.010000000000000026
+26,Mutual exclusion,3,0.010000000000000018
+27,Mutual exclusion,3,0.010000000000000026
+28,Mutual exclusion,3,0.010000000000000018
+29,Mutual exclusion,3,0.010000000000000026
+30,Mutual exclusion,3,0.020000000000000052

@@ -1,0 +1,124 @@
+id: grouped-hbar-2series-filled-outline
+family: grouped-bar
+subtype: grouped-horizontal-bar
+status: approved
+files:
+  preview: grouped-hbar-2series-filled-outline.png
+  script: grouped-hbar-2series-filled-outline.py
+  fixture: grouped-hbar-2series-filled-outline.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3450
+  - 2040
+  additional-master-formats: forbidden
+scene:
+- Compare two related conditions across ordered categories with long labels
+- Preserve rapid within-category comparison in grayscale printing
+data_contract:
+  shape: long
+  required:
+  - category
+  - series
+  - value
+  - category_order
+  minimum-category-count: 3
+  series-count: 2
+  zero-baseline: required
+  negative-values: forbidden
+  analytical-calculation: forbidden
+  required_data_roles:
+  - field: category
+    source: grouped-hbar-2series-filled-outline.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: series
+    source: grouped-hbar-2series-filled-outline.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: value
+    source: grouped-hbar-2series-filled-outline.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: category_order
+    source: grouped-hbar-2series-filled-outline.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  semantic_contract:
+    unit_of_observation: one supplied value per category-series pair
+    mark_to_data_mapping: adjacent bars encode series values within a shared category
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - horizontal-bar
+  - grouped
+  - equal-height
+  - compact-pair
+  encoding:
+  - two-series
+  - solid-vs-outline
+  - grayscale-safe
+  - redundant-fill-state
+  annotation:
+  - legend-bottom
+  - no-data-label
+  axes:
+  - zero-baseline
+  - ordered-category-y
+  - outward-ticks
+  - no-grid
+  layout:
+  - single-panel
+  - long-label-margin
+  - legend-outside-plot
+implementation:
+  entrypoint: render
+  parameters:
+    bar-height: ChartStyle.bar_height
+    series-offset: ChartStyle.series_offset
+    x-limits: ChartStyle.x_limits
+    x-tick-interval: ChartStyle.x_tick_interval
+    plot-bounds: ChartStyle.axes_bounds
+    ink-color: ChartStyle.ink_color
+    legend-position: ChartStyle.legend_anchor
+  hard-checks:
+  - exactly two series
+  - at least three categories
+  - finite nonnegative values
+  - unique category-series pairs
+  - unique category order
+  - configured axis maximum covers all values
+compatibility:
+  grayscale: pass
+  academic-publication: pass
+  warnings:
+  - fixture has no variable or unit metadata
+  - long legend labels may require an adjusted canvas or multi-row legend
+qa:
+  deterministic: true

@@ -1,0 +1,126 @@
+id: interval-response-4x2-multigroup
+family: interval-band
+subtype: eight-panel-three-group-response
+status: approved
+files:
+  preview: interval-response-4x2-multigroup.png
+  script: interval-response-4x2-multigroup.py
+  fixtures:
+  - interval-response-4x2-multigroup.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3108
+  - 4085
+  additional-master-formats: forbidden
+scene:
+- Compare dynamic responses across eight outcome measures
+- Compare three groups with panel-specific units and scales
+data_contract:
+  analytical-calculation: forbidden
+  summary: Long data with eight panels, three ordered groups, shared horizons, estimates, and supplied lower and upper bounds.
+  uncertainty: Supplied 90 percent confidence intervals with standard errors robust to heteroskedasticity and serial and cross-sectional
+    correlation.
+  required_data_roles:
+  - field: panel
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: horizon
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: ordered-domain
+    value_type: number-or-date
+    required: true
+    description: Defines an ordered temporal or sequential domain.
+  - field: group
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: group_order
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: estimate
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: lower
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: upper
+    source: interval-response-4x2-multigroup.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: one supplied estimate and interval per key
+    mark_to_data_mapping: the center line or mark encodes the estimate; boundaries encode separately supplied uncertainty
+      limits
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - line
+  - interval-band
+  - eight-panel
+  - four-by-two
+  encoding:
+  - purple-solid
+  - orange-dashed
+  - gray-dash-dot
+  annotation:
+  - shared-bottom-legend
+  - zero-lines
+  axes:
+  - horizon-x
+  - panel-specific-y
+  - horizontal-grid
+  layout:
+  - compact-small-multiples
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly eight panels
+  - exactly three ordered groups per panel
+  - unique panel group horizon keys
+  - one-to-one group order mapping
+  - shared horizons within panel
+  - lower estimate upper interval order
+  - panel bounds contain intervals
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Dense small-multiple typography requires actual-size inspection.
+qa:
+  deterministic: true

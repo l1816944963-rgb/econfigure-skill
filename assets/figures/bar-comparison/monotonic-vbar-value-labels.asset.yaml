@@ -1,0 +1,98 @@
+id: monotonic-vbar-value-labels
+family: bar-comparison
+subtype: ordered-single-series-bars-with-independent-labels
+status: approved
+files:
+  preview: monotonic-vbar-value-labels.png
+  script: monotonic-vbar-value-labels.py
+  fixtures:
+  - monotonic-vbar-value-labels.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3564
+  - 2394
+  additional-master-formats: forbidden
+scene:
+- Show a strongly increasing ordered exposure profile
+- Display a second supplied statistic above each bar
+data_contract:
+  analytical-calculation: forbidden
+  summary: Unique ordered categories with non-negative bar heights and one supplied display label per bar.
+  required_data_roles:
+  - field: category
+    source: monotonic-vbar-value-labels.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: order
+    source: monotonic-vbar-value-labels.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: value
+    source: monotonic-vbar-value-labels.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: label
+    source: monotonic-vbar-value-labels.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  semantic_contract:
+    unit_of_observation: one supplied value per category
+    mark_to_data_mapping: bar length or height encodes magnitude from a zero baseline
+    specialized: false
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - vertical-bar
+  - single-series
+  - monotonic-profile
+  encoding:
+  - uniform-navy-fill
+  annotation:
+  - bar-top-labels
+  - independent-label-values
+  axes:
+  - zero-baseline
+  - ordered-category-x
+  - horizontal-grid
+  layout:
+  - single-panel
+  - compact-landscape
+implementation:
+  entrypoint: render
+  hard-checks:
+  - unique category and order keys
+  - at least six categories
+  - non-negative bar heights
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Display labels must come from a declared supplied field when they differ from bar heights.
+qa:
+  deterministic: true

@@ -1,0 +1,21 @@
+category,order,value
+Agriculture,1,0.015
+Metals,2,-0.115
+Apparel,3,-0.235
+Food processing,4,-0.17
+"Wood, furniture, peat",5,-0.125
+Textiles,6,-0.14
+Nonmetallic mineral manuf.,7,-0.18
+"Paper, publishing, printing",8,-0.12
+Mineral mining,9,-0.065
+"Footwear, leather",10,-0.095
+Chemicals,11,-0.135
+"Auto, transport vehicles",12,-0.19
+"Electric, electronic equip.",13,-0.17
+"Machinery, equipment",14,-0.165
+Plastics,15,-0.19
+Other manuf.,16,-0.225
+"Pharma., perfumes, detergents",17,-0.205
+Petroleum refining,18,-0.14
+Rubber,19,-0.265
+"Petroleum, gas, coal",20,-0.035

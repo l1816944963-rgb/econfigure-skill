@@ -1,0 +1,14 @@
+id: event-study-dynamics
+communication_goal: Show supplied dynamic effects before and after a policy event.
+acceptable_families: [event-study, interval-band]
+required_data_roles:
+  event_time: ordered-domain
+  estimate: point-estimate
+  low: interval-lower
+  high: interval-upper
+required_checks:
+  - estimate and interval keys are identical
+  - the event-time order is preserved
+  - treatment timing and zero effect use distinct reference lines
+  - the omitted baseline convention is disclosed
+deliverables: [design-plan, png-600dpi, qa-report, transformation-note]

@@ -1,0 +1,139 @@
+id: factor-selection-heatmaps-8panel
+family: heatmap
+subtype: factor-selection-heatmaps-8panel
+status: approved
+files:
+  preview: factor-selection-heatmaps-8panel.png
+  script: factor-selection-heatmaps-8panel.py
+  fixtures:
+  - factor-selection-heatmaps-8panel.fixture.csv
+  - factor-selection-heatmaps-8panel.palette.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4800
+  - 6696
+scene:
+- Compare asset-selection grids across eight factor families.
+elements:
+  geometry:
+  - eight-panel-heatmap
+  - panel-specific-color-scale
+  - red-selection-crosses
+data_contract:
+  analytical-calculation: forbidden
+  summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_data_roles:
+  - field: panel
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: row
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: column
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: assets
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: factors
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: red
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: green
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: blue
+    source: factor-selection-heatmaps-8panel.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: panel
+    source: factor-selection-heatmaps-8panel.palette.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: index
+    source: factor-selection-heatmaps-8panel.palette.csv
+    role: input-value
+    value_type: number-or-string
+    required: true
+    description: Supplies a required value used by this asset.
+  - field: red
+    source: factor-selection-heatmaps-8panel.palette.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: green
+    source: factor-selection-heatmaps-8panel.palette.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: blue
+    source: factor-selection-heatmaps-8panel.palette.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  semantic_contract:
+    unit_of_observation: one supplied value per matrix cell
+    mark_to_data_mapping: cell color encodes magnitude at the row-column intersection
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not reorder rows or columns unless the ordering rule is supplied or explicitly approved.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+compatibility:
+  academic-publication: adaptation-required
+  warnings:
+  - Preserve the independent range and key for every panel; the same hue across facets does not imply the same value.
+qa:
+  deterministic: true
+implementation:
+  entrypoint: render
+  hard-checks:
+  - required columns are present
+  - numeric inputs are finite
+  - declared structural keys are unique

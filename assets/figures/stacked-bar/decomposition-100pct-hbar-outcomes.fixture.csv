@@ -1,0 +1,45 @@
+outcome,outcome_order,component,component_order,share,left_label,right_label
+"CAT total at age 14, end of grade 8 (0.566*)",1,Cognitive factor,1,0.01,0.161,0.013
+"CAT total at age 14, end of grade 8 (0.566*)",1,Externalizing behavior,2,0.27,0.161,0.013
+"CAT total at age 14, end of grade 8 (0.566*)",1,Academic motivation,3,0.09,0.161,0.013
+"CAT total at age 14, end of grade 8 (0.566*)",1,Other factors,4,0.63,0.161,0.013
+"Number of misdemeanor arrests, age 27 (-1.21**)",2,Cognitive factor,1,0.01,0.071,0.114
+"Number of misdemeanor arrests, age 27 (-1.21**)",2,Externalizing behavior,2,0.3,0.071,0.114
+"Number of misdemeanor arrests, age 27 (-1.21**)",2,Academic motivation,3,0.02,0.071,0.114
+"Number of misdemeanor arrests, age 27 (-1.21**)",2,Other factors,4,0.67,0.071,0.114
+"Number of felony arrests, age 27 (-1.12)",3,Cognitive factor,1,0.01,0.071,0.246
+"Number of felony arrests, age 27 (-1.12)",3,Externalizing behavior,2,0.46,0.071,0.246
+"Number of felony arrests, age 27 (-1.12)",3,Academic motivation,3,0.0,0.071,0.246
+"Number of felony arrests, age 27 (-1.12)",3,Other factors,4,0.53,0.071,0.246
+"Number of adult arrests (misd. + fel.), age 27 (-2.33***)",4,Cognitive factor,1,0.01,0.062,0.144
+"Number of adult arrests (misd. + fel.), age 27 (-2.33***)",4,Externalizing behavior,2,0.36,0.062,0.144
+"Number of adult arrests (misd. + fel.), age 27 (-2.33***)",4,Academic motivation,3,0.0,0.062,0.144
+"Number of adult arrests (misd. + fel.), age 27 (-2.33***)",4,Other factors,4,0.63,0.062,0.144
+"Monthly income, age 27 (0.876*)",5,Cognitive factor,1,0.01,0.089,0.027
+"Monthly income, age 27 (0.876*)",5,Externalizing behavior,2,0.2,0.089,0.027
+"Monthly income, age 27 (0.876*)",5,Academic motivation,3,0.0,0.089,0.027
+"Monthly income, age 27 (0.876*)",5,Other factors,4,0.79,0.089,0.027
+"Use tobacco, age 27 (-0.119)",6,Cognitive factor,1,0.01,0.046,0.141
+"Use tobacco, age 27 (-0.119)",6,Externalizing behavior,2,0.45,0.046,0.141
+"Use tobacco, age 27 (-0.119)",6,Academic motivation,3,0.0,0.046,0.141
+"Use tobacco, age 27 (-0.119)",6,Other factors,4,0.54,0.046,0.141
+"Number of misdemeanor arrests, age 40 (-3.13**)",7,Cognitive factor,1,0.01,0.136,0.088
+"Number of misdemeanor arrests, age 40 (-3.13**)",7,Externalizing behavior,2,0.25,0.136,0.088
+"Number of misdemeanor arrests, age 40 (-3.13**)",7,Academic motivation,3,0.03,0.136,0.088
+"Number of misdemeanor arrests, age 40 (-3.13**)",7,Other factors,4,0.71,0.136,0.088
+"Number of felony arrests, age 40 (-1.14)",8,Cognitive factor,1,0.01,0.056,0.403
+"Number of felony arrests, age 40 (-1.14)",8,Externalizing behavior,2,0.68,0.056,0.403
+"Number of felony arrests, age 40 (-1.14)",8,Academic motivation,3,0.0,0.056,0.403
+"Number of felony arrests, age 40 (-1.14)",8,Other factors,4,0.31,0.056,0.403
+"Number of adult arrests (misd. + fel.), age 40 (-4.26**)",9,Cognitive factor,1,0.01,0.086,0.149
+"Number of adult arrests (misd. + fel.), age 40 (-4.26**)",9,Externalizing behavior,2,0.34,0.086,0.149
+"Number of adult arrests (misd. + fel.), age 40 (-4.26**)",9,Academic motivation,3,0.0,0.086,0.149
+"Number of adult arrests (misd. + fel.), age 40 (-4.26**)",9,Other factors,4,0.65,0.086,0.149
+"Number of lifetime arrests, age 40 (-4.20*)",10,Cognitive factor,1,0.01,0.077,0.204
+"Number of lifetime arrests, age 40 (-4.20*)",10,Externalizing behavior,2,0.4,0.077,0.204
+"Number of lifetime arrests, age 40 (-4.20*)",10,Academic motivation,3,0.0,0.077,0.204
+"Number of lifetime arrests, age 40 (-4.20*)",10,Other factors,4,0.59,0.077,0.204
+"Employed, age 40 (0.200*)",11,Cognitive factor,1,0.01,0.085,0.018
+"Employed, age 40 (0.200*)",11,Externalizing behavior,2,0.21,0.085,0.018
+"Employed, age 40 (0.200*)",11,Academic motivation,3,0.02,0.085,0.018
+"Employed, age 40 (0.200*)",11,Other factors,4,0.76,0.085,0.018

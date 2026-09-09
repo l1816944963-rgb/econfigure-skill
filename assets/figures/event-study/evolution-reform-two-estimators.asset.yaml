@@ -1,0 +1,100 @@
+id: evolution-reform-two-estimators
+family: event-study
+subtype: two-estimator-event-study
+status: approved
+files:
+  preview: evolution-reform-two-estimators.png
+  script: evolution-reform-two-estimators.py
+  fixtures:
+  - evolution-reform-two-estimators.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4800
+  - 7740
+scene:
+- Compare two supplied estimators around curriculum changes in two-year bins.
+data_contract:
+  analytical-calculation: forbidden
+  summary: External plotting fixture; no analytical calculation.
+  required_data_roles:
+  - field: panel
+    source: evolution-reform-two-estimators.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: series
+    source: evolution-reform-two-estimators.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: x
+    source: evolution-reform-two-estimators.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: estimate
+    source: evolution-reform-two-estimators.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: low
+    source: evolution-reform-two-estimators.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: high
+    source: evolution-reform-two-estimators.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  semantic_contract:
+    unit_of_observation: one supplied event-time estimate and interval per series and panel
+    mark_to_data_mapping: event time encodes distance from the event; estimates and interval bounds are supplied, not calculated
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - two-estimator-point-interval
+  - two-vertical-panels
+  - open-circle
+  - open-diamond
+  encoding:
+  - gray-blue-estimator
+  - red-estimator
+implementation:
+  entrypoint: render
+  shared-module: chartlib.inference_renderers
+  tick-policy:
+    x: centered
+    y: centered
+compatibility:
+  warnings:
+  - Keep the small method offset inside each two-year bin; the bin spacing is intentional and is not a missing-year error.
+  grayscale: preview-generated; review color-dependent distinctions before grayscale use
+qa:
+  deterministic: true

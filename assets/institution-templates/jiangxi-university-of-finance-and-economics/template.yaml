@@ -1,0 +1,86 @@
+schema_version: 1
+id: jiangxi-university-of-finance-and-economics
+institution:
+  name_en: Jiangxi University of Finance and Economics
+  name_local: 江西财经大学
+scope:
+  document_type: master's thesis
+  disciplines:
+  - applied economics
+  effective_date: null
+  verified_on: null
+selection:
+  explicit_only: true
+  aliases:
+  - JUFE
+  - 江西财经大学
+  - 江财
+source:
+  official_url: https://grs.jxufe.edu.cn/news-show-3761.html
+  bundled_template: jufe-master-thesis-template.doc
+  bundled_template_sha256: f1c5972e97832ed83bfc2396357709546cde786e5838f3e5568508874f17efc8
+  verification_status: Bundled document inspected; effective version and redistribution
+    permission unconfirmed
+figure:
+  body_font:
+    local: SimSun
+    latin: Times New Roman
+    size_pt: 10.5
+  caption:
+    position: below
+    numbering: chapter.figure
+    local_font: SimSun
+    latin_font: Times New Roman
+    size_pt: 12
+    alignment: center
+    separator_after_number: one-space
+    terminal_punctuation: forbidden
+  notes:
+    local_font: SimSun
+    latin_font: Times New Roman
+    size_pt: 12
+    alignment: justified
+    first_line_indent_characters: 2
+table:
+  style: three-line
+  vertical_rules: forbidden
+  body_font:
+    local: SimSun
+    latin: Times New Roman
+    size_pt: 10.5
+  title:
+    position: above
+    numbering: chapter.table
+    local_font: SimSun
+    latin_font: Times New Roman
+    size_pt: 12
+    alignment: center
+    separator_after_number: one-space
+    terminal_punctuation: forbidden
+  rule_weights_pt:
+    top: 1.5
+    header: 0.75
+    bottom: 1.5
+page:
+  paper: A4
+output:
+  format: png
+  dpi: 600
+notes:
+- This package is optional and must never be selected solely because the user is writing
+  a master's thesis.
+- Confirm current school or department requirements when the supplied template conflicts
+  with this package.
+- The bundled Word template is an institution document and is not relicensed under
+  the repository's Apache-2.0 license.
+rule_evidence:
+  bundled_document_text:
+  - A4 page
+  - 12 pt centered captions
+  - SimSun Chinese and Times New Roman Latin body text
+  - three-line table structure
+  package_conventions_not_verified_school_requirements:
+  - 10.5 pt figure content
+  - 10.5 pt table body
+  - 1.5 / 0.75 / 1.5 pt table rules
+  precedence: Current user-supplied school instructions override package conventions

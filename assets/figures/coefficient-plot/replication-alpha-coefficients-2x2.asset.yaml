@@ -1,0 +1,124 @@
+id: replication-alpha-coefficients-2x2
+family: coefficient-plot
+subtype: replication-status-alpha-estimates
+status: approved
+files:
+  preview: replication-alpha-coefficients-2x2.png
+  script: replication-alpha-coefficients-2x2.py
+  fixtures:
+  - replication-alpha-coefficients-2x2.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 6000
+  - 3114
+  additional-master-formats: forbidden
+scene:
+- Compare alpha distributions across replication procedures
+- Inspect uncertainty and status by ordered estimate
+data_contract:
+  analytical-calculation: forbidden
+  summary: Four panels of ordered supplied estimate lower upper values with a declared replication status.
+  required_data_roles:
+  - field: panel
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: title
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: rate
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: rank
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: estimate
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: low
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: high
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: status
+    source: replication-alpha-coefficients-2x2.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  semantic_contract:
+    unit_of_observation: one supplied point estimate and interval per coefficient key
+    mark_to_data_mapping: point position encodes the estimate and whiskers encode supplied lower and upper limits
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - dense-point-interval
+  - four-panels
+  encoding:
+  - blue-replicated
+  - red-not-replicated
+  - green-never-significant
+  annotation:
+  - replication-rate
+  - global-legend
+  axes:
+  - rank-x
+  - alpha-y
+  - zero-reference
+  layout:
+  - two-by-two
+implementation:
+  entrypoint: render
+  hard-checks:
+  - four-panels
+  - ordered-intervals
+  - declared-status
+  - zero-reference
+compatibility:
+  grayscale: preview-generated; semantic color mapping still requires review
+  academic-publication: conditional
+  warnings:
+  - Dense panels require a minimum width and cannot be reused for a small number of observations.
+qa:
+  deterministic: true

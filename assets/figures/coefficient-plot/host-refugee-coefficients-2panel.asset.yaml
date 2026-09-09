@@ -1,0 +1,115 @@
+id: host-refugee-coefficients-2panel
+family: coefficient-plot
+subtype: host-refugee-point-estimates-with-95ci
+status: approved
+files:
+  preview: host-refugee-coefficients-2panel.png
+  script: host-refugee-coefficients-2panel.py
+  fixtures:
+  - host-refugee-coefficients-2panel.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4260
+  - 3108
+  additional-master-formats: forbidden
+scene:
+- Compare treatment effects across host and refugee groups
+- Test sign and precision against zero
+data_contract:
+  analytical-calculation: forbidden
+  summary: Two panels with matching outcome labels and supplied estimate lower upper values.
+  required_data_roles:
+  - field: panel
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: order
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: label
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: estimate
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: low
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: high
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: display
+    source: host-refugee-coefficients-2panel.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  semantic_contract:
+    unit_of_observation: one supplied point estimate and interval per coefficient key
+    mark_to_data_mapping: point position encodes the estimate and whiskers encode supplied lower and upper limits
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - point-interval
+  - two-panels
+  encoding:
+  - gray-point
+  - gray-interval
+  - black-zero-line
+  annotation:
+  - panel-strips
+  axes:
+  - effect-x
+  - outcome-y
+  layout:
+  - one-by-two
+implementation:
+  entrypoint: render
+  hard-checks:
+  - two-panels
+  - ordered-intervals
+  - zero-reference
+compatibility:
+  grayscale: preview-generated; semantic color mapping still requires review
+  academic-publication: conditional
+  warnings:
+  - Significance labels are not recoverable from the raster alone.
+qa:
+  deterministic: true

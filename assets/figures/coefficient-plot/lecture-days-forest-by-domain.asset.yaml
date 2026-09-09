@@ -1,0 +1,128 @@
+id: lecture-days-forest-by-domain
+family: coefficient-plot
+subtype: domain-grouped-lecture-day-estimates
+status: approved
+files:
+  preview: lecture-days-forest-by-domain.png
+  script: lecture-days-forest-by-domain.py
+  fixtures:
+  - lecture-days-forest-by-domain.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 7200
+  - 5052
+  additional-master-formats: forbidden
+scene:
+- Compare estimated lecture-day effects across outcome domains
+- Separate primary from secondary outcome blocks
+data_contract:
+  analytical-calculation: forbidden
+  summary: Ordered outcomes with estimate lower upper values and declared group membership.
+  required_data_roles:
+  - field: panel
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: section
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: label
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  - field: y
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  - field: estimate
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: point-estimate
+    value_type: number
+    required: true
+    description: Supplies a point estimate or effect center.
+  - field: low
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: interval-lower
+    value_type: number
+    required: true
+    description: Supplies a lower interval boundary; the renderer must not infer it.
+  - field: high
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: interval-upper
+    value_type: number
+    required: true
+    description: Supplies an upper interval boundary; the renderer must not infer it.
+  - field: color
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: visual-channel
+    value_type: number-or-string
+    required: true
+    description: Supplies an explicit color component or palette value.
+  - field: display
+    source: lecture-days-forest-by-domain.fixture.csv
+    role: display-label
+    value_type: string
+    required: true
+    description: Supplies visible text without changing the analytical value.
+  semantic_contract:
+    unit_of_observation: one supplied point estimate and interval per coefficient key
+    mark_to_data_mapping: point position encodes the estimate and whiskers encode supplied lower and upper limits
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Estimate and every displayed interval boundary must be supplied on identical keys.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - forest-plot
+  - confidence-interval
+  - grouped-rows
+  encoding:
+  - green-index
+  - gray-secondary
+  annotation:
+  - left-estimate-values
+  - right-outcome-labels
+  axes:
+  - effect-x
+  - zero-reference
+  layout:
+  - portrait
+implementation:
+  entrypoint: render
+  hard-checks:
+  - ordered-intervals
+  - unique-row-positions
+  - zero-reference
+compatibility:
+  grayscale: preview-generated; semantic color mapping still requires review
+  academic-publication: conditional
+  warnings:
+  - Long labels require a wide canvas or shortening rules for real data.
+qa:
+  deterministic: true

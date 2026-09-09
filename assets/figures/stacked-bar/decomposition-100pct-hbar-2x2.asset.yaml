@@ -1,0 +1,123 @@
+id: decomposition-100pct-hbar-2x2
+family: stacked-bar
+subtype: four-panel-labeled-horizontal-decomposition
+status: approved
+files:
+  preview: decomposition-100pct-hbar-2x2.png
+  script: decomposition-100pct-hbar-2x2.py
+  fixtures:
+  - decomposition-100pct-hbar-2x2.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 4380
+  - 3174
+  additional-master-formats: forbidden
+scene:
+- Compare component decompositions across top-share thresholds
+- Show how portfolio composition changes across assumptions
+data_contract:
+  analytical-calculation: forbidden
+  summary: Four ordered panels with four categories and five non-negative percentage components summing to 100 per row.
+  required_data_roles:
+  - field: panel
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: panel_order
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: category
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: category_order
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: component
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: component_order
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: ordering-key
+    value_type: integer
+    required: true
+    description: Controls stable display order; it does not encode magnitude.
+  - field: share
+    source: decomposition-100pct-hbar-2x2.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one supplied component value per bar
+    mark_to_data_mapping: segment size encodes a component; normalized assets require components to sum to the declared whole
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Validate the declared denominator and require each displayed whole to sum to 100% within tolerance.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - horizontal-bar
+  - normalized-stack
+  - four-panel
+  - five-components
+  encoding:
+  - gray
+  - navy
+  - violet
+  - yellow
+  - dark-gray
+  annotation:
+  - in-segment-values
+  - panel-specific-bottom-legends
+  - lettered-panel-titles
+  axes:
+  - percent-x
+  - ordered-category-y
+  layout:
+  - two-by-two
+  - repeated-panel-legends
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly four panels
+  - unique panel category component keys
+  - non-negative shares
+  - rows sum to 100
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Tiny components should suppress internal labels rather than force collisions.
+qa:
+  deterministic: true

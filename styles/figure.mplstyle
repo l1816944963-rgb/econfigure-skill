@@ -1,0 +1,30 @@
+# econfigure / figure.mplstyle
+# Figure geometry, light guides, grayscale defaults, and legend behavior.
+# Final palette selection remains part of standard-sample acceptance.
+
+figure.figsize      : 3.5, 2.6
+
+# Default to light horizontal guides only.
+axes.grid           : True
+axes.grid.axis      : y
+axes.grid.which     : major
+grid.color          : D9D9D9
+grid.linewidth      : 0.4
+grid.alpha          : 1.0
+
+# Default grayscale sequence; redundant encodings are implemented by chart functions.
+axes.prop_cycle     : cycler('color', ['000000', '404040', '7F7F7F', 'A6A6A6', 'CCCCCC'])
+
+legend.frameon      : False
+legend.handlelength : 1.8
+legend.labelspacing : 0.35
+
+# No minor ticks.
+xtick.minor.visible : False
+ytick.minor.visible : False
+
+# Prefer hollow markers as the secondary encoding on white backgrounds.
+markers.fillstyle   : none
+
+scatter.marker      : o
+boxplot.showfliers  : True

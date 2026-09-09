@@ -1,0 +1,41 @@
+panel,order,label,estimate,low,high
+Characteristics,0,Brand,0.205,0.103,0.301
+Characteristics,1,HIC,0.308,0.184,0.438
+Characteristics,2,SA,-0.009,-0.021,0.004
+Characteristics,3,Penicillins,0.0,-0.034,0.035
+Characteristics,4,Macrolides,0.032,0.003,0.06
+Characteristics,5,Other AB,-0.002,-0.01,0.009
+Characteristics,6,Paracetamol,0.043,0.016,0.069
+Characteristics,7,NSAIDs,0.021,-0.004,0.035
+Characteristics,8,Chlorphenamines,0.008,-0.005,0.02
+Characteristics,9,Cetirizine,0.0,-0.026,0.038
+Characteristics,10,Loratadine,0.009,-0.008,0.025
+Characteristics,11,Other AH,0.106,0.01,0.193
+Characteristics,12,Steroids,-0.023,-0.06,0.012
+Characteristics,13,Xanthines,-0.008,-0.022,0.011
+Characteristics,14,Other BD,-0.047,-0.124,0.033
+Characteristics,15,SE with AmChl,-0.011,-0.024,0.0
+Characteristics,16,Suppressants,-0.002,-0.028,0.021
+Characteristics,17,Other SE,0.045,0.006,0.085
+Characteristics,18,Compound strength,0.021,-0.008,0.045
+Characteristics,19,Schedules 3-6,0.013,-0.018,0.041
+Coefficients,0,Brand,-0.019,-0.036,0.006
+Coefficients,1,HIC,0.029,0.005,0.055
+Coefficients,2,SA,0.155,-0.011,0.327
+Coefficients,3,Penicillins,0.008,-0.127,0.147
+Coefficients,4,Macrolides,0.012,-0.005,0.027
+Coefficients,5,Other AB,0.014,-0.025,0.051
+Coefficients,6,Paracetamol,-0.092,-0.195,0.006
+Coefficients,7,NSAIDs,-0.038,-0.095,0.02
+Coefficients,8,Chlorphenamines,-0.043,-0.092,-0.006
+Coefficients,9,Cetirizine,-0.01,-0.029,0.015
+Coefficients,10,Loratadine,-0.03,-0.06,0.0
+Coefficients,11,Other AH,0.005,-0.004,0.011
+Coefficients,12,Steroids,-0.034,-0.059,0.066
+Coefficients,13,Xanthines,-0.056,-0.145,0.027
+Coefficients,14,Other BD,0.012,0.0,0.022
+Coefficients,15,SE with AmChl,-0.065,-0.177,0.044
+Coefficients,16,Suppressants,-0.061,-0.145,0.025
+Coefficients,17,Other SE,-0.02,-0.039,0.003
+Coefficients,18,Compound strength,-0.068,-0.204,0.005
+Coefficients,19,Schedules 3-6,-0.01,-0.343,0.314

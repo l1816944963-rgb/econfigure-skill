@@ -1,0 +1,105 @@
+id: binscatter-diagnostic-2x2
+family: scatter-relationship
+subtype: raw-cutoff-binned-conditional-diagnostic
+status: approved
+files:
+  preview: binscatter-diagnostic-2x2.png
+  script: binscatter-diagnostic-2x2.py
+  fixtures:
+  - binscatter-diagnostic-2x2.fixture.csv
+output:
+  format: png
+  dpi: 600
+  pixel-size:
+  - 3942
+  - 2868
+  additional-master-formats: forbidden
+scene:
+- Explain how a dense raw relationship is reduced to binscatter means
+- Compare unconditional and conditional binned relationships
+data_contract:
+  analytical-calculation: forbidden
+  summary: Four declared panels with supplied raw points cut positions bin means fit coordinates and conditional segments.
+  required_data_roles:
+  - field: panel
+    source: binscatter-diagnostic-2x2.fixture.csv
+    role: facet-key
+    value_type: string
+    required: true
+    description: Assigns observations or summaries to a panel or section.
+  - field: kind
+    source: binscatter-diagnostic-2x2.fixture.csv
+    role: category-key
+    value_type: string
+    required: true
+    description: Defines a grouping, series, component, or categorical position.
+  - field: x
+    source: binscatter-diagnostic-2x2.fixture.csv
+    role: quantitative-domain
+    value_type: number
+    required: true
+    description: Defines the quantitative horizontal or ordered position.
+  - field: y
+    source: binscatter-diagnostic-2x2.fixture.csv
+    role: measure
+    value_type: number
+    required: true
+    description: Supplies a plotted magnitude; the renderer may transform only for display.
+  semantic_contract:
+    unit_of_observation: one observation or supplied binned point per row
+    mark_to_data_mapping: horizontal and vertical position jointly encode a relationship; any fitted path must be explicitly
+      authorized or supplied
+    specialized: true
+    rules:
+    - Do not change analytical definitions or calculate missing research results.
+    - Do not fabricate observations or extend a fitted line beyond its supported domain.
+  retrieval_contract:
+    match_first:
+    - communication goal
+    - required data roles
+    - semantic marks
+    - panel structure
+    match_second:
+    - axis behavior
+    - encoding
+    - annotation
+    - layout
+    reject_if:
+    - required roles are absent
+    - the visual mark would change the data meaning
+    - the asset hard checks cannot pass
+elements:
+  geometry:
+  - scatter
+  - dense-cloud
+  - vertical-cutoffs
+  - binned-means
+  - fitted-line
+  - horizontal-segments
+  encoding:
+  - blue-raw-points
+  - black-bin-means
+  - green-fit
+  annotation:
+  - panel-specific-titles
+  - panel-c-legend
+  axes:
+  - shared-x-domain
+  - panel-specific-y-range
+  layout:
+  - two-by-two
+  - compact-diagnostic-grid
+implementation:
+  entrypoint: render
+  hard-checks:
+  - exactly four panels
+  - finite plotted coordinates
+  - supplied fit path
+  - supplied cutoff positions
+compatibility:
+  grayscale: pass
+  academic-publication: conditional
+  warnings:
+  - Raw point density should be reduced or rasterized for very large real datasets.
+qa:
+  deterministic: true

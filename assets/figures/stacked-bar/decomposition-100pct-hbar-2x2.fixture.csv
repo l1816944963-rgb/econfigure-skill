@@ -1,0 +1,81 @@
+panel,panel_order,category,category_order,component,component_order,share
+Top 0.001%,1,Equal Returns,1,Fixed Income,1,49.2
+Top 0.001%,1,Equal Returns,1,C-corp,2,40.7
+Top 0.001%,1,Equal Returns,1,Pass-through,3,8.3
+Top 0.001%,1,Equal Returns,1,Housing,4,1.0
+Top 0.001%,1,Equal Returns,1,"Pensions, Other",5,0.8
+Top 0.001%,1,Baseline,2,Fixed Income,1,18.9
+Top 0.001%,1,Baseline,2,C-corp,2,52.7
+Top 0.001%,1,Baseline,2,Pass-through,3,21.8
+Top 0.001%,1,Baseline,2,Housing,4,4.3
+Top 0.001%,1,Baseline,2,"Pensions, Other",5,2.3
+Top 0.001%,1,SCF + Forbes,3,Fixed Income,1,8.5
+Top 0.001%,1,SCF + Forbes,3,C-corp,2,36.0
+Top 0.001%,1,SCF + Forbes,3,Pass-through,3,48.5
+Top 0.001%,1,SCF + Forbes,3,Housing,4,4.4
+Top 0.001%,1,SCF + Forbes,3,"Pensions, Other",5,2.6
+Top 0.001%,1,UBS Family Office,4,Fixed Income,1,8.7
+Top 0.001%,1,UBS Family Office,4,C-corp,2,26.0
+Top 0.001%,1,UBS Family Office,4,Pass-through,3,56.0
+Top 0.001%,1,UBS Family Office,4,Housing,4,6.8
+Top 0.001%,1,UBS Family Office,4,"Pensions, Other",5,2.5
+Top 0.01%,2,Equal Returns,1,Fixed Income,1,44.3
+Top 0.01%,2,Equal Returns,1,C-corp,2,39.8
+Top 0.01%,2,Equal Returns,1,Pass-through,3,11.2
+Top 0.01%,2,Equal Returns,1,Housing,4,2.3
+Top 0.01%,2,Equal Returns,1,"Pensions, Other",5,2.4
+Top 0.01%,2,Baseline,2,Fixed Income,1,21.6
+Top 0.01%,2,Baseline,2,C-corp,2,43.9
+Top 0.01%,2,Baseline,2,Pass-through,3,23.3
+Top 0.01%,2,Baseline,2,Housing,4,5.9
+Top 0.01%,2,Baseline,2,"Pensions, Other",5,5.3
+Top 0.01%,2,SCF + Forbes,3,Fixed Income,1,8.9
+Top 0.01%,2,SCF + Forbes,3,C-corp,2,31.5
+Top 0.01%,2,SCF + Forbes,3,Pass-through,3,52.9
+Top 0.01%,2,SCF + Forbes,3,Housing,4,5.3
+Top 0.01%,2,SCF + Forbes,3,"Pensions, Other",5,1.4
+Top 0.01%,2,UBS Family Office,4,Fixed Income,1,8.7
+Top 0.01%,2,UBS Family Office,4,C-corp,2,48.0
+Top 0.01%,2,UBS Family Office,4,Pass-through,3,36.0
+Top 0.01%,2,UBS Family Office,4,Housing,4,6.6
+Top 0.01%,2,UBS Family Office,4,"Pensions, Other",5,0.7
+Top 0.1%,3,Equal Returns,1,Fixed Income,1,40.1
+Top 0.1%,3,Equal Returns,1,C-corp,2,34.3
+Top 0.1%,3,Equal Returns,1,Pass-through,3,14.7
+Top 0.1%,3,Equal Returns,1,Housing,4,6.9
+Top 0.1%,3,Equal Returns,1,"Pensions, Other",5,4.0
+Top 0.1%,3,Baseline,2,Fixed Income,1,26.0
+Top 0.1%,3,Baseline,2,C-corp,2,34.0
+Top 0.1%,3,Baseline,2,Pass-through,3,22.9
+Top 0.1%,3,Baseline,2,Housing,4,9.7
+Top 0.1%,3,Baseline,2,"Pensions, Other",5,7.4
+Top 0.1%,3,SCF + Forbes,3,Fixed Income,1,13.7
+Top 0.1%,3,SCF + Forbes,3,C-corp,2,26.0
+Top 0.1%,3,SCF + Forbes,3,Pass-through,3,48.6
+Top 0.1%,3,SCF + Forbes,3,Housing,4,9.1
+Top 0.1%,3,SCF + Forbes,3,"Pensions, Other",5,2.6
+Top 0.1%,3,Estate Tax,4,Fixed Income,1,17.3
+Top 0.1%,3,Estate Tax,4,C-corp,2,26.9
+Top 0.1%,3,Estate Tax,4,Pass-through,3,34.6
+Top 0.1%,3,Estate Tax,4,Housing,4,9.3
+Top 0.1%,3,Estate Tax,4,"Pensions, Other",5,11.9
+Top 1%,4,Equal Returns,1,Fixed Income,1,34.0
+Top 1%,4,Equal Returns,1,C-corp,2,25.7
+Top 1%,4,Equal Returns,1,Pass-through,3,16.2
+Top 1%,4,Equal Returns,1,Housing,4,12.3
+Top 1%,4,Equal Returns,1,"Pensions, Other",5,11.8
+Top 1%,4,Baseline,2,Fixed Income,1,28.2
+Top 1%,4,Baseline,2,C-corp,2,26.2
+Top 1%,4,Baseline,2,Pass-through,3,19.9
+Top 1%,4,Baseline,2,Housing,4,15.5
+Top 1%,4,Baseline,2,"Pensions, Other",5,10.2
+Top 1%,4,SCF + Forbes,3,Fixed Income,1,14.6
+Top 1%,4,SCF + Forbes,3,C-corp,2,27.3
+Top 1%,4,SCF + Forbes,3,Pass-through,3,39.3
+Top 1%,4,SCF + Forbes,3,Housing,4,11.3
+Top 1%,4,SCF + Forbes,3,"Pensions, Other",5,7.5
+Top 1%,4,DFA,4,Fixed Income,1,19.2
+Top 1%,4,DFA,4,C-corp,2,21.3
+Top 1%,4,DFA,4,Pass-through,3,23.9
+Top 1%,4,DFA,4,Housing,4,11.6
+Top 1%,4,DFA,4,"Pensions, Other",5,24.0

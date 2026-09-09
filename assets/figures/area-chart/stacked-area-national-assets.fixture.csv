@@ -1,0 +1,56 @@
+year,year_order,component,component_order,value
+1770,1,Agricultural land,1,160
+1810,2,Agricultural land,1,120
+1850,3,Agricultural land,1,120
+1880,4,Agricultural land,1,85
+1910,5,Agricultural land,1,100
+1920,6,Agricultural land,1,55
+1930,7,Agricultural land,1,45
+1950,8,Agricultural land,1,20
+1970,9,Agricultural land,1,15
+1990,10,Agricultural land,1,5
+2010,11,Agricultural land,1,8
+1770,1,Slaves,2,150
+1810,2,Slaves,2,110
+1850,3,Slaves,2,105
+1880,4,Slaves,2,0
+1910,5,Slaves,2,0
+1920,6,Slaves,2,0
+1930,7,Slaves,2,0
+1950,8,Slaves,2,0
+1970,9,Slaves,2,0
+1990,10,Slaves,2,0
+2010,11,Slaves,2,0
+1770,1,Housing,3,90
+1810,2,Housing,3,60
+1850,3,Housing,3,65
+1880,4,Housing,3,115
+1910,5,Housing,3,105
+1920,6,Housing,3,105
+1930,7,Housing,3,150
+1950,8,Housing,3,150
+1970,9,Housing,3,155
+1990,10,Housing,3,175
+2010,11,Housing,3,187
+1770,1,Other domestic capital,4,50
+1810,2,Other domestic capital,4,110
+1850,3,Other domestic capital,4,160
+1880,4,Other domestic capital,4,220
+1910,5,Other domestic capital,4,280
+1920,6,Other domestic capital,4,250
+1930,7,Other domestic capital,4,320
+1950,8,Other domestic capital,4,195
+1970,9,Other domestic capital,4,215
+1990,10,Other domestic capital,4,235
+2010,11,Other domestic capital,4,235
+1770,1,Net foreign assets,5,25
+1810,2,Net foreign assets,5,10
+1850,3,Net foreign assets,5,8
+1880,4,Net foreign assets,5,10
+1910,5,Net foreign assets,5,8
+1920,6,Net foreign assets,5,10
+1930,7,Net foreign assets,5,15
+1950,8,Net foreign assets,5,10
+1970,9,Net foreign assets,5,10
+1990,10,Net foreign assets,5,5
+2010,11,Net foreign assets,5,25

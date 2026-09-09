@@ -1,0 +1,3604 @@
+schema_version: 2
+source: validated runtime asset manifests
+asset_count: 67
+assets:
+- id: stacked-area-national-assets
+  family: area-chart
+  subtype: grayscale-five-component-historical-stack
+  scenes:
+  - Show how the composition and total scale of national assets change over time
+  - Preserve a historically disappearing component with hatch encoding
+  data_contract_summary: Eleven ordered observations with five complete non-negative components and an explicit stack order.
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - stacked-area
+    - five-components
+    - historical-profile
+    encoding:
+    - black
+    - diagonal-hatch
+    - light-gray
+    - medium-gray
+    - white-outline
+    - grayscale-safe
+    annotation:
+    - large-inset-legend
+    axes:
+    - categorical-year-spacing
+    - percent-of-national-income-y
+    - tickless-labeled-axes
+    - two-direction-grid
+    layout:
+    - single-panel
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The equal visual spacing between irregular historical years must be preserved unless a real-use design explicitly requests
+      elapsed-time spacing.
+  search_terms:
+  - area-chart
+  - black
+  - categorical-year-spacing
+  - diagonal-hatch
+  - five-components
+  - grayscale-five-component-historical-stack
+  - grayscale-safe
+  - historical-profile
+  - large-inset-legend
+  - light-gray
+  - medium-gray
+  - percent-of-national-income-y
+  - single-panel
+  - stacked-area
+  - tickless-labeled-axes
+  - two-direction-grid
+  - white-outline
+  - wide-landscape
+  files:
+    manifest: figures/area-chart/stacked-area-national-assets.asset.yaml
+    script: figures/area-chart/stacked-area-national-assets.py
+    preview: figures/area-chart/stacked-area-national-assets.png
+- id: stacked-area-portfolio-composition
+  family: area-chart
+  subtype: normalized-seven-component-portfolio-profile
+  scenes:
+  - Compare changes in portfolio composition over time
+  - Show simultaneous growth and contraction across seven asset classes
+  data_contract_summary: Continuous years 2011 through 2015 with seven non-negative complete shares summing to 100 in every
+    year.
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - stacked-area
+    - normalized
+    - seven-components
+    - annual
+    encoding:
+    - seven-color-fill
+    - dark-boundaries
+    annotation:
+    - two-row-bottom-legend
+    axes:
+    - percent-y
+    - continuous-year-x
+    - tickless-labeled-axes
+    layout:
+    - single-panel
+    - wide-landscape
+    - external-bottom-legend
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Seven colors require redundant patterns or a reduced palette when adapted for grayscale thesis printing.
+  search_terms:
+  - annual
+  - area-chart
+  - continuous-year-x
+  - dark-boundaries
+  - external-bottom-legend
+  - normalized
+  - normalized-seven-component-portfolio-profile
+  - percent-y
+  - seven-color-fill
+  - seven-components
+  - single-panel
+  - stacked-area
+  - tickless-labeled-axes
+  - two-row-bottom-legend
+  - wide-landscape
+  files:
+    manifest: figures/area-chart/stacked-area-portfolio-composition.asset.yaml
+    script: figures/area-chart/stacked-area-portfolio-composition.py
+    preview: figures/area-chart/stacked-area-portfolio-composition.png
+- id: stacked-area-round-outcomes
+  family: area-chart
+  subtype: normalized-three-outcome-round-profile
+  scenes:
+  - Track convergence in outcome composition across repeated rounds
+  - Emphasize a dominant interaction share and shrinking exclusion shares
+  data_contract_summary: Continuous rounds 1 through 30 with three non-negative complete shares summing to one in every round.
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - stacked-area
+    - normalized
+    - three-components
+    - thirty-rounds
+    encoding:
+    - light-gray
+    - dark-gray
+    - white
+    - grayscale-safe
+    annotation:
+    - inset-bottom-right-legend
+    axes:
+    - frequency-y
+    - continuous-round-x
+    - full-frame
+    layout:
+    - single-panel
+    - compact-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Very thin top layers require inspection at insertion size.
+  search_terms:
+  - area-chart
+  - compact-landscape
+  - continuous-round-x
+  - dark-gray
+  - frequency-y
+  - full-frame
+  - grayscale-safe
+  - inset-bottom-right-legend
+  - light-gray
+  - normalized
+  - normalized-three-outcome-round-profile
+  - single-panel
+  - stacked-area
+  - thirty-rounds
+  - three-components
+  - white
+  files:
+    manifest: figures/area-chart/stacked-area-round-outcomes.asset.yaml
+    script: figures/area-chart/stacked-area-round-outcomes.py
+    preview: figures/area-chart/stacked-area-round-outcomes.png
+- id: diverging-hbar-zscore-2panel
+  family: bar-comparison
+  subtype: two-panel-diverging-horizontal-bars
+  scenes:
+  - Compare standardized scores across countries
+  - Contrast two samples with separate category sets
+  data_contract_summary: Long data with two ordered panels and unique ordered categories within each panel.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - horizontal-bar
+    - diverging
+    - two-panel
+    encoding:
+    - single-navy-fill
+    annotation:
+    - left-aligned-panel-titles
+    - zero-lines
+    axes:
+    - signed-x
+    - category-y
+    - vertical-grid
+    layout:
+    - side-by-side-panels
+    - long-label-margin
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Panel-specific x ranges must be disclosed when cross-panel magnitude comparison matters.
+  search_terms:
+  - bar-comparison
+  - category-y
+  - diverging
+  - horizontal-bar
+  - left-aligned-panel-titles
+  - long-label-margin
+  - side-by-side-panels
+  - signed-x
+  - single-navy-fill
+  - two-panel
+  - two-panel-diverging-horizontal-bars
+  - vertical-grid
+  - zero-lines
+  files:
+    manifest: figures/bar-comparison/diverging-hbar-zscore-2panel.asset.yaml
+    script: figures/bar-comparison/diverging-hbar-zscore-2panel.py
+    preview: figures/bar-comparison/diverging-hbar-zscore-2panel.png
+- id: monotonic-vbar-value-labels
+  family: bar-comparison
+  subtype: ordered-single-series-bars-with-independent-labels
+  scenes:
+  - Show a strongly increasing ordered exposure profile
+  - Display a second supplied statistic above each bar
+  data_contract_summary: Unique ordered categories with non-negative bar heights and one supplied display label per bar.
+  required_role_names:
+  - category-key
+  - display-label
+  - measure
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - single-series
+    - monotonic-profile
+    encoding:
+    - uniform-navy-fill
+    annotation:
+    - bar-top-labels
+    - independent-label-values
+    axes:
+    - zero-baseline
+    - ordered-category-x
+    - horizontal-grid
+    layout:
+    - single-panel
+    - compact-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Display labels must come from a declared supplied field when they differ from bar heights.
+  search_terms:
+  - bar-comparison
+  - bar-top-labels
+  - compact-landscape
+  - horizontal-grid
+  - independent-label-values
+  - monotonic-profile
+  - ordered-category-x
+  - ordered-single-series-bars-with-independent-labels
+  - single-panel
+  - single-series
+  - uniform-navy-fill
+  - vertical-bar
+  - zero-baseline
+  files:
+    manifest: figures/bar-comparison/monotonic-vbar-value-labels.asset.yaml
+    script: figures/bar-comparison/monotonic-vbar-value-labels.py
+    preview: figures/bar-comparison/monotonic-vbar-value-labels.png
+- id: negative-bar-sector-change
+  family: bar-comparison
+  subtype: signed-negative-vertical-bars
+  scenes:
+  - Compare signed changes across many sectors
+  - Emphasize the magnitude of mostly negative category changes
+  data_contract_summary: Ordered unique categories with one signed value each and at least one negative value.
+  required_role_names:
+  - category-key
+  - measure
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - single-series
+    - many-categories
+    encoding:
+    - uniform-gray-fill
+    annotation:
+    - rotated-category-labels
+    - zero-line
+    axes:
+    - signed-y
+    - categorical-x
+    - horizontal-grid
+    layout:
+    - wide-bottom-label-margin
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Long category labels require insertion-width review.
+  search_terms:
+  - bar-comparison
+  - categorical-x
+  - horizontal-grid
+  - many-categories
+  - rotated-category-labels
+  - signed-negative-vertical-bars
+  - signed-y
+  - single-series
+  - uniform-gray-fill
+  - vertical-bar
+  - wide-bottom-label-margin
+  - zero-line
+  files:
+    manifest: figures/bar-comparison/negative-bar-sector-change.asset.yaml
+    script: figures/bar-comparison/negative-bar-sector-change.py
+    preview: figures/bar-comparison/negative-bar-sector-change.png
+- id: grouped-vbar-errorbars-2series
+  family: bar-with-error
+  subtype: two-series-grouped-bars-with-symmetric-errors
+  scenes:
+  - Compare estimated costs between two states
+  - Show uncertainty around grouped estimates across an ordered parameter
+  data_contract_summary: Four ordered categories with two complete non-negative estimates and one supplied non-negative symmetric
+    error per series-category key.
+  required_role_names:
+  - category-key
+  - ordering-key
+  - point-estimate
+  - quantitative-domain
+  - uncertainty-width
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - grouped
+    - two-series
+    - error-bars
+    encoding:
+    - black-filled
+    - white-outline
+    - grayscale-safe
+    annotation:
+    - top-left-legend
+    - capped-error-bars
+    axes:
+    - zero-baseline
+    - ordered-parameter-x
+    - horizontal-grid
+    layout:
+    - single-panel
+    - near-square
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The supplied error measure and confidence level must be disclosed in real use.
+  search_terms:
+  - bar-with-error
+  - black-filled
+  - capped-error-bars
+  - error-bars
+  - grayscale-safe
+  - grouped
+  - horizontal-grid
+  - near-square
+  - ordered-parameter-x
+  - single-panel
+  - top-left-legend
+  - two-series
+  - two-series-grouped-bars-with-symmetric-errors
+  - vertical-bar
+  - white-outline
+  - zero-baseline
+  files:
+    manifest: figures/bar-with-error/grouped-vbar-errorbars-2series.asset.yaml
+    script: figures/bar-with-error/grouped-vbar-errorbars-2series.py
+    preview: figures/bar-with-error/grouped-vbar-errorbars-2series.png
+- id: grouped-vbar-errorbars-three-treatments
+  family: bar-with-error
+  subtype: three-treatment-two-sector-bars-with-symmetric-errors
+  scenes:
+  - Compare two institutional groups across three election-information treatments
+  - Show uncertainty and supplied between-group significance tests
+  data_contract_summary: Three ordered treatments with exactly two complete groups, one supplied non-negative symmetric error
+    per estimate, and supplied significance labels.
+  required_role_names:
+  - category-key
+  - display-label
+  - input-value
+  - ordering-key
+  - point-estimate
+  - uncertainty-width
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - grouped
+    - two-series
+    - three-treatments
+    - error-bars
+    encoding:
+    - white-private
+    - muted-rose-public
+    - black-errorbars
+    annotation:
+    - in-bar-percent-labels
+    - within-treatment-p-values
+    - cross-treatment-brackets
+    axes:
+    - zero-baseline
+    - donation-rate-y
+    - categorical-x
+    layout:
+    - single-panel
+    - wide-landscape
+    - reserved-top-annotation-band
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Significance brackets and error caps require independent top-margin validation.
+  search_terms:
+  - bar-with-error
+  - black-errorbars
+  - categorical-x
+  - cross-treatment-brackets
+  - donation-rate-y
+  - error-bars
+  - grouped
+  - in-bar-percent-labels
+  - muted-rose-public
+  - reserved-top-annotation-band
+  - single-panel
+  - three-treatment-two-sector-bars-with-symmetric-errors
+  - three-treatments
+  - two-series
+  - vertical-bar
+  - white-private
+  - wide-landscape
+  - within-treatment-p-values
+  - zero-baseline
+  files:
+    manifest: figures/bar-with-error/grouped-vbar-errorbars-three-treatments.asset.yaml
+    script: figures/bar-with-error/grouped-vbar-errorbars-three-treatments.py
+    preview: figures/bar-with-error/grouped-vbar-errorbars-three-treatments.png
+- id: lease-length-distribution-discount
+  family: bar-with-error
+  subtype: split-range-histograms-and-negative-summary-bars
+  scenes:
+  - Show a discontinuous long-tailed lease distribution
+  - Relate lease-length groups to average discounts and uncertainty
+  data_contract_summary: Two supplied histogram bin series plus five ordered discount estimates with non-negative supplied
+    errors.
+  required_role_names:
+  - display-label
+  - facet-key
+  - geometric-magnitude
+  - measure
+  - ordering-key
+  - quantitative-domain
+  - uncertainty-width
+  specialized: false
+  elements:
+    geometry:
+    - histogram
+    - split-x-range
+    - negative-bars
+    - error-bars
+    - three-panels
+    encoding:
+    - uniform-gray
+    - dark-outlines
+    - thick-uncertainty-lines
+    annotation:
+    - panel-letters
+    - shared-top-title
+    - lower-panel-title
+    axes:
+    - count-y
+    - years-x
+    - zero-reference
+    - negative-discount-y
+    layout:
+    - two-top-one-bottom
+    - asymmetric-panel-width
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The split histogram range must remain explicit so the empty interval is not mistaken for continuity.
+  search_terms:
+  - asymmetric-panel-width
+  - bar-with-error
+  - count-y
+  - dark-outlines
+  - error-bars
+  - histogram
+  - lower-panel-title
+  - negative-bars
+  - negative-discount-y
+  - panel-letters
+  - shared-top-title
+  - split-range-histograms-and-negative-summary-bars
+  - split-x-range
+  - thick-uncertainty-lines
+  - three-panels
+  - two-top-one-bottom
+  - uniform-gray
+  - years-x
+  - zero-reference
+  files:
+    manifest: figures/bar-with-error/lease-length-distribution-discount.asset.yaml
+    script: figures/bar-with-error/lease-length-distribution-discount.py
+    preview: figures/bar-with-error/lease-length-distribution-discount.png
+- id: annual-boxplot-trend
+  family: box-plot
+  subtype: annual-five-number-summary-sequence
+  scenes:
+  - Track distribution location and spread over years
+  - Identify annual tail observations
+  data_contract_summary: Continuous annual five-number summaries from 1982 through 1995 with optional supplied outliers.
+  required_role_names:
+  - distribution-summary
+  - interval-lower
+  - interval-upper
+  - ordered-domain
+  specialized: false
+  elements:
+    geometry:
+    - boxplot
+    - whiskers
+    - outliers
+    - annual-sequence
+    encoding:
+    - white-box
+    - gray-outline
+    annotation:
+    - alternating-year-labels
+    axes:
+    - year-x
+    - continuous-y
+    layout:
+    - single-panel
+    - landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Alternating year labels must retain their association without touching the axis title.
+  search_terms:
+  - alternating-year-labels
+  - annual-five-number-summary-sequence
+  - annual-sequence
+  - box-plot
+  - boxplot
+  - continuous-y
+  - gray-outline
+  - landscape
+  - outliers
+  - single-panel
+  - whiskers
+  - white-box
+  - year-x
+  files:
+    manifest: figures/box-plot/annual-boxplot-trend.asset.yaml
+    script: figures/box-plot/annual-boxplot-trend.py
+    preview: figures/box-plot/annual-boxplot-trend.png
+- id: annual-return-stripplot
+  family: box-plot
+  subtype: annual-horizontal-return-distribution
+  scenes:
+  - Track cross-sectional return dispersion by year
+  - Reveal years with unusually wide positive and negative tails
+  data_contract_summary: Continuous years 1980 through 2001 with at least four supplied return observations per year.
+  required_role_names:
+  - measure
+  - ordered-domain
+  specialized: false
+  elements:
+    geometry:
+    - stripplot
+    - annual-rows
+    - zero-reference
+    encoding:
+    - dark-gray-points
+    annotation:
+    - top-left-axis-title
+    axes:
+    - currency-x
+    - reversed-year-y
+    - vertical-grid
+    layout:
+    - single-panel
+    - portrait
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Dense late-year rows require small points and preserved whitespace between years.
+  search_terms:
+  - annual-horizontal-return-distribution
+  - annual-rows
+  - box-plot
+  - currency-x
+  - dark-gray-points
+  - portrait
+  - reversed-year-y
+  - single-panel
+  - stripplot
+  - top-left-axis-title
+  - vertical-grid
+  - zero-reference
+  files:
+    manifest: figures/box-plot/annual-return-stripplot.asset.yaml
+    script: figures/box-plot/annual-return-stripplot.py
+    preview: figures/box-plot/annual-return-stripplot.png
+- id: importance-boxplot-outliers
+  family: box-plot
+  subtype: eleven-predictor-importance-with-outliers
+  scenes:
+  - Compare variable-importance distributions across predictors
+  - Identify predictors with large positive outliers
+  data_contract_summary: Eleven ordered predictor summaries with valid five-number statistics and optional supplied outliers.
+  required_role_names:
+  - category-key
+  - display-label
+  - distribution-summary
+  - interval-lower
+  - interval-upper
+  specialized: false
+  elements:
+    geometry:
+    - boxplot
+    - whiskers
+    - outliers
+    - eleven-categories
+    encoding:
+    - blue-box-outline
+    - red-median
+    - red-plus-outlier
+    annotation:
+    - category-labels
+    axes:
+    - importance-percent-y
+    - categorical-x
+    - full-frame
+    layout:
+    - single-panel
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Large outliers require enough upper-axis headroom and must not be clipped.
+  search_terms:
+  - blue-box-outline
+  - box-plot
+  - boxplot
+  - categorical-x
+  - category-labels
+  - eleven-categories
+  - eleven-predictor-importance-with-outliers
+  - full-frame
+  - importance-percent-y
+  - outliers
+  - red-median
+  - red-plus-outlier
+  - single-panel
+  - whiskers
+  - wide-landscape
+  files:
+    manifest: figures/box-plot/importance-boxplot-outliers.asset.yaml
+    script: figures/box-plot/importance-boxplot-outliers.py
+    preview: figures/box-plot/importance-boxplot-outliers.png
+- id: investment-manager-compensation-boxplot
+  family: box-plot
+  subtype: five-profession-compensation-distributions
+  scenes:
+  - Compare compensation distribution across professions
+  - Relate quartiles to named external percentiles
+  data_contract_summary: Five ordered supplied five-number summaries and three reference values.
+  required_role_names:
+  - display-label
+  - distribution-summary
+  - interval-lower
+  - interval-upper
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - horizontal-boxplot
+    - whiskers
+    - median
+    - percentile-guides
+    encoding:
+    - blue-gray-box
+    - orange-dashed-guides
+    annotation:
+    - rotated-percentile-labels
+    - source-note
+    axes:
+    - compensation-x
+    - profession-y
+    layout:
+    - single-wide-panel
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Whisker convention must be supplied for empirical use.
+  search_terms:
+  - blue-gray-box
+  - box-plot
+  - compensation-x
+  - five-profession-compensation-distributions
+  - horizontal-boxplot
+  - median
+  - orange-dashed-guides
+  - percentile-guides
+  - profession-y
+  - rotated-percentile-labels
+  - single-wide-panel
+  - source-note
+  - whiskers
+  files:
+    manifest: figures/box-plot/investment-manager-compensation-boxplot.asset.yaml
+    script: figures/box-plot/investment-manager-compensation-boxplot.py
+    preview: figures/box-plot/investment-manager-compensation-boxplot.png
+- id: model-distribution-boxplots-6panel
+  family: box-plot
+  subtype: six-model-two-group-distribution-summaries
+  scenes:
+  - Compare distribution location spread and skewness across model assumptions
+  - Compare CP and MB distribution summaries within each model
+  - Inspect whether medians and central ranges lie above or below a unit benchmark
+  data_contract_summary: Six ordered models with CP and MB groups and supplied lower whisker, first quartile, median, third
+    quartile, and upper whisker values.
+  required_role_names:
+  - category-key
+  - first-quartile
+  - median
+  - third-quartile
+  - whisker-lower
+  - whisker-upper
+  specialized: true
+  elements:
+    geometry:
+    - horizontal-boxplot
+    - whiskers
+    - interquartile-box
+    - median-tick
+    - six-panels
+    - two-groups
+    encoding:
+    - cyan-iqr-box
+    - dark-blue-whisker
+    - dark-median-line
+    - red-unit-reference
+    annotation:
+    - model-titles
+    - right-side-group-labels
+    axes:
+    - shared-ratio-x
+    - reference-at-one
+    layout:
+    - six-rows
+    - portrait
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The box width encodes IQR but box height is a layout parameter
+    - Whisker semantics must be supplied because the source caption is unavailable
+    - The unit reference must not be labeled as a null effect without domain evidence.
+  search_terms:
+  - box-plot
+  - cyan-iqr-box
+  - dark-blue-whisker
+  - dark-median-line
+  - horizontal-boxplot
+  - interquartile-box
+  - median-tick
+  - model-titles
+  - portrait
+  - red-unit-reference
+  - reference-at-one
+  - right-side-group-labels
+  - shared-ratio-x
+  - six-model-two-group-distribution-summaries
+  - six-panels
+  - six-rows
+  - two-groups
+  - whiskers
+  files:
+    manifest: figures/box-plot/model-distribution-boxplots-6panel.asset.yaml
+    script: figures/box-plot/model-distribution-boxplots-6panel.py
+    preview: figures/box-plot/model-distribution-boxplots-6panel.png
+- id: variance-decomposition-frequency-boxplots-2panel
+  family: box-plot
+  subtype: mixed-versus-quarterly-frequency-variance-decomposition
+  scenes:
+  - Compare frequency-specific variance decomposition sequences
+  - Inspect declining distribution summaries over positions
+  data_contract_summary: Two panels, two series, and an ordered supplied five-number summary at every position.
+  required_role_names:
+  - distribution-summary
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - measure
+  - quantitative-domain
+  specialized: false
+  elements:
+    geometry:
+    - paired-boxplots
+    - two-panels
+    encoding:
+    - salmon-fill
+    - cyan-fill
+    annotation:
+    - frequency-legend
+    axes:
+    - position-x
+    - variance-y
+    layout:
+    - one-by-two
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Dense boxplot sequences require insertion-size review.
+  search_terms:
+  - box-plot
+  - cyan-fill
+  - frequency-legend
+  - mixed-versus-quarterly-frequency-variance-decomposition
+  - one-by-two
+  - paired-boxplots
+  - position-x
+  - salmon-fill
+  - two-panels
+  - variance-y
+  files:
+    manifest: figures/box-plot/variance-decomposition-frequency-boxplots-2panel.asset.yaml
+    script: figures/box-plot/variance-decomposition-frequency-boxplots-2panel.py
+    preview: figures/box-plot/variance-decomposition-frequency-boxplots-2panel.png
+- id: drug-characteristics-coefficients-2panel
+  family: coefficient-plot
+  subtype: aligned-drug-characteristics-and-coefficient-columns
+  scenes:
+  - Compare two coefficient sets on shared category rows
+  - Identify category-specific effects and uncertainty
+  data_contract_summary: Two panels with identical category order and supplied estimate lower upper values.
+  required_role_names:
+  - display-label
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - horizontal-bars-from-zero
+    - confidence-interval
+    - aligned-two-panels
+    encoding:
+    - blue-bar
+    - black-interval
+    annotation:
+    - column-header-strip
+    axes:
+    - coefficient-x
+    - shared-category-y
+    layout:
+    - one-by-two
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Do not silently align panels whose real-data category sets differ.
+  search_terms:
+  - aligned-drug-characteristics-and-coefficient-columns
+  - aligned-two-panels
+  - black-interval
+  - blue-bar
+  - coefficient-plot
+  - coefficient-x
+  - column-header-strip
+  - confidence-interval
+  - horizontal-bars-from-zero
+  - one-by-two
+  - shared-category-y
+  files:
+    manifest: figures/coefficient-plot/drug-characteristics-coefficients-2panel.asset.yaml
+    script: figures/coefficient-plot/drug-characteristics-coefficients-2panel.py
+    preview: figures/coefficient-plot/drug-characteristics-coefficients-2panel.png
+- id: host-refugee-coefficients-2panel
+  family: coefficient-plot
+  subtype: host-refugee-point-estimates-with-95ci
+  scenes:
+  - Compare treatment effects across host and refugee groups
+  - Test sign and precision against zero
+  data_contract_summary: Two panels with matching outcome labels and supplied estimate lower upper values.
+  required_role_names:
+  - display-label
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - point-interval
+    - two-panels
+    encoding:
+    - gray-point
+    - gray-interval
+    - black-zero-line
+    annotation:
+    - panel-strips
+    axes:
+    - effect-x
+    - outcome-y
+    layout:
+    - one-by-two
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Significance labels are not recoverable from the raster alone.
+  search_terms:
+  - black-zero-line
+  - coefficient-plot
+  - effect-x
+  - gray-interval
+  - gray-point
+  - host-refugee-point-estimates-with-95ci
+  - one-by-two
+  - outcome-y
+  - panel-strips
+  - point-interval
+  - two-panels
+  files:
+    manifest: figures/coefficient-plot/host-refugee-coefficients-2panel.asset.yaml
+    script: figures/coefficient-plot/host-refugee-coefficients-2panel.py
+    preview: figures/coefficient-plot/host-refugee-coefficients-2panel.png
+- id: lecture-days-forest-by-domain
+  family: coefficient-plot
+  subtype: domain-grouped-lecture-day-estimates
+  scenes:
+  - Compare estimated lecture-day effects across outcome domains
+  - Separate primary from secondary outcome blocks
+  data_contract_summary: Ordered outcomes with estimate lower upper values and declared group membership.
+  required_role_names:
+  - display-label
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - measure
+  - point-estimate
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - forest-plot
+    - confidence-interval
+    - grouped-rows
+    encoding:
+    - green-index
+    - gray-secondary
+    annotation:
+    - left-estimate-values
+    - right-outcome-labels
+    axes:
+    - effect-x
+    - zero-reference
+    layout:
+    - portrait
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Long labels require a wide canvas or shortening rules for real data.
+  search_terms:
+  - coefficient-plot
+  - confidence-interval
+  - domain-grouped-lecture-day-estimates
+  - effect-x
+  - forest-plot
+  - gray-secondary
+  - green-index
+  - grouped-rows
+  - left-estimate-values
+  - portrait
+  - right-outcome-labels
+  - zero-reference
+  files:
+    manifest: figures/coefficient-plot/lecture-days-forest-by-domain.asset.yaml
+    script: figures/coefficient-plot/lecture-days-forest-by-domain.py
+    preview: figures/coefficient-plot/lecture-days-forest-by-domain.png
+- id: mental-health-study-comparison
+  family: coefficient-plot
+  subtype: study-point-intervals
+  scenes:
+  - Compare study-level mental-health effect summaries and exposure durations.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - display-label
+  - interval-lower
+  - interval-upper
+  - ordered-domain
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - vertical-point-interval
+    - diamond-marker
+    - value-label
+    - two-level-study-label
+    encoding:
+    - black-marker
+    - gray-interval
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Use a separate duration label band; do not calculate or infer study comparability from a plot.
+  search_terms:
+  - black-marker
+  - coefficient-plot
+  - diamond-marker
+  - gray-interval
+  - study-point-intervals
+  - two-level-study-label
+  - value-label
+  - vertical-point-interval
+  files:
+    manifest: figures/coefficient-plot/mental-health-study-comparison.asset.yaml
+    script: figures/coefficient-plot/mental-health-study-comparison.py
+    preview: figures/coefficient-plot/mental-health-study-comparison.png
+- id: quartile-effect-coefficients-2x2
+  family: coefficient-plot
+  subtype: quartile-effect-four-panel-comparison
+  scenes:
+  - Compare heterogeneous effects across ordered quartiles
+  - Contrast efficacy and representation outcomes
+  data_contract_summary: Four panels with four ordered estimate lower upper summaries each.
+  required_role_names:
+  - display-label
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - measure
+  - point-estimate
+  - quantitative-domain
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - point-interval
+    - four-panels
+    - supplied-reference-path
+    encoding:
+    - blue-diamond
+    - green-circle
+    - red-zero-line
+    annotation:
+    - panel-caption
+    axes:
+    - quartile-x
+    - effect-y
+    layout:
+    - two-by-two
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - The connecting path is descriptive and must not be treated as a fitted curve.
+  search_terms:
+  - blue-diamond
+  - coefficient-plot
+  - effect-y
+  - four-panels
+  - green-circle
+  - panel-caption
+  - point-interval
+  - quartile-effect-four-panel-comparison
+  - quartile-x
+  - red-zero-line
+  - supplied-reference-path
+  - two-by-two
+  files:
+    manifest: figures/coefficient-plot/quartile-effect-coefficients-2x2.asset.yaml
+    script: figures/coefficient-plot/quartile-effect-coefficients-2x2.py
+    preview: figures/coefficient-plot/quartile-effect-coefficients-2x2.png
+- id: replication-alpha-coefficients-2x2
+  family: coefficient-plot
+  subtype: replication-status-alpha-estimates
+  scenes:
+  - Compare alpha distributions across replication procedures
+  - Inspect uncertainty and status by ordered estimate
+  data_contract_summary: Four panels of ordered supplied estimate lower upper values with a declared replication status.
+  required_role_names:
+  - category-key
+  - display-label
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - measure
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - dense-point-interval
+    - four-panels
+    encoding:
+    - blue-replicated
+    - red-not-replicated
+    - green-never-significant
+    annotation:
+    - replication-rate
+    - global-legend
+    axes:
+    - rank-x
+    - alpha-y
+    - zero-reference
+    layout:
+    - two-by-two
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Dense panels require a minimum width and cannot be reused for a small number of observations.
+  search_terms:
+  - alpha-y
+  - blue-replicated
+  - coefficient-plot
+  - dense-point-interval
+  - four-panels
+  - global-legend
+  - green-never-significant
+  - rank-x
+  - red-not-replicated
+  - replication-rate
+  - replication-status-alpha-estimates
+  - two-by-two
+  - zero-reference
+  files:
+    manifest: figures/coefficient-plot/replication-alpha-coefficients-2x2.asset.yaml
+    script: figures/coefficient-plot/replication-alpha-coefficients-2x2.py
+    preview: figures/coefficient-plot/replication-alpha-coefficients-2x2.png
+- id: treatment-arm-domain-intervals
+  family: coefficient-plot
+  subtype: three-facet-paired-intervals
+  scenes:
+  - Compare short- and later-term domain effects across three treatment arms.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - category-key
+  - display-label
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - paired-horizontal-interval
+    - three-facets
+    - literal-p-labels
+    - shared-domain-rows
+    encoding:
+    - green-short-term
+    - blue-later-term
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Reserve independent bands for facet axis labels, legend and global title; paired p-value definitions must be supplied
+      by the caller.
+  search_terms:
+  - blue-later-term
+  - coefficient-plot
+  - green-short-term
+  - literal-p-labels
+  - paired-horizontal-interval
+  - shared-domain-rows
+  - three-facet-paired-intervals
+  - three-facets
+  files:
+    manifest: figures/coefficient-plot/treatment-arm-domain-intervals.asset.yaml
+    script: figures/coefficient-plot/treatment-arm-domain-intervals.py
+    preview: figures/coefficient-plot/treatment-arm-domain-intervals.png
+- id: values-financial-promotion-forest
+  family: coefficient-plot
+  subtype: paired-horizontal-intervals
+  scenes:
+  - Compare two supplied effects across value domains.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - category-key
+  - display-label
+  - interval-lower
+  - interval-upper
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - horizontal-interval
+    - paired-diamonds
+    - filled-hollow-markers
+    - row-separators
+    - red-zero-reference
+    encoding:
+    - blue-financial
+    - red-promotion
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Keep series offsets, interval weight and legend marker size independent; large category text needs a reserved left band.
+  search_terms:
+  - blue-financial
+  - coefficient-plot
+  - filled-hollow-markers
+  - horizontal-interval
+  - paired-diamonds
+  - paired-horizontal-intervals
+  - red-promotion
+  - red-zero-reference
+  - row-separators
+  files:
+    manifest: figures/coefficient-plot/values-financial-promotion-forest.asset.yaml
+    script: figures/coefficient-plot/values-financial-promotion-forest.py
+    preview: figures/coefficient-plot/values-financial-promotion-forest.png
+- id: crop-output-density-2x2
+  family: distribution
+  subtype: four-outcome-density-panels
+  scenes:
+  - Compare transformed outcome distributions across crop definitions
+  - Inspect mass around a zero reference
+  data_contract_summary: Four non-negative supplied density series with at least fifty ordered x positions each.
+  required_role_names:
+  - facet-key
+  - measure
+  - quantitative-domain
+  specialized: false
+  elements:
+    geometry:
+    - histogram-bars
+    - density-outline
+    - two-by-two-panels
+    encoding:
+    - gray-fill
+    - dark-outline
+    annotation:
+    - panel-titles
+    - zero-reference
+    axes:
+    - shared-density-y
+    - symmetric-x
+    layout:
+    - two-by-two
+    - compact-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Bars must remain visibly discrete after downscaling.
+  search_terms:
+  - compact-landscape
+  - dark-outline
+  - density-outline
+  - distribution
+  - four-outcome-density-panels
+  - gray-fill
+  - histogram-bars
+  - panel-titles
+  - shared-density-y
+  - symmetric-x
+  - two-by-two
+  - two-by-two-panels
+  - zero-reference
+  files:
+    manifest: figures/distribution/crop-output-density-2x2.asset.yaml
+    script: figures/distribution/crop-output-density-2x2.py
+    preview: figures/distribution/crop-output-density-2x2.png
+- id: sales-density-baseline-endline-2panel
+  family: distribution
+  subtype: control-treatment-baseline-endline
+  scenes:
+  - Compare distribution shifts within treatment arms
+  - Separate time change from treatment-control differences
+  data_contract_summary: Control and treatment panels with complete non-negative baseline and endline density paths on shared
+    x coordinates.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - quantitative-domain
+  specialized: false
+  elements:
+    geometry:
+    - density-line
+    - two-series-per-panel
+    encoding:
+    - blue-solid
+    - red-dashed
+    - redundant-line-style
+    annotation:
+    - panel-specific-bottom-legends
+    axes:
+    - log-sales-x
+    - density-y
+    - shared-domain
+    layout:
+    - one-by-two
+    - low-wide
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Legends need enough width for treatment labels without becoming visually cramped.
+  search_terms:
+  - blue-solid
+  - control-treatment-baseline-endline
+  - density-line
+  - density-y
+  - distribution
+  - log-sales-x
+  - low-wide
+  - one-by-two
+  - panel-specific-bottom-legends
+  - red-dashed
+  - redundant-line-style
+  - shared-domain
+  - two-series-per-panel
+  files:
+    manifest: figures/distribution/sales-density-baseline-endline-2panel.asset.yaml
+    script: figures/distribution/sales-density-baseline-endline-2panel.py
+    preview: figures/distribution/sales-density-baseline-endline-2panel.png
+- id: state-income-expenditure-regressions-2panel
+  family: distribution
+  subtype: state-level-fixed-effect-regressions
+  scenes:
+  - Compare state-level visible and housing expenditure relationships
+  - Preserve state identities around fitted trends
+  data_contract_summary: Two panels with at least thirty labeled state observations and exactly two supplied fit endpoints
+    each.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  specialized: false
+  elements:
+    geometry:
+    - scatter
+    - supplied-linear-fit
+    - two-panel
+    encoding:
+    - blue-points
+    - red-fit
+    annotation:
+    - state-labels
+    - figure-titles
+    - model-note
+    axes:
+    - income-x
+    - expenditure-y
+    - panel-specific-y
+    layout:
+    - two-rows
+    - portrait
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - State labels and model notes require source-size collision review.
+  search_terms:
+  - blue-points
+  - distribution
+  - expenditure-y
+  - figure-titles
+  - income-x
+  - model-note
+  - panel-specific-y
+  - portrait
+  - red-fit
+  - scatter
+  - state-labels
+  - state-level-fixed-effect-regressions
+  - supplied-linear-fit
+  - two-panel
+  - two-rows
+  files:
+    manifest: figures/distribution/state-income-expenditure-regressions-2panel.asset.yaml
+    script: figures/distribution/state-income-expenditure-regressions-2panel.py
+    preview: figures/distribution/state-income-expenditure-regressions-2panel.png
+- id: treatment-issue-density-4series
+  family: distribution
+  subtype: treatment-control-party-comparison
+  scenes:
+  - Compare issue-position distributions by party and treatment
+  - Show within-party shifts using redundant encoding
+  data_contract_summary: Four complete non-negative supplied density curves with consistent x coordinates.
+  required_role_names:
+  - category-key
+  - measure
+  - quantitative-domain
+  - visual-channel
+  specialized: false
+  elements:
+    geometry:
+    - density-line
+    - four-series
+    encoding:
+    - party-color
+    - treatment-line-style
+    - double-encoding
+    annotation:
+    - two-row-bottom-legend
+    - bandwidth-note
+    axes:
+    - standardized-opinion-x
+    - density-y
+    layout:
+    - single-panel
+    - compact
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The bandwidth note requires a reserved footer below the legend.
+  search_terms:
+  - bandwidth-note
+  - compact
+  - density-line
+  - density-y
+  - distribution
+  - double-encoding
+  - four-series
+  - party-color
+  - single-panel
+  - standardized-opinion-x
+  - treatment-control-party-comparison
+  - treatment-line-style
+  - two-row-bottom-legend
+  files:
+    manifest: figures/distribution/treatment-issue-density-4series.asset.yaml
+    script: figures/distribution/treatment-issue-density-4series.py
+    preview: figures/distribution/treatment-issue-density-4series.png
+- id: delay-state-event-shaded-windows
+  family: event-study
+  subtype: event-intervals-with-time-windows
+  scenes:
+  - Compare time-specific effects with highlighted calendar windows.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - dotted-connected-estimates
+    - vertical-interval
+    - background-time-windows
+    - rotated-date-labels
+    encoding:
+    - gray-window-fills
+    - black-estimates
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Bind each formatter to its own panel; loop-variable capture can silently give every panel the last panel decimal format.
+  search_terms:
+  - background-time-windows
+  - black-estimates
+  - dotted-connected-estimates
+  - event-intervals-with-time-windows
+  - event-study
+  - gray-window-fills
+  - rotated-date-labels
+  - vertical-interval
+  files:
+    manifest: figures/event-study/delay-state-event-shaded-windows.asset.yaml
+    script: figures/event-study/delay-state-event-shaded-windows.py
+    preview: figures/event-study/delay-state-event-shaded-windows.png
+- id: event-response-2x2-dashed-bounds
+  family: event-study
+  subtype: four-panel-dynamic-response
+  scenes:
+  - Compare dynamic responses across four related outcome measures
+  - Show point estimates and supplied interval bounds around an event date
+  data_contract_summary: null
+  required_role_names:
+  - display-label
+  - facet-key
+  - input-value
+  - interval-lower
+  - interval-upper
+  - ordered-domain
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - four-panel
+    - two-by-two
+    - shared-event-time
+    encoding:
+    - point-estimate
+    - circle-marker
+    - solid-black
+    - dashed-navy-bounds
+    annotation:
+    - panel-title
+    - no-legend
+    - event-line
+    - zero-line
+    axes:
+    - continuous-period-x
+    - panel-specific-y
+    - dotted-grid
+    - left-bottom-spines
+    layout:
+    - compact-small-multiples
+    - aligned-columns
+    - aligned-rows
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - dense four-panel text requires actual-size inspection
+    - source raster contained two concatenated figure blocks and page text
+  search_terms:
+  - aligned-columns
+  - aligned-rows
+  - circle-marker
+  - compact-small-multiples
+  - continuous-period-x
+  - dashed-navy-bounds
+  - dotted-grid
+  - event-line
+  - event-study
+  - four-panel
+  - four-panel-dynamic-response
+  - left-bottom-spines
+  - line
+  - no-legend
+  - panel-specific-y
+  - panel-title
+  - point-estimate
+  - shared-event-time
+  - solid-black
+  - two-by-two
+  - zero-line
+  files:
+    manifest: figures/event-study/event-response-2x2-dashed-bounds.asset.yaml
+    script: figures/event-study/event-response-2x2-dashed-bounds.py
+    preview: figures/event-study/event-response-2x2-dashed-bounds.png
+- id: evolution-reform-two-estimators
+  family: event-study
+  subtype: two-estimator-event-study
+  scenes:
+  - Compare two supplied estimators around curriculum changes in two-year bins.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - category-key
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - two-estimator-point-interval
+    - two-vertical-panels
+    - open-circle
+    - open-diamond
+    encoding:
+    - gray-blue-estimator
+    - red-estimator
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Keep the small method offset inside each two-year bin; the bin spacing is intentional and is not a missing-year error.
+  search_terms:
+  - event-study
+  - gray-blue-estimator
+  - open-circle
+  - open-diamond
+  - red-estimator
+  - two-estimator-event-study
+  - two-estimator-point-interval
+  - two-vertical-panels
+  files:
+    manifest: figures/event-study/evolution-reform-two-estimators.asset.yaml
+    script: figures/event-study/evolution-reform-two-estimators.py
+    preview: figures/event-study/evolution-reform-two-estimators.png
+- id: expansion-eligibility-event-2panel
+  family: event-study
+  subtype: two-panel-event-study
+  scenes:
+  - Compare actual and simulated eligibility effects around expansion.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - event-point-interval
+    - two-vertical-panels
+    - reference-period
+    - between-period-event-divider
+    encoding:
+    - black-point
+    - black-interval
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Preserve the zero reference observation at -1 separately from the event divider at -0.5; do not invent uncertainty for
+      a normalized reference.
+  search_terms:
+  - between-period-event-divider
+  - black-interval
+  - black-point
+  - event-point-interval
+  - event-study
+  - reference-period
+  - two-panel-event-study
+  - two-vertical-panels
+  files:
+    manifest: figures/event-study/expansion-eligibility-event-2panel.asset.yaml
+    script: figures/event-study/expansion-eligibility-event-2panel.py
+    preview: figures/event-study/expansion-eligibility-event-2panel.png
+- id: receipt-week-overlapping-bands
+  family: event-study
+  subtype: two-panel-overlapping-interval-bands
+  scenes:
+  - Compare conventional and imputation paths with overlapping uncertainty bands.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - category-key
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - two-panels
+    - overlapping-ribbons
+    - square-line
+    - circle-line
+    encoding:
+    - red-conventional
+    - blue-imputation
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Review both outer boundaries and the overlap separately; transparency and drawing order affect the overlap color, not
+      the supplied interval values.
+  search_terms:
+  - blue-imputation
+  - circle-line
+  - event-study
+  - overlapping-ribbons
+  - red-conventional
+  - square-line
+  - two-panel-overlapping-interval-bands
+  - two-panels
+  files:
+    manifest: figures/event-study/receipt-week-overlapping-bands.asset.yaml
+    script: figures/event-study/receipt-week-overlapping-bands.py
+    preview: figures/event-study/receipt-week-overlapping-bands.png
+- id: release-mortality-five-paths-6panel
+  family: event-study
+  subtype: six-panel-independent-boundaries
+  scenes:
+  - Compare mortality response paths and two supplied boundary pairs across outcomes.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - facet-key
+  - input-value
+  - interval-lower
+  - interval-upper
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - six-facets
+    - center-path
+    - inner-dashed-boundaries
+    - outer-dashed-boundaries
+    encoding:
+    - gray-line
+    - two-dash-weights
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Store every boundary independently at half-year resolution; raster geometry cannot establish the boundary confidence
+      levels.
+  search_terms:
+  - center-path
+  - event-study
+  - gray-line
+  - inner-dashed-boundaries
+  - outer-dashed-boundaries
+  - six-facets
+  - six-panel-independent-boundaries
+  - two-dash-weights
+  files:
+    manifest: figures/event-study/release-mortality-five-paths-6panel.asset.yaml
+    script: figures/event-study/release-mortality-five-paths-6panel.py
+    preview: figures/event-study/release-mortality-five-paths-6panel.png
+- id: transformation-trends-effects-2x3
+  family: event-study
+  subtype: three-transforms-trends-and-effects
+  scenes:
+  - Compare supplied transformed trends and difference-in-differences summaries.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - measure
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - two-by-three-panels
+    - paired-trends
+    - coefficient-interval
+    - repeated-legends
+    encoding:
+    - square-solid-control
+    - triangle-dashed-treated
+    - gray-effect-diamonds
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - 'Pass explicit series handles to legends: automatic labels can attach to zero and event reference lines instead of the
+      data.'
+  search_terms:
+  - coefficient-interval
+  - event-study
+  - gray-effect-diamonds
+  - paired-trends
+  - repeated-legends
+  - square-solid-control
+  - three-transforms-trends-and-effects
+  - triangle-dashed-treated
+  - two-by-three-panels
+  files:
+    manifest: figures/event-study/transformation-trends-effects-2x3.asset.yaml
+    script: figures/event-study/transformation-trends-effects-2x3.py
+    preview: figures/event-study/transformation-trends-effects-2x3.png
+- id: grouped-hbar-2series-filled-outline
+  family: grouped-bar
+  subtype: grouped-horizontal-bar
+  scenes:
+  - Compare two related conditions across ordered categories with long labels
+  - Preserve rapid within-category comparison in grayscale printing
+  data_contract_summary: null
+  required_role_names:
+  - category-key
+  - measure
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - horizontal-bar
+    - grouped
+    - equal-height
+    - compact-pair
+    encoding:
+    - two-series
+    - solid-vs-outline
+    - grayscale-safe
+    - redundant-fill-state
+    annotation:
+    - legend-bottom
+    - no-data-label
+    axes:
+    - zero-baseline
+    - ordered-category-y
+    - outward-ticks
+    - no-grid
+    layout:
+    - single-panel
+    - long-label-margin
+    - legend-outside-plot
+  compatibility:
+    grayscale: pass
+    academic-publication: pass
+    warnings:
+    - fixture has no variable or unit metadata
+    - long legend labels may require an adjusted canvas or multi-row legend
+  search_terms:
+  - compact-pair
+  - equal-height
+  - grayscale-safe
+  - grouped
+  - grouped-bar
+  - grouped-horizontal-bar
+  - horizontal-bar
+  - legend-bottom
+  - legend-outside-plot
+  - long-label-margin
+  - no-data-label
+  - no-grid
+  - ordered-category-y
+  - outward-ticks
+  - redundant-fill-state
+  - single-panel
+  - solid-vs-outline
+  - two-series
+  - zero-baseline
+  files:
+    manifest: figures/grouped-bar/grouped-hbar-2series-filled-outline.asset.yaml
+    script: figures/grouped-bar/grouped-hbar-2series-filled-outline.py
+    preview: figures/grouped-bar/grouped-hbar-2series-filled-outline.png
+- id: grouped-hbar-3series-3gray
+  family: grouped-bar
+  subtype: seven-category-three-series-grayscale-comparison
+  scenes:
+  - Compare three outcomes across treatment conditions
+  - Separate two experimental regimes
+  data_contract_summary: Ordered categories with exactly three non-negative series each.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - vertical-grouped-bars
+    - section-divider
+    encoding:
+    - dark-gray
+    - mid-gray
+    - white-outline
+    annotation:
+    - top-right-legend
+    - section-labels
+    axes:
+    - zero-baseline
+    - categorical-x
+    layout:
+    - single-panel
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Long category labels require a separate lower band.
+  search_terms:
+  - categorical-x
+  - dark-gray
+  - grouped-bar
+  - mid-gray
+  - section-divider
+  - section-labels
+  - seven-category-three-series-grayscale-comparison
+  - single-panel
+  - top-right-legend
+  - vertical-grouped-bars
+  - white-outline
+  - zero-baseline
+  files:
+    manifest: figures/grouped-bar/grouped-hbar-3series-3gray.asset.yaml
+    script: figures/grouped-bar/grouped-hbar-3series-3gray.py
+    preview: figures/grouped-bar/grouped-hbar-3series-3gray.png
+- id: grouped-vbar-2series-year
+  family: grouped-bar
+  subtype: grouped-vertical-bar
+  scenes:
+  - Compare treatment and control groups across ordered periods
+  - Show the evolution of two series over time
+  data_contract_summary: null
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - grouped
+    - equal-width
+    - side-by-side
+    encoding:
+    - two-series
+    - orange-vs-navy
+    - categorical-color
+    annotation:
+    - legend-bottom
+    - no-data-label
+    axes:
+    - zero-baseline
+    - ordered-time-x
+    - fixed-y-range
+    layout:
+    - single-panel
+    - horizontal-grid
+    - white-plot-on-tinted-frame
+  compatibility:
+    grayscale: conditional
+    academic-publication: conditional
+    warnings:
+    - colored-background
+    - color-only-series-encoding
+  search_terms:
+  - categorical-color
+  - equal-width
+  - fixed-y-range
+  - grouped
+  - grouped-bar
+  - grouped-vertical-bar
+  - horizontal-grid
+  - legend-bottom
+  - no-data-label
+  - orange-vs-navy
+  - ordered-time-x
+  - side-by-side
+  - single-panel
+  - two-series
+  - vertical-bar
+  - white-plot-on-tinted-frame
+  - zero-baseline
+  files:
+    manifest: figures/grouped-bar/grouped-vbar-2series-year.asset.yaml
+    script: figures/grouped-bar/grouped-vbar-2series-year.py
+    preview: figures/grouped-bar/grouped-vbar-2series-year.png
+- id: grouped-vbar-4series-country
+  family: grouped-bar
+  subtype: four-series-country-comparison
+  scenes:
+  - Compare four exposure definitions across countries
+  - Identify cross-country differences in detection rates
+  data_contract_summary: Eight ordered countries with four complete non-negative series per country.
+  required_role_names:
+  - category-key
+  - measure
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - grouped
+    - four-series
+    - eight-categories
+    encoding:
+    - four-pastel-colors
+    - dark-outlines
+    annotation:
+    - legend-outside-right
+    axes:
+    - zero-baseline
+    - percent-y
+    - horizontal-grid
+    layout:
+    - wide-landscape
+    - external-legend-margin
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Four pastel fills are not sufficient alone for grayscale printing and require hatch substitution in real use.
+  search_terms:
+  - dark-outlines
+  - eight-categories
+  - external-legend-margin
+  - four-pastel-colors
+  - four-series
+  - four-series-country-comparison
+  - grouped
+  - grouped-bar
+  - horizontal-grid
+  - legend-outside-right
+  - percent-y
+  - vertical-bar
+  - wide-landscape
+  - zero-baseline
+  files:
+    manifest: figures/grouped-bar/grouped-vbar-4series-country.asset.yaml
+    script: figures/grouped-bar/grouped-vbar-4series-country.py
+    preview: figures/grouped-bar/grouped-vbar-4series-country.png
+- id: grouped-vbar-benchmark-2x2
+  family: grouped-bar
+  subtype: four-panel-benchmark-versus-alternative
+  scenes:
+  - Compare robustness alternatives against one benchmark
+  - Show how two period estimates change across four specifications
+  data_contract_summary: Four ordered panels with two ordered periods and exactly two complete non-negative series per panel-period.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - grouped
+    - two-series
+    - four-panel
+    encoding:
+    - red-benchmark
+    - blue-alternative
+    annotation:
+    - panel-specific-legends
+    axes:
+    - zero-baseline
+    - percent-y
+    - shared-y-range
+    - horizontal-grid
+    layout:
+    - two-by-two
+    - measured-center-gutter
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Panel legends require short alternative labels.
+  search_terms:
+  - blue-alternative
+  - four-panel
+  - four-panel-benchmark-versus-alternative
+  - grouped
+  - grouped-bar
+  - horizontal-grid
+  - measured-center-gutter
+  - panel-specific-legends
+  - percent-y
+  - red-benchmark
+  - shared-y-range
+  - two-by-two
+  - two-series
+  - vertical-bar
+  - zero-baseline
+  files:
+    manifest: figures/grouped-bar/grouped-vbar-benchmark-2x2.asset.yaml
+    script: figures/grouped-bar/grouped-vbar-benchmark-2x2.py
+    preview: figures/grouped-bar/grouped-vbar-benchmark-2x2.png
+- id: age-year-grayscale-heatmaps-4panel
+  family: heatmap
+  subtype: age-year-grayscale-heatmaps-4panel
+  scenes:
+  - Compare age-by-year surfaces across four components.
+  data_contract_summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_role_names:
+  - category-key
+  - facet-key
+  - ordered-domain
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - four-panel-grayscale-heatmap
+    - top-year-axis
+    - reversed-age-axis
+    - horizontal-colorbars
+    - white-cell-gaps
+  compatibility:
+    academic-publication: adaptation-required
+    warnings:
+    - Separate cell-fill sampling from white grid gaps. Low-resolution JPEG raster readings cannot recover exact numerical
+      intensities.
+  search_terms:
+  - age-year-grayscale-heatmaps-4panel
+  - four-panel-grayscale-heatmap
+  - heatmap
+  - horizontal-colorbars
+  - reversed-age-axis
+  - top-year-axis
+  - white-cell-gaps
+  files:
+    manifest: figures/heatmap/age-year-grayscale-heatmaps-4panel.asset.yaml
+    script: figures/heatmap/age-year-grayscale-heatmaps-4panel.py
+    preview: figures/heatmap/age-year-grayscale-heatmaps-4panel.png
+- id: exposure-sales-diverging-heatmap
+  family: heatmap
+  subtype: exposure-sales-diverging-heatmap
+  scenes:
+  - Compare exposure quantiles over monthly time with a diverging sales color scale.
+  data_contract_summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_role_names:
+  - category-key
+  - input-value
+  - ordered-domain
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - diverging-heatmap
+    - quantile-rows
+    - month-columns
+    - dashed-time-references
+    - vertical-color-key
+  compatibility:
+    academic-publication: adaptation-required
+    warnings:
+    - Sample cell interiors away from reference lines; annotations must not contaminate recovered display colors.
+  search_terms:
+  - dashed-time-references
+  - diverging-heatmap
+  - exposure-sales-diverging-heatmap
+  - heatmap
+  - month-columns
+  - quantile-rows
+  - vertical-color-key
+  files:
+    manifest: figures/heatmap/exposure-sales-diverging-heatmap.asset.yaml
+    script: figures/heatmap/exposure-sales-diverging-heatmap.py
+    preview: figures/heatmap/exposure-sales-diverging-heatmap.png
+- id: factor-selection-heatmaps-8panel
+  family: heatmap
+  subtype: factor-selection-heatmaps-8panel
+  scenes:
+  - Compare asset-selection grids across eight factor families.
+  data_contract_summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_role_names:
+  - category-key
+  - facet-key
+  - input-value
+  - measure
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - eight-panel-heatmap
+    - panel-specific-color-scale
+    - red-selection-crosses
+  compatibility:
+    academic-publication: adaptation-required
+    warnings:
+    - Preserve the independent range and key for every panel; the same hue across facets does not imply the same value.
+  search_terms:
+  - eight-panel-heatmap
+  - factor-selection-heatmaps-8panel
+  - heatmap
+  - panel-specific-color-scale
+  - red-selection-crosses
+  files:
+    manifest: figures/heatmap/factor-selection-heatmaps-8panel.asset.yaml
+    script: figures/heatmap/factor-selection-heatmaps-8panel.py
+    preview: figures/heatmap/factor-selection-heatmaps-8panel.png
+- id: state-week-grayscale-heatmap
+  family: heatmap
+  subtype: state-by-week-grayscale-matrix
+  scenes:
+  - Display a state-by-week matrix using a caller-declared color mapping.
+  data_contract_summary: External plotting fixture; no analytical calculation.
+  required_role_names:
+  - category-key
+  - ordered-domain
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - rectangular-heatmap
+    - weekly-columns
+    - state-rows
+    - grayscale-key
+    encoding:
+    - supplied-cell-colors
+  compatibility:
+    grayscale: preview-generated; review color-dependent distinctions before grayscale use
+    warnings:
+    - Source colors are display fixtures, not recovered economic values; require a numerical scale or categorical definition
+      for empirical reuse.
+  search_terms:
+  - grayscale-key
+  - heatmap
+  - rectangular-heatmap
+  - state-by-week-grayscale-matrix
+  - state-rows
+  - supplied-cell-colors
+  - weekly-columns
+  files:
+    manifest: figures/heatmap/state-week-grayscale-heatmap.asset.yaml
+    script: figures/heatmap/state-week-grayscale-heatmap.py
+    preview: figures/heatmap/state-week-grayscale-heatmap.png
+- id: interval-response-4x2-multigroup
+  family: interval-band
+  subtype: eight-panel-three-group-response
+  scenes:
+  - Compare dynamic responses across eight outcome measures
+  - Compare three groups with panel-specific units and scales
+  data_contract_summary: Long data with eight panels, three ordered groups, shared horizons, estimates, and supplied lower
+    and upper bounds.
+  required_role_names:
+  - category-key
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - ordered-domain
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - interval-band
+    - eight-panel
+    - four-by-two
+    encoding:
+    - purple-solid
+    - orange-dashed
+    - gray-dash-dot
+    annotation:
+    - shared-bottom-legend
+    - zero-lines
+    axes:
+    - horizon-x
+    - panel-specific-y
+    - horizontal-grid
+    layout:
+    - compact-small-multiples
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Dense small-multiple typography requires actual-size inspection.
+  search_terms:
+  - compact-small-multiples
+  - eight-panel
+  - eight-panel-three-group-response
+  - four-by-two
+  - gray-dash-dot
+  - horizon-x
+  - horizontal-grid
+  - interval-band
+  - line
+  - orange-dashed
+  - panel-specific-y
+  - purple-solid
+  - shared-bottom-legend
+  - zero-lines
+  files:
+    manifest: figures/interval-band/interval-response-4x2-multigroup.asset.yaml
+    script: figures/interval-band/interval-response-4x2-multigroup.py
+    preview: figures/interval-band/interval-response-4x2-multigroup.png
+- id: irf-shaded-ci-2x3
+  family: interval-band
+  subtype: six-panel-impulse-response
+  scenes:
+  - Compare impulse responses across three measures and two specifications
+  - Show uncertainty decay over a common horizon
+  data_contract_summary: Long data with six ordered panels, shared month horizons, estimates, and supplied lower and upper
+    bounds.
+  required_role_names:
+  - facet-key
+  - interval-lower
+  - interval-upper
+  - ordered-domain
+  - ordering-key
+  - point-estimate
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - interval-band
+    - six-panel
+    - two-by-three
+    encoding:
+    - dark-solid-response
+    - gray-shaded-interval
+    annotation:
+    - zero-lines
+    - panel-titles
+    axes:
+    - month-horizon-x
+    - shared-y-range
+    - full-spines
+    layout:
+    - two-by-three-small-multiples
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Row meaning must be supplied in surrounding notes because page-level subfigure text is excluded from the asset.
+  search_terms:
+  - dark-solid-response
+  - full-spines
+  - gray-shaded-interval
+  - interval-band
+  - line
+  - month-horizon-x
+  - panel-titles
+  - shared-y-range
+  - six-panel
+  - six-panel-impulse-response
+  - two-by-three
+  - two-by-three-small-multiples
+  - zero-lines
+  files:
+    manifest: figures/interval-band/irf-shaded-ci-2x3.asset.yaml
+    script: figures/interval-band/irf-shaded-ci-2x3.py
+    preview: figures/interval-band/irf-shaded-ci-2x3.png
+- id: pdf-cdf-parametric-bounds-2panel
+  family: interval-band
+  subtype: two-panel-distribution-envelope
+  scenes:
+  - Show an estimated distribution with parametric bounds
+  - Inspect upper-tail CDF behavior at an expanded scale
+  data_contract_summary: Long data with two panels, three ordered curves per panel, and shared x values within each panel.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - ordering-key
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - two-panel
+    - vertical-stack
+    - envelope-bounds
+    encoding:
+    - solid-center
+    - dotted-bounds
+    - grayscale-safe
+    annotation:
+    - panel-titles
+    - separate-legends
+    axes:
+    - panel-specific-x
+    - panel-specific-y
+    - horizontal-grid
+    layout:
+    - stacked-distribution-panels
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Curve labels must preserve the supplied bound definitions; do not infer ordering from percentile names.
+  search_terms:
+  - dotted-bounds
+  - envelope-bounds
+  - grayscale-safe
+  - horizontal-grid
+  - interval-band
+  - line
+  - panel-specific-x
+  - panel-specific-y
+  - panel-titles
+  - separate-legends
+  - solid-center
+  - stacked-distribution-panels
+  - two-panel
+  - two-panel-distribution-envelope
+  - vertical-stack
+  files:
+    manifest: figures/interval-band/pdf-cdf-parametric-bounds-2panel.asset.yaml
+    script: figures/interval-band/pdf-cdf-parametric-bounds-2panel.py
+    preview: figures/interval-band/pdf-cdf-parametric-bounds-2panel.png
+- id: quantile-effect-two-layer-ci
+  family: interval-band
+  subtype: single-line-nested-confidence-bands
+  scenes:
+  - Show heterogeneous effects across quantiles
+  - Distinguish inner and outer uncertainty ranges around one estimate line
+  data_contract_summary: Ordered quantiles with one estimate and supplied nested inner and outer interval bounds.
+  required_role_names:
+  - interval-lower
+  - interval-upper
+  - point-estimate
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - nested-interval-band
+    - single-panel
+    encoding:
+    - dark-red-line
+    - medium-red-inner-band
+    - pale-red-outer-band
+    annotation:
+    - zero-line
+    - centered-title
+    axes:
+    - quantile-x
+    - effect-y
+    - no-grid
+    layout:
+    - compact-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Nested bands require sufficient luminance separation in grayscale.
+  search_terms:
+  - centered-title
+  - compact-landscape
+  - dark-red-line
+  - effect-y
+  - interval-band
+  - line
+  - medium-red-inner-band
+  - nested-interval-band
+  - no-grid
+  - pale-red-outer-band
+  - quantile-x
+  - single-line-nested-confidence-bands
+  - single-panel
+  - zero-line
+  files:
+    manifest: figures/interval-band/quantile-effect-two-layer-ci.asset.yaml
+    script: figures/interval-band/quantile-effect-two-layer-ci.py
+    preview: figures/interval-band/quantile-effect-two-layer-ci.png
+- id: annotated-dual-axis-trends-2panel
+  family: line-trend
+  subtype: two-panel-annotated-dual-axis-trends
+  scenes:
+  - Compare distributional and wage-gap trends across two samples
+  - Mark structural years and directly identify three series
+  data_contract_summary: Long annual data with two panels, three ordered series per panel, and explicit axis assignment.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - two-panel
+    - vertical-stack
+    - dual-axis
+    encoding:
+    - open-diamond
+    - open-triangle
+    - open-square
+    - grayscale-safe
+    annotation:
+    - vertical-year-lines
+    - arrow-labels
+    - bold-panel-titles
+    axes:
+    - continuous-year-x
+    - independent-y-scales
+    - full-spines
+    layout:
+    - aligned-vertical-panels
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Arrow annotations are fixture-specific and must be reviewed when series labels or turning points change.
+  search_terms:
+  - aligned-vertical-panels
+  - arrow-labels
+  - bold-panel-titles
+  - continuous-year-x
+  - dual-axis
+  - full-spines
+  - grayscale-safe
+  - independent-y-scales
+  - line
+  - line-trend
+  - open-diamond
+  - open-square
+  - open-triangle
+  - two-panel
+  - two-panel-annotated-dual-axis-trends
+  - vertical-stack
+  - vertical-year-lines
+  files:
+    manifest: figures/line-trend/annotated-dual-axis-trends-2panel.asset.yaml
+    script: figures/line-trend/annotated-dual-axis-trends-2panel.py
+    preview: figures/line-trend/annotated-dual-axis-trends-2panel.png
+- id: dual-axis-diverging-trends
+  family: line-trend
+  subtype: dual-axis-opposing-annual-trends
+  scenes:
+  - Compare two annual indicators with different units and opposing trends
+  - Show structural divergence over time
+  data_contract_summary: One row per continuous year with one value for each declared axis.
+  required_role_names:
+  - measure
+  - ordered-domain
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - single-panel
+    - dual-axis
+    encoding:
+    - navy-solid
+    - red-dashed
+    - grayscale-redundant
+    annotation:
+    - legend-inside-top
+    axes:
+    - continuous-year-x
+    - independent-y-scales
+    - horizontal-grid
+    layout:
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Dual-axis use requires a written real-use justification and explicit units.
+  search_terms:
+  - continuous-year-x
+  - dual-axis
+  - dual-axis-opposing-annual-trends
+  - grayscale-redundant
+  - horizontal-grid
+  - independent-y-scales
+  - legend-inside-top
+  - line
+  - line-trend
+  - navy-solid
+  - red-dashed
+  - single-panel
+  - wide-landscape
+  files:
+    manifest: figures/line-trend/dual-axis-diverging-trends.asset.yaml
+    script: figures/line-trend/dual-axis-diverging-trends.py
+    preview: figures/line-trend/dual-axis-diverging-trends.png
+- id: dual-axis-employment-value-added
+  family: line-trend
+  subtype: long-horizon-dual-axis-level-trends
+  scenes:
+  - Compare employment and output levels over a long period
+  - Show divergence and reversal across indicators with different units
+  data_contract_summary: One row per continuous year with one value for each axis.
+  required_role_names:
+  - measure
+  - ordered-domain
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - single-panel
+    - dual-axis
+    - long-horizon
+    encoding:
+    - dark-solid
+    - light-solid
+    - grayscale-luminance
+    annotation:
+    - legend-inside-bottom
+    axes:
+    - continuous-year-x
+    - independent-y-scales
+    - horizontal-grid
+    layout:
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Similar solid lines require sufficient luminance separation and an actual grayscale check.
+  search_terms:
+  - continuous-year-x
+  - dark-solid
+  - dual-axis
+  - grayscale-luminance
+  - horizontal-grid
+  - independent-y-scales
+  - legend-inside-bottom
+  - light-solid
+  - line
+  - line-trend
+  - long-horizon
+  - long-horizon-dual-axis-level-trends
+  - single-panel
+  - wide-landscape
+  files:
+    manifest: figures/line-trend/dual-axis-employment-value-added.asset.yaml
+    script: figures/line-trend/dual-axis-employment-value-added.py
+    preview: figures/line-trend/dual-axis-employment-value-added.png
+- id: dual-axis-three-ratio-trends
+  family: line-trend
+  subtype: sparse-three-series-dual-axis
+  scenes:
+  - Compare two related ratios with a third ratio on another scale
+  - Show sparse long-run movements across benchmark years
+  data_contract_summary: Long data with three ordered series and explicit left or right axis assignment.
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - line
+    - single-panel
+    - dual-axis
+    - sparse-time-points
+    encoding:
+    - green-circle
+    - navy-square
+    - red-diamond
+    annotation:
+    - two-row-legend-below
+    axes:
+    - benchmark-year-x
+    - independent-y-scales
+    - horizontal-grid
+    layout:
+    - wide-landscape
+    - external-legend
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The three-color design needs redundant markers for grayscale printing.
+  search_terms:
+  - benchmark-year-x
+  - dual-axis
+  - external-legend
+  - green-circle
+  - horizontal-grid
+  - independent-y-scales
+  - line
+  - line-trend
+  - navy-square
+  - red-diamond
+  - single-panel
+  - sparse-three-series-dual-axis
+  - sparse-time-points
+  - two-row-legend-below
+  - wide-landscape
+  files:
+    manifest: figures/line-trend/dual-axis-three-ratio-trends.asset.yaml
+    script: figures/line-trend/dual-axis-three-ratio-trends.py
+    preview: figures/line-trend/dual-axis-three-ratio-trends.png
+- id: dual-series-trend-prediction-2panel
+  family: line-trend
+  subtype: vertically-stacked-observed-predicted-trends
+  scenes:
+  - Compare two related annual series after transformation or normalization
+  - Compare an observed annual series with a supplied prediction over the same period
+  - Mark externally supplied break years in one panel
+  data_contract_summary: null
+  required_role_names:
+  - category-key
+  - display-label
+  - facet-key
+  - input-value
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - line
+    - two-panel
+    - vertical-stack
+    - shared-year-range
+    encoding:
+    - solid-open-circle
+    - dashed-open-diamond
+    - grayscale-safe
+    annotation:
+    - bold-panel-title
+    - separate-panel-legend
+    - vertical-reference-line
+    - horizontal-zero-line
+    axes:
+    - continuous-year-x
+    - panel-specific-y
+    - full-rectangular-spines
+    - no-grid
+    layout:
+    - aligned-panels
+    - legends-below-panels
+    - compact-publication-ratio
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - long legend labels require actual-size inspection
+    - independent panel scales must be disclosed in surrounding figure notes when interpretation requires it
+  search_terms:
+  - aligned-panels
+  - bold-panel-title
+  - compact-publication-ratio
+  - continuous-year-x
+  - dashed-open-diamond
+  - full-rectangular-spines
+  - grayscale-safe
+  - horizontal-zero-line
+  - legends-below-panels
+  - line
+  - line-trend
+  - no-grid
+  - panel-specific-y
+  - separate-panel-legend
+  - shared-year-range
+  - solid-open-circle
+  - two-panel
+  - vertical-reference-line
+  - vertical-stack
+  - vertically-stacked-observed-predicted-trends
+  files:
+    manifest: figures/line-trend/dual-series-trend-prediction-2panel.asset.yaml
+    script: figures/line-trend/dual-series-trend-prediction-2panel.py
+    preview: figures/line-trend/dual-series-trend-prediction-2panel.png
+- id: tariff-response-2x4-dashed-ci
+  family: line-trend
+  subtype: two-block-four-panel-response-with-dashed-bounds
+  scenes:
+  - Compare dynamic responses across two tariff regimes
+  - Inspect outcome-specific changes at an event date
+  data_contract_summary: Two blocks, four panels per block, continuous event months, and aligned estimate lower upper paths.
+  required_role_names:
+  - display-label
+  - facet-key
+  - input-value
+  - interval-lower
+  - interval-upper
+  - ordered-domain
+  - ordering-key
+  - point-estimate
+  specialized: false
+  elements:
+    geometry:
+    - line
+    - point-estimate
+    - dashed-bounds
+    - eight-panels
+    encoding:
+    - black-estimate
+    - navy-interval
+    - event-reference
+    annotation:
+    - block-heading
+    - panel-title
+    axes:
+    - event-month-x
+    - percent-y
+    layout:
+    - two-by-two-blocks
+  compatibility:
+    grayscale: preview-generated; semantic color mapping still requires review
+    academic-publication: conditional
+    warnings:
+    - Raster reference supports visual rather than numerical recovery of response paths.
+  search_terms:
+  - black-estimate
+  - block-heading
+  - dashed-bounds
+  - eight-panels
+  - event-month-x
+  - event-reference
+  - line
+  - line-trend
+  - navy-interval
+  - panel-title
+  - percent-y
+  - point-estimate
+  - two-block-four-panel-response-with-dashed-bounds
+  - two-by-two-blocks
+  files:
+    manifest: figures/line-trend/tariff-response-2x4-dashed-ci.asset.yaml
+    script: figures/line-trend/tariff-response-2x4-dashed-ci.py
+    preview: figures/line-trend/tariff-response-2x4-dashed-ci.png
+- id: automation-exposure-occupations-2panel
+  family: scatter-relationship
+  subtype: occupation-exposure-two-period-panels
+  scenes:
+  - Compare occupation-level exposure relationships across periods
+  - Identify named occupations with unusual exposure combinations
+  data_contract_summary: Two panels with at least one hundred background observations, unique labeled occupations, and exactly
+    two supplied fit endpoints per panel, all bounded from zero to 100.
+  required_role_names:
+  - category-key
+  - display-label
+  - facet-key
+  - measure
+  specialized: true
+  elements:
+    geometry:
+    - scatter
+    - two-panel
+    - direct-labels
+    - supplied-linear-fit
+    encoding:
+    - faint-background-points
+    - muted-red-highlight-points
+    - gray-dashed-fit
+    annotation:
+    - occupation-labels
+    - italic-panel-titles
+    axes:
+    - percentile-x
+    - percentile-y
+    - shared-domain
+    layout:
+    - two-rows
+    - portrait
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Dense direct labels require collision review at insertion size
+    - Exact point coordinates and fitted coefficients require original observations and the declared model specification.
+  search_terms:
+  - direct-labels
+  - faint-background-points
+  - gray-dashed-fit
+  - italic-panel-titles
+  - muted-red-highlight-points
+  - occupation-exposure-two-period-panels
+  - occupation-labels
+  - percentile-x
+  - percentile-y
+  - portrait
+  - scatter
+  - scatter-relationship
+  - shared-domain
+  - supplied-linear-fit
+  - two-panel
+  - two-rows
+  files:
+    manifest: figures/scatter-relationship/automation-exposure-occupations-2panel.asset.yaml
+    script: figures/scatter-relationship/automation-exposure-occupations-2panel.py
+    preview: figures/scatter-relationship/automation-exposure-occupations-2panel.png
+- id: binscatter-diagnostic-2x2
+  family: scatter-relationship
+  subtype: raw-cutoff-binned-conditional-diagnostic
+  scenes:
+  - Explain how a dense raw relationship is reduced to binscatter means
+  - Compare unconditional and conditional binned relationships
+  data_contract_summary: Four declared panels with supplied raw points cut positions bin means fit coordinates and conditional
+    segments.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - scatter
+    - dense-cloud
+    - vertical-cutoffs
+    - binned-means
+    - fitted-line
+    - horizontal-segments
+    encoding:
+    - blue-raw-points
+    - black-bin-means
+    - green-fit
+    annotation:
+    - panel-specific-titles
+    - panel-c-legend
+    axes:
+    - shared-x-domain
+    - panel-specific-y-range
+    layout:
+    - two-by-two
+    - compact-diagnostic-grid
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Raw point density should be reduced or rasterized for very large real datasets.
+  search_terms:
+  - binned-means
+  - black-bin-means
+  - blue-raw-points
+  - compact-diagnostic-grid
+  - dense-cloud
+  - fitted-line
+  - green-fit
+  - horizontal-segments
+  - panel-c-legend
+  - panel-specific-titles
+  - panel-specific-y-range
+  - raw-cutoff-binned-conditional-diagnostic
+  - scatter
+  - scatter-relationship
+  - shared-x-domain
+  - two-by-two
+  - vertical-cutoffs
+  files:
+    manifest: figures/scatter-relationship/binscatter-diagnostic-2x2.asset.yaml
+    script: figures/scatter-relationship/binscatter-diagnostic-2x2.py
+    preview: figures/scatter-relationship/binscatter-diagnostic-2x2.png
+- id: cumulative-frequency-market-age
+  family: scatter-relationship
+  subtype: two-market-cumulative-frequency-profile
+  scenes:
+  - Compare how quickly observations accumulate across age
+  - Identify early distributional separation and later convergence
+  data_contract_summary: Continuous ages 1 through 60 with two complete non-decreasing cumulative-frequency series.
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  specialized: true
+  elements:
+    geometry:
+    - cumulative-line
+    - two-series
+    - sixty-ages
+    encoding:
+    - thin-gray-line
+    - thick-black-line
+    annotation:
+    - compact-inset-legend
+    axes:
+    - age-x
+    - cumulative-frequency-y
+    - horizontal-grid
+    - full-frame
+    layout:
+    - single-panel
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Series labels must identify which line weight maps to each market.
+  search_terms:
+  - age-x
+  - compact-inset-legend
+  - cumulative-frequency-y
+  - cumulative-line
+  - full-frame
+  - horizontal-grid
+  - scatter-relationship
+  - single-panel
+  - sixty-ages
+  - thick-black-line
+  - thin-gray-line
+  - two-market-cumulative-frequency-profile
+  - two-series
+  - wide-landscape
+  files:
+    manifest: figures/scatter-relationship/cumulative-frequency-market-age.asset.yaml
+    script: figures/scatter-relationship/cumulative-frequency-market-age.py
+    preview: figures/scatter-relationship/cumulative-frequency-market-age.png
+- id: employment-shock-binscatter
+  family: scatter-relationship
+  subtype: two-group-binscatter-with-direct-labels
+  scenes:
+  - Compare heterogeneous relationships across exposed and unexposed groups
+  - Show group-specific binned trends without a separate legend
+  data_contract_summary: Exactly 48 supplied bin means and one supplied two-point fit path for each of two groups.
+  required_role_names:
+  - category-key
+  - measure
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - binscatter
+    - two-series
+    - linear-fit
+    encoding:
+    - hollow-gray-circles
+    - black-diamonds
+    - matching-lines
+    annotation:
+    - direct-series-labels
+    - bottom-method-note
+    axes:
+    - negative-shock-x
+    - employed-share-y
+    - dotted-grid
+    layout:
+    - single-panel
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Direct-label positions require adaptation when real data ranges change.
+  search_terms:
+  - binscatter
+  - black-diamonds
+  - bottom-method-note
+  - direct-series-labels
+  - dotted-grid
+  - employed-share-y
+  - hollow-gray-circles
+  - linear-fit
+  - matching-lines
+  - negative-shock-x
+  - scatter-relationship
+  - single-panel
+  - two-group-binscatter-with-direct-labels
+  - two-series
+  - wide-landscape
+  files:
+    manifest: figures/scatter-relationship/employment-shock-binscatter.asset.yaml
+    script: figures/scatter-relationship/employment-shock-binscatter.py
+    preview: figures/scatter-relationship/employment-shock-binscatter.png
+- id: iv-diagnostic-2panel
+  family: scatter-relationship
+  subtype: paired-v-profile-and-crossing-profile
+  scenes:
+  - Compare rejection-rate behavior around a zero deviation
+  - Show opposing goodness-of-fit profiles for two procedures
+  data_contract_summary: Two panels with two complete supplied series on identical ordered x coordinates.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - connected-points
+    - v-profile
+    - crossing-lines
+    - two-panels
+    encoding:
+    - gray-diamonds
+    - black-circles
+    annotation:
+    - inset-top-legends
+    - panel-titles
+    axes:
+    - vertical-zero-line
+    - horizontal-zero-line
+    - inward-ticks
+    - full-frame
+    layout:
+    - one-by-two
+    - shared-width
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - The meaning of the diagnostic x expression must be preserved in real-use adaptation.
+  search_terms:
+  - black-circles
+  - connected-points
+  - crossing-lines
+  - full-frame
+  - gray-diamonds
+  - horizontal-zero-line
+  - inset-top-legends
+  - inward-ticks
+  - one-by-two
+  - paired-v-profile-and-crossing-profile
+  - panel-titles
+  - scatter-relationship
+  - shared-width
+  - two-panels
+  - v-profile
+  - vertical-zero-line
+  files:
+    manifest: figures/scatter-relationship/iv-diagnostic-2panel.asset.yaml
+    script: figures/scatter-relationship/iv-diagnostic-2panel.py
+    preview: figures/scatter-relationship/iv-diagnostic-2panel.png
+- id: peer-input-distributions-2x2
+  family: scatter-relationship
+  subtype: two-histograms-and-two-peer-comparison-panels
+  scenes:
+  - Audit peer-variable input distributions
+  - Compare peer means with peer-range summaries across own-rank positions
+  data_contract_summary: Supplied histogram bins and two bounded scatter series for each of two lower panels.
+  required_role_names:
+  - category-key
+  - facet-key
+  - geometric-magnitude
+  - measure
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - overlaid-histogram
+    - single-histogram
+    - paired-scatter
+    - four-panels
+    encoding:
+    - transparent-overlap
+    - hollow-circle
+    - plus-marker
+    annotation:
+    - panel-titles
+    - panel-local-legends
+    axes:
+    - share-y
+    - bounded-zero-to-one-scales
+    layout:
+    - two-by-two
+    - legends-below-selected-panels
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Overlapping filled histograms require transparency and color-safe adaptation.
+  search_terms:
+  - bounded-zero-to-one-scales
+  - four-panels
+  - hollow-circle
+  - legends-below-selected-panels
+  - overlaid-histogram
+  - paired-scatter
+  - panel-local-legends
+  - panel-titles
+  - plus-marker
+  - scatter-relationship
+  - share-y
+  - single-histogram
+  - transparent-overlap
+  - two-by-two
+  - two-histograms-and-two-peer-comparison-panels
+  files:
+    manifest: figures/scatter-relationship/peer-input-distributions-2x2.asset.yaml
+    script: figures/scatter-relationship/peer-input-distributions-2x2.py
+    preview: figures/scatter-relationship/peer-input-distributions-2x2.png
+- id: placement-rate-maltreatment-fits-2panel
+  family: scatter-relationship
+  subtype: two-group-three-fit-comparison-2panel
+  scenes:
+  - Compare functional-form sensitivity for two groups
+  - Contrast results across all calls and screened-in calls
+  data_contract_summary: Two panels and two groups with supplied point estimates plus three complete fit paths per group-panel.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - scatter
+    - linear-fit
+    - quadratic-fit
+    - local-linear-fit
+    - two-panels
+    encoding:
+    - blue-circle
+    - orange-cross
+    - solid-line
+    - dashed-line
+    - dotted-line
+    annotation:
+    - large-external-legends
+    - captions-below-panels
+    axes:
+    - panel-specific-x-range
+    - shared-y-range
+    - dotted-grid
+    layout:
+    - vertical-two-panel
+    - reserved-right-legend-column
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Eight legend entries require adequate right-side width at thesis insertion size.
+  search_terms:
+  - blue-circle
+  - captions-below-panels
+  - dashed-line
+  - dotted-grid
+  - dotted-line
+  - large-external-legends
+  - linear-fit
+  - local-linear-fit
+  - orange-cross
+  - panel-specific-x-range
+  - quadratic-fit
+  - reserved-right-legend-column
+  - scatter
+  - scatter-relationship
+  - shared-y-range
+  - solid-line
+  - two-group-three-fit-comparison-2panel
+  - two-panels
+  - vertical-two-panel
+  files:
+    manifest: figures/scatter-relationship/placement-rate-maltreatment-fits-2panel.asset.yaml
+    script: figures/scatter-relationship/placement-rate-maltreatment-fits-2panel.py
+    preview: figures/scatter-relationship/placement-rate-maltreatment-fits-2panel.png
+- id: transaction-price-value-2x2
+  family: scatter-relationship
+  subtype: four-regime-scatter-against-identity
+  scenes:
+  - Compare price-value alignment across four market regimes
+  - Diagnose dispersion and censoring relative to an identity benchmark
+  data_contract_summary: Four named panels with non-negative supplied observations and a supplied identity reference path.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - scatter
+    - dense-cloud
+    - diagonal-reference
+    - four-panels
+    encoding:
+    - semi-transparent-blue-circles
+    - thin-blue-identity-line
+    annotation:
+    - panel-titles
+    - shared-axis-labels
+    axes:
+    - shared-zero-to-75-domain
+    - aligned-grid
+    layout:
+    - two-by-two
+    - narrow-panel-gutters
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Point opacity and size must be adapted when observation counts differ materially.
+  search_terms:
+  - aligned-grid
+  - dense-cloud
+  - diagonal-reference
+  - four-panels
+  - four-regime-scatter-against-identity
+  - narrow-panel-gutters
+  - panel-titles
+  - scatter
+  - scatter-relationship
+  - semi-transparent-blue-circles
+  - shared-axis-labels
+  - shared-zero-to-75-domain
+  - thin-blue-identity-line
+  - two-by-two
+  files:
+    manifest: figures/scatter-relationship/transaction-price-value-2x2.asset.yaml
+    script: figures/scatter-relationship/transaction-price-value-2x2.py
+    preview: figures/scatter-relationship/transaction-price-value-2x2.png
+- id: decomposition-100pct-hbar-2x2
+  family: stacked-bar
+  subtype: four-panel-labeled-horizontal-decomposition
+  scenes:
+  - Compare component decompositions across top-share thresholds
+  - Show how portfolio composition changes across assumptions
+  data_contract_summary: Four ordered panels with four categories and five non-negative percentage components summing to 100
+    per row.
+  required_role_names:
+  - category-key
+  - facet-key
+  - measure
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - horizontal-bar
+    - normalized-stack
+    - four-panel
+    - five-components
+    encoding:
+    - gray
+    - navy
+    - violet
+    - yellow
+    - dark-gray
+    annotation:
+    - in-segment-values
+    - panel-specific-bottom-legends
+    - lettered-panel-titles
+    axes:
+    - percent-x
+    - ordered-category-y
+    layout:
+    - two-by-two
+    - repeated-panel-legends
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Tiny components should suppress internal labels rather than force collisions.
+  search_terms:
+  - dark-gray
+  - five-components
+  - four-panel
+  - four-panel-labeled-horizontal-decomposition
+  - gray
+  - horizontal-bar
+  - in-segment-values
+  - lettered-panel-titles
+  - navy
+  - normalized-stack
+  - ordered-category-y
+  - panel-specific-bottom-legends
+  - percent-x
+  - repeated-panel-legends
+  - stacked-bar
+  - two-by-two
+  - violet
+  - yellow
+  files:
+    manifest: figures/stacked-bar/decomposition-100pct-hbar-2x2.asset.yaml
+    script: figures/stacked-bar/decomposition-100pct-hbar-2x2.py
+    preview: figures/stacked-bar/decomposition-100pct-hbar-2x2.png
+- id: decomposition-100pct-hbar-outcomes
+  family: stacked-bar
+  subtype: outcome-factor-horizontal-decomposition
+  scenes:
+  - Compare factor contributions across many outcomes
+  - Show dominant and residual components with supplied edge statistics
+  data_contract_summary: Eleven ordered outcomes with four non-negative shares summing to one and two supplied edge labels
+    per outcome.
+  required_role_names:
+  - category-key
+  - display-label
+  - measure
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - horizontal-bar
+    - normalized-stack
+    - eleven-outcomes
+    encoding:
+    - red-marker-fill
+    - blue-lines
+    - green-crosshatch
+    - gray-dot-hatch
+    - redundant-pattern
+    annotation:
+    - outcome-statistics
+    - bar-edge-labels
+    - bottom-boxed-legend
+    axes:
+    - percent-x
+    - long-outcome-y
+    layout:
+    - wide-left-label-margin
+    - compact-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Dense outcome text and coefficient labels require source-size and insertion-size review.
+  search_terms:
+  - bar-edge-labels
+  - blue-lines
+  - bottom-boxed-legend
+  - compact-landscape
+  - eleven-outcomes
+  - gray-dot-hatch
+  - green-crosshatch
+  - horizontal-bar
+  - long-outcome-y
+  - normalized-stack
+  - outcome-factor-horizontal-decomposition
+  - outcome-statistics
+  - percent-x
+  - red-marker-fill
+  - redundant-pattern
+  - stacked-bar
+  - wide-left-label-margin
+  files:
+    manifest: figures/stacked-bar/decomposition-100pct-hbar-outcomes.asset.yaml
+    script: figures/stacked-bar/decomposition-100pct-hbar-outcomes.py
+    preview: figures/stacked-bar/decomposition-100pct-hbar-outcomes.png
+- id: normalized-stacked-vbar-2x4
+  family: stacked-bar
+  subtype: eight-panel-normalized-allocation-bars
+  scenes:
+  - Compare allocation regimes across standardized states
+  - Show how normalized compositions change under four parameter settings and two model variants
+  data_contract_summary: Eight ordered panels with shared positions and three non-negative components summing to one at every
+    panel-position key.
+  required_role_names:
+  - category-key
+  - facet-key
+  - input-value
+  - measure
+  - ordering-key
+  - quantitative-domain
+  specialized: true
+  elements:
+    geometry:
+    - vertical-bar
+    - normalized-stack
+    - eight-panel
+    - two-by-four
+    encoding:
+    - black
+    - gray
+    - white-outline
+    - grayscale-safe
+    annotation:
+    - gamma-panel-titles
+    - middle-row-descriptor
+    axes:
+    - standardized-position-x
+    - proportion-y
+    - shared-scale
+    - full-spines
+    layout:
+    - dense-small-multiples
+    - two-row-grid
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Component meaning must be supplied by the real-use design because the source has no reusable legend.
+  search_terms:
+  - black
+  - dense-small-multiples
+  - eight-panel
+  - eight-panel-normalized-allocation-bars
+  - full-spines
+  - gamma-panel-titles
+  - gray
+  - grayscale-safe
+  - middle-row-descriptor
+  - normalized-stack
+  - proportion-y
+  - shared-scale
+  - stacked-bar
+  - standardized-position-x
+  - two-by-four
+  - two-row-grid
+  - vertical-bar
+  - white-outline
+  files:
+    manifest: figures/stacked-bar/normalized-stacked-vbar-2x4.asset.yaml
+    script: figures/stacked-bar/normalized-stacked-vbar-2x4.py
+    preview: figures/stacked-bar/normalized-stacked-vbar-2x4.png
+- id: paired-stacked-vbar-sector
+  family: stacked-bar
+  subtype: paired-sample-stacked-annual-bars
+  scenes:
+  - Compare two samples across years while retaining component composition
+  - Show annual totals split into short-term and long-term portions
+  data_contract_summary: Continuous years with two complete samples and two non-negative components per sample-year.
+  required_role_names:
+  - category-key
+  - measure
+  - ordered-domain
+  - ordering-key
+  specialized: false
+  elements:
+    geometry:
+    - vertical-bar
+    - stacked
+    - paired-within-year
+    - annual
+    encoding:
+    - violet-short-term
+    - gray-long-term
+    annotation:
+    - arrow-direct-labels
+    - compact-top-right-legend
+    axes:
+    - zero-baseline
+    - continuous-year-x
+    - total-y
+    layout:
+    - single-panel
+    - wide-landscape
+  compatibility:
+    grayscale: pass
+    academic-publication: conditional
+    warnings:
+    - Arrow anchors must be adapted when values or sample names change.
+  search_terms:
+  - annual
+  - arrow-direct-labels
+  - compact-top-right-legend
+  - continuous-year-x
+  - gray-long-term
+  - paired-sample-stacked-annual-bars
+  - paired-within-year
+  - single-panel
+  - stacked
+  - stacked-bar
+  - total-y
+  - vertical-bar
+  - violet-short-term
+  - wide-landscape
+  - zero-baseline
+  files:
+    manifest: figures/stacked-bar/paired-stacked-vbar-sector.asset.yaml
+    script: figures/stacked-bar/paired-stacked-vbar-sector.py
+    preview: figures/stacked-bar/paired-stacked-vbar-sector.png
+- id: export-value-added-waterfall-2panel
+  family: waterfall
+  subtype: export-value-added-waterfall-2panel
+  scenes:
+  - Show two export-value-added decompositions using supplied step endpoints.
+  data_contract_summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_role_names:
+  - category-key
+  - display-label
+  - facet-key
+  - interval-endpoint
+  - ordering-key
+  specialized: true
+  elements:
+    geometry:
+    - two-panel-waterfall
+    - total-bars
+    - crosshatched-reductions
+    - diagonal-hatched-increases
+    - connectors
+  compatibility:
+    academic-publication: adaptation-required
+    warnings:
+    - Reserve separate label bands for English translations. Preserve the original hundred-million-USD unit without rescaling
+      values.
+  search_terms:
+  - connectors
+  - crosshatched-reductions
+  - diagonal-hatched-increases
+  - export-value-added-waterfall-2panel
+  - total-bars
+  - two-panel-waterfall
+  - waterfall
+  files:
+    manifest: figures/waterfall/export-value-added-waterfall-2panel.asset.yaml
+    script: figures/waterfall/export-value-added-waterfall-2panel.py
+    preview: figures/waterfall/export-value-added-waterfall-2panel.png
+- id: index-change-component-dashboard
+  family: waterfall
+  subtype: index-change-component-dashboard
+  scenes:
+  - Show supplied index levels, changes and component contributions in one coordinated display.
+  data_contract_summary: External supplied display coordinates/colors and literal labels; analytical calculations forbidden.
+  required_role_names:
+  - category-key
+  - display-label
+  - input-value
+  - interval-endpoint
+  - ordered-domain
+  - ordering-key
+  - visual-channel
+  specialized: true
+  elements:
+    geometry:
+    - inverted-level-axis
+    - broken-axis-waterfall
+    - positive-negative-stacks
+    - inside-bar-percentages
+    - split-component-legends
+  compatibility:
+    academic-publication: conditional
+    warnings:
+    - 'This is a conditional asset: the visible waterfall axis break is not a default thesis bar style. Real use requires
+      explicit approval of the discontinuous scale.'
+  search_terms:
+  - broken-axis-waterfall
+  - index-change-component-dashboard
+  - inside-bar-percentages
+  - inverted-level-axis
+  - positive-negative-stacks
+  - split-component-legends
+  - waterfall
+  files:
+    manifest: figures/waterfall/index-change-component-dashboard.asset.yaml
+    script: figures/waterfall/index-change-component-dashboard.py
+    preview: figures/waterfall/index-change-component-dashboard.png
